@@ -1,0 +1,146 @@
+% Workshop on Multilevel Modeling
+% Andy Grogan-Kaylor
+% `s c(current_date)` `s c(current_time)`
+
+---
+geometry: margin=1 in
+---
+
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+
+# Navigation
+
+> When this document is presented in slide show format, some slides may be long, and you may need to scroll down to see the full slide. In slide show format `b` makes text bigger, and `s` makes text smaller.
+
+
+```s/
+    clear all
+
+    quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
+```
+
+# Cross Sectional Model
+
+## Get Data
+
+```s
+    use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", clear
+```
+
+## The Equation
+
+$$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
+
+$$u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} $$
+
+## Descriptive Statistics
+
+```s
+    summarize // descriptive statistics
+```
+
+## Spaghetti Plot
+
+```s
+    spagplot outcome warmth, id(country) scheme(s1color)
+
+	graph export spagplot1.png, width(1000) replace
+```
+
+![Spaghetti Plot of Outcome by Warmth by Country](spagplot1.png){width=50%}
+
+
+## Unconditional Model
+
+### Model
+
+```s   
+    mixed outcome || country: // unconditional model
+```
+
+### ICC
+
+```s   
+    estat icc
+```
+	
+## Full Model
+
+```s
+    mixed outcome warmth physical_punishment || country: warmth // multilevel model
+
+    est store crosssectional // store estimates
+```
+
+# Longitudinal Model
+
+## Setup
+
+```s
+    use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_longitudinal_data.dta", clear
+```
+
+## The Equation
+
+$$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
+
+$$u_{0j} + u_{1j} \times \text{parental warmth} + $$
+
+$$v_{0i} + v_{1i} \times t + e_{ij} $$
+
+## Descriptive Statistics
+
+```s
+    summarize // descriptive statistics
+```
+
+## Alternate Plot
+
+```s
+    encode id, generate(idNUMERIC) // numeric version of id
+	
+    * spagplot outcome t if idNUMERIC <= 10, id(idNUMERIC) scheme(s1color)
+	
+	twoway (lfit outcome t) (scatter outcome t) if idNUMERIC <= 10, by(idNUMERIC) scheme(s1color)
+
+	graph export spagplot2.png, width(1000) replace
+```
+
+![Alternate Plot of Outcome by Time by Individual; First 10 Observations](spagplot2.png){width=50%}
+
+## Unconditional Model
+
+### Model
+
+```s    
+    mixed outcome || country: || id: // unconditional model
+```
+
+### ICC
+
+```s   
+    estat icc
+```
+	
+## Full Model	
+
+```s
+    mixed outcome t warmth physical_punishment || country: warmth || id: t // multilevel model
+
+    est store longitudinal // store estimates
+```
+
+# Nice Table of Results
+
+```s
+    est table crosssectional longitudinal, ///
+    b(%9.3f) star stats(N ll chi2) ///
+    varwidth(20) modelwidth(15)
+```
+
+# QUESTIONS??? {#majorsection}
+
+
+
+
+

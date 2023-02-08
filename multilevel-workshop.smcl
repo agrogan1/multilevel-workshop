@@ -1,0 +1,347 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 8 Feb 2023, 12:18:11
+{txt}
+{com}. //_1
+. display c(current_date)
+{res} 8 Feb 2023
+{txt}
+{com}. //_2
+. display c(current_time)
+{res}12:18:11
+{txt}
+{com}. //_3q
+. clear all
+{res}{txt}
+{com}. 
+. quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
+{txt}
+{com}. //_4
+. use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", clear
+{txt}
+{com}. //_5
+. summarize // descriptive statistics
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}country {c |}{res}      3,000        15.5    8.656884          1         30
+{txt}{space 9}HDI {c |}{res}      3,000    64.76667    17.24562         33         87
+{txt}{space 6}family {c |}{res}      3,000        50.5    28.87088          1        100
+{txt}{space 10}id {c |}{res}          0
+{txt}{space 7}group {c |}{res}      3,000       1.496    .5000674          1          2
+{txt}{hline 13}{c +}{hline 57}
+physical_p~t {c |}{res}      3,000       1.516    1.884744         -2          5
+{txt}{space 6}warmth {c |}{res}      3,000    2.543667    2.431336         -2          7
+{txt}{space 5}outcome {c |}{res}      3,000    53.45039    6.884502   25.02363   81.63657
+{txt}
+{com}. //_6
+. spagplot outcome warmth, id(country) scheme(s1color)
+{res}{txt}
+{com}. 
+. graph export spagplot1.png, width(1000) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Desktop/GitHub/multilevel-workshop/spagplot1.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_7
+. mixed outcome || country: // unconditional model
+{res}
+{txt}Performing EM optimization: 
+{res}
+{txt}Performing gradient-based optimization: 
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-9956.6096}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-9956.6096}  
+{res}
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     3,000
+{txt}Group variable: {res}country{col 49}{txt}Number of groups{col 67}={col 69}{res}        30
+{txt}{col 49}Obs per group:
+{col 63}min{col 67}={col 69}{res}       100
+{txt}{col 63}avg{col 67}={col 69}{res}     100.0
+{txt}{col 63}max{col 67}={col 69}{res}       100
+{col 49}{txt}Wald chi2({res}0{txt}){col 67}={col 70}{res}        .
+{txt}Log likelihood = {res}-9956.6096{col 49}{txt}Prob > chi2{col 67}={col 73}{res}     .
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     outcome{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2} 53.45039{col 26}{space 2} .3702932{col 37}{space 1}  144.35{col 46}{space 3}0.000{col 54}{space 4} 52.72463{col 67}{space 3} 54.17615
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}country{txt}: Identity{col 30}{c |}
+{space 18}var(_cons) {c |}{res}{col 33} 3.676471{col 44} 1.062168{col 58} 2.086944{col 70} 6.476667
+{txt}{hline 29}{c +}{hline 48}
+{col 16}var(Residual){col 30}{c |}{res}{col 33} 43.70413{col 44} 1.134121{col 58} 41.53688{col 70} 45.98446
+{txt}{hline 29}{c BT}{hline 48}
+LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}175.05{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
+{txt}
+{com}. //_8
+. estat icc
+
+{txt}Intraclass correlation
+
+{res}{col 1}{text}{hline 29}{c TT}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 1}{text}                       Level{col 30}{c |}        ICC{col 43}  Std. err.{col 55}    [95% conf. interval]
+{res}{col 1}{text}{hline 29}{c +}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 1}{text}                     country{col 30}{c |}{result}{space 2} .0775944{col 43}{space 1} .0207813{col 55}{space 3} .0454528{col 67}{space 3}  .129384
+{col 1}{text}{hline 29}{c BT}{hline 12}{hline 12}{hline 12}{hline 12}
+{res}{txt}
+{com}. //_9
+. mixed outcome warmth physical_punishment || country: warmth // multilevel model
+{res}
+{txt}Performing EM optimization: 
+{res}
+{txt}Performing gradient-based optimization: 
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-9622.5983}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res: -9622.076}  
+{res}{txt}Iteration 2:{space 3}log likelihood = {res:-9622.0697}  
+{res}{txt}Iteration 3:{space 3}log likelihood = {res:-9622.0697}  
+{res}
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     3,000
+{txt}Group variable: {res}country{col 49}{txt}Number of groups{col 67}={col 69}{res}        30
+{txt}{col 49}Obs per group:
+{col 63}min{col 67}={col 69}{res}       100
+{txt}{col 63}avg{col 67}={col 69}{res}     100.0
+{txt}{col 63}max{col 67}={col 69}{res}       100
+{col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}   749.92
+{txt}Log likelihood = {res}-9622.0697{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+
+{txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}            outcome{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
+{hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 13}warmth {c |}{col 21}{res}{space 2} .9822454{col 33}{space 2} .0445447{col 44}{space 1}   22.05{col 53}{space 3}0.000{col 61}{space 4} .8949394{col 74}{space 3} 1.069551
+{txt}physical_punishment {c |}{col 21}{res}{space 2}-.9259144{col 33}{space 2} .0574361{col 44}{space 1}  -16.12{col 53}{space 3}0.000{col 61}{space 4}-1.038487{col 74}{space 3}-.8133417
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 52.35557{col 33}{space 2} .3833106{col 44}{space 1}  136.59{col 53}{space 3}0.000{col 61}{space 4}  51.6043{col 74}{space 3} 53.10685
+{txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}country{txt}: Independent{col 30}{c |}
+{space 17}var(warmth) {c |}{res}{col 33} 4.83e-15{col 44} 4.20e-14{col 58} 1.95e-22{col 70} 1.20e-07
+{txt}{space 18}var(_cons) {c |}{res}{col 33} 3.442879{col 44} .9792352{col 58} 1.971606{col 70}  6.01206
+{txt}{hline 29}{c +}{hline 48}
+{col 16}var(Residual){col 30}{c |}{res}{col 33} 34.91739{col 44} .9061059{col 58} 33.18587{col 70} 36.73927
+{txt}{hline 29}{c BT}{hline 48}
+LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}210.33{col 59}{txt}Prob > chi2 ={col 73}{res}0.0000
+
+{txt}{p 0 6 4}Note: {help j_mixedlr##|_new:LR test is conservative} and provided only for reference.{p_end}
+
+{com}. 
+. est store crosssectional // store estimates
+{txt}
+{com}. //_10
+. use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_longitudinal_data.dta", clear
+{txt}
+{com}. //_11
+. summarize // descriptive statistics
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}country {c |}{res}      9,000        15.5    8.655922          1         30
+{txt}{space 9}HDI {c |}{res}      9,000    64.76667     17.2437         33         87
+{txt}{space 6}family {c |}{res}      9,000        50.5    28.86767          1        100
+{txt}{space 10}id {c |}{res}          0
+{txt}{space 7}group {c |}{res}      9,000       1.496    .5000118          1          2
+{txt}{hline 13}{c +}{hline 57}
+{space 11}t {c |}{res}      9,000           2    .8165419          1          3
+{txt}physical_p~t {c |}{res}      9,000    1.517111    1.884289         -2          5
+{txt}{space 6}warmth {c |}{res}      9,000    2.533778    2.449075         -2          7
+{txt}{space 5}outcome {c |}{res}      9,000    54.43846    7.019933   25.02363   81.63657
+{txt}
+{com}. //_12
+. encode id, generate(idNUMERIC) // numeric version of id
+{txt}
+{com}.     
+. * spagplot outcome t if idNUMERIC <= 10, id(idNUMERIC) scheme(s1color)
+.     
+. twoway (lfit outcome t) (scatter outcome t) if idNUMERIC <= 10, by(idNUMERIC) scheme(s1color)
+{res}{txt}
+{com}. 
+. graph export spagplot2.png, width(1000) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Desktop/GitHub/multilevel-workshop/spagplot2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_13
+. mixed outcome || country: || id: // unconditional model
+{res}
+{txt}Performing EM optimization: 
+{res}
+{txt}Performing gradient-based optimization: 
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-29398.984}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-29398.984}  
+{res}
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     9,000
+
+{txt}{col 9}Grouping information
+{col 9}{hline 16}{c TT}{hline 44}
+{col 25}{c |}{col 31}No. of{col 44}Observations per group
+{col 10}Group variable{col 25}{c |}{col 31}groups{col 41}Minimum{col 52}Average{col 63}Maximum
+{col 9}{hline 16}{c +}{hline 44}
+{res}{col 17}country{txt}{col 25}{c |}{res}{col 29}      30{col 39}      300{col 50}    300.0{col 61}      300
+{col 22}id{txt}{col 25}{c |}{res}{col 29}   3,000{col 39}        3{col 50}      3.0{col 61}        3
+{txt}{col 9}{hline 16}{c BT}{hline 44}
+
+{col 49}Wald chi2({res}0{txt}){col 67}={col 70}{res}        .
+{txt}Log likelihood = {res}-29398.984{col 49}{txt}Prob > chi2{col 67}={col 73}{res}     .
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     outcome{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2} 54.43846{col 26}{space 2} .3767998{col 37}{space 1}  144.48{col 46}{space 3}0.000{col 54}{space 4} 53.69995{col 67}{space 3} 55.17698
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}country{txt}: Identity{col 30}{c |}
+{space 18}var(_cons) {c |}{res}{col 33} 3.995172{col 44} 1.099853{col 58} 2.329182{col 70}  6.85279
+{txt}{hline 29}{c +}{hline 48}
+{res}id{txt}: Identity{col 30}{c |}
+{space 18}var(_cons) {c |}{res}{col 33} 16.98591{col 44} .7068169{col 58} 15.65556{col 70} 18.42931
+{txt}{hline 29}{c +}{hline 48}
+{col 16}var(Residual){col 30}{c |}{res}{col 33} 28.29352{col 44} .5165663{col 58} 27.29897{col 70}  29.3243
+{txt}{hline 29}{c BT}{hline 48}
+LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1819.49{col 59}{txt}Prob > chi2 ={col 73}{res}0.0000
+
+{txt}{p 0 6 4}Note: {help j_mixedlr##|_new:LR test is conservative} and provided only for reference.{p_end}
+
+{com}. //_14
+. estat icc
+
+{txt}Intraclass correlation
+
+{res}{col 1}{text}{hline 29}{c TT}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 1}{text}                       Level{col 30}{c |}        ICC{col 43}  Std. err.{col 55}    [95% conf. interval]
+{res}{col 1}{text}{hline 29}{c +}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 1}{text}                     country{col 30}{c |}{result}{space 2} .0810797{col 43}{space 1} .0205569{col 55}{space 3} .0488675{col 67}{space 3} .1315879
+{col 1}{text}                  id|country{col 30}{c |}{result}{space 2} .4257992{col 43}{space 1} .0163912{col 55}{space 3} .3940284{col 67}{space 3} .4581946
+{col 1}{text}{hline 29}{c BT}{hline 12}{hline 12}{hline 12}{hline 12}
+{res}{txt}
+{com}. //_15
+. mixed outcome t warmth physical_punishment || country: warmth || id: t // multilevel model
+{res}
+{txt}Performing EM optimization: 
+{res}
+{txt}Performing gradient-based optimization: 
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-28560.856}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-28539.271}  
+{res}{txt}Iteration 2:{space 3}log likelihood = {res: -28539.01}  
+{res}{txt}Iteration 3:{space 3}log likelihood = {res: -28538.97}  
+{res}{txt}Iteration 4:{space 3}log likelihood = {res:-28538.966}  
+{res}{txt}Iteration 5:{space 3}log likelihood = {res:-28538.966}  
+{res}
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     9,000
+
+{txt}{col 9}Grouping information
+{col 9}{hline 16}{c TT}{hline 44}
+{col 25}{c |}{col 31}No. of{col 44}Observations per group
+{col 10}Group variable{col 25}{c |}{col 31}groups{col 41}Minimum{col 52}Average{col 63}Maximum
+{col 9}{hline 16}{c +}{hline 44}
+{res}{col 17}country{txt}{col 25}{c |}{res}{col 29}      30{col 39}      300{col 50}    300.0{col 61}      300
+{col 22}id{txt}{col 25}{c |}{res}{col 29}   3,000{col 39}        3{col 50}      3.0{col 61}        3
+{txt}{col 9}{hline 16}{c BT}{hline 44}
+
+{col 49}Wald chi2({res}3{txt}){col 67}={col 70}{res}  1796.70
+{txt}Log likelihood = {res}-28538.966{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+
+{txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}            outcome{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
+{hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 18}t {c |}{col 21}{res}{space 2} .9929284{col 33}{space 2} .0658203{col 44}{space 1}   15.09{col 53}{space 3}0.000{col 61}{space 4}  .863923{col 74}{space 3} 1.121934
+{txt}{space 13}warmth {c |}{col 21}{res}{space 2} 1.047035{col 33}{space 2} .0336035{col 44}{space 1}   31.16{col 53}{space 3}0.000{col 61}{space 4} .9811738{col 74}{space 3} 1.112897
+{txt}physical_punishment {c |}{col 21}{res}{space 2}-.9405095{col 33}{space 2} .0383163{col 44}{space 1}  -24.55{col 53}{space 3}0.000{col 61}{space 4}-1.015608{col 74}{space 3}-.8654109
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 51.22522{col 33}{space 2} .3885182{col 44}{space 1}  131.85{col 53}{space 3}0.000{col 61}{space 4} 50.46373{col 74}{space 3}  51.9867
+{txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}country{txt}: Independent{col 30}{c |}
+{space 17}var(warmth) {c |}{res}{col 33} .0064869{col 44} .0085229{col 58} .0004939{col 70} .0851915
+{txt}{space 18}var(_cons) {c |}{res}{col 33} 3.557187{col 44} .9801715{col 58} 2.072816{col 70} 6.104534
+{txt}{hline 29}{c +}{hline 48}
+{res}id{txt}: Independent{col 30}{c |}
+{space 22}var(t) {c |}{res}{col 33} 2.16e-07{col 44} 1.79e-07{col 58} 4.26e-08{col 70} 1.09e-06
+{txt}{space 18}var(_cons) {c |}{res}{col 33} 8.894507{col 44} .4833934{col 58} 7.995788{col 70} 9.894241
+{txt}{hline 29}{c +}{hline 48}
+{col 16}var(Residual){col 30}{c |}{res}{col 33} 25.99026{col 44} .4745961{col 58} 25.07652{col 70}  26.9373
+{txt}{hline 29}{c BT}{hline 48}
+LR test vs. linear model:{col 27}chi2({res}4{txt}) = {res}1340.10{col 59}{txt}Prob > chi2 ={col 73}{res}0.0000
+
+{txt}{p 0 6 4}Note: {help j_mixedlr##|_new:LR test is conservative} and provided only for reference.{p_end}
+
+{com}. 
+. est store longitudinal // store estimates
+{txt}
+{com}. //_16
+. est table crosssectional longitudinal, ///
+> b(%9.3f) star stats(N ll chi2) ///
+> varwidth(20) modelwidth(15)
+{res}
+{txt}{hline 20}{c -}{c TT}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{ralign 20:Variable} {c |} {center 18:crosssectional} {space 1} {center 18:longitudinal} {space 1}
+{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}outcome              {txt}{c |}{res}
+{txt}{space 14}warmth {c |}{res} {ralign 15:0.982}{lalign 3:***}{txt} {space 1}{res} {ralign 15:1.047}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 1}physical_punishment {c |}{res} {ralign 15:-0.926}{lalign 3:***}{txt} {space 1}{res} {ralign 15:-0.941}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 19}t {c |}{res} {ralign 15:}{lalign 3:}{txt} {space 1}{res} {ralign 15:0.993}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 15}_cons {c |}{res} {ralign 15:52.356}{lalign 3:***}{txt} {space 1}{res} {ralign 15:51.225}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lns1_1_1             {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:-16.482}{lalign 3:***}{txt} {space 1}{res} {ralign 15:-2.519}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lns1_1_2             {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:0.618}{lalign 3:***}{txt} {space 1}{res} {ralign 15:0.634}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lnsig_e              {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:1.776}{lalign 3:***}{txt} {space 1}{res} {ralign 15:1.629}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lns2_1_1             {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:}{lalign 3:}{txt} {space 1}{res} {ralign 15:-7.674}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lns2_1_2             {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:}{lalign 3:}{txt} {space 1}{res} {ralign 15:1.093}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{lalign 20:Statistics}{txt} {c |} {center 18:} {space 1} {center 18:} {space 1}
+{res}{txt}{ralign 20:N} {c |}{res} {ralign 15:3000}{lalign 3:}{txt} {space 1}{res} {ralign 15:9000}{lalign 3:}{txt} {space 1}
+{res}{txt}{ralign 20:ll} {c |}{res} {ralign 15:-9622.070}{lalign 3:}{txt} {space 1}{res} {ralign 15:-2.85e+04}{lalign 3:}{txt} {space 1}
+{res}{txt}{ralign 20:chi2} {c |}{res} {ralign 15:749.924}{lalign 3:}{txt} {space 1}{res} {ralign 15:1796.701}{lalign 3:}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c BT}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{ralign 64:Legend: * p<0.05; ** p<0.01; *** p<0.001}
+{res}{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 8 Feb 2023, 12:19:15
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

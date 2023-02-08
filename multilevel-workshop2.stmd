@@ -1,0 +1,71 @@
+% Workshop on Multilevel Modeling 2 (Cross Classified Models)
+% Andy Grogan-Kaylor
+% `s c(current_date)` `s c(current_time)`
+
+---
+geometry: margin=1 in
+---
+
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+
+# Navigation
+
+> When this document is presented in slide show format, some slides may be long, and you may need to scroll down to see the full slide. In slide show format `b` makes text bigger, and `s` makes text smaller.
+
+
+```s/
+    clear all
+
+    quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
+```
+
+# Setup
+
+```s
+    use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_longitudinal_data.dta", clear
+```
+
+# Cross Classified Model
+
+We can treat these random effects as being *cross classified*. 
+
+This might be useful if we had data where individuals lived in different countries at different times. 
+
+However, because `id` is in fact nested inside `country`, in this case, estimating the random effects as cross classified will be more time consuming, but will give us equivalent results.
+
+## Standard (Less Computationally Efficient) Syntax
+
+```s
+    * mixed outcome t warmth physical_punishment || _all: R.country || _all: R.id
+	
+	* est store crossed1
+```
+	
+The documentation notes that we can use a *much* more computationally efficient version of the above command, which is what we do in these notes. The user can verify that both versions of the command will produce equivalent results.
+
+
+## Three Level Model
+
+```s	
+    mixed outcome t warmth physical_punishment || country: || id:  // 3 level w/ random intercepts only
+	
+	est store threelevel // store random intercept model
+```
+
+## Cross Classified With Computationally Efficient Syntax
+
+```s
+	mixed outcome t warmth physical_punishment || _all: R.country || id:
+	
+	est store crossed2 // store crossed effects result
+```
+	
+# Nice Table of Results of Three Level and Cross Classified Model
+
+```s
+    est table threelevel crossed2, ///
+    b(%9.3f) star stats(N ll chi2) ///
+    varwidth(20) modelwidth(15)
+```
+
+# QUESTIONS??? {#majorsection}
