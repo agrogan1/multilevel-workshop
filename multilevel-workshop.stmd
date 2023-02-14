@@ -31,6 +31,8 @@ geometry: margin=1 in
 
 $$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
 
+$$\beta_4 \text{group}_2 + \beta_5 HDI +$$
+
 $$u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} $$
 
 ## Descriptive Statistics
@@ -67,7 +69,7 @@ $$u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} $$
 ## Full Model
 
 ```s
-    mixed outcome warmth physical_punishment || country: warmth // multilevel model
+    mixed outcome warmth physical_punishment i.group HDI || country: warmth // multilevel model
 
     est store crosssectional // store estimates
 ```
@@ -83,6 +85,8 @@ $$u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} $$
 ## The Equation
 
 $$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
+
+$$\beta_4 \text{group}_2 + \beta_5 HDI +$$
 
 $$u_{0j} + u_{1j} \times \text{parental warmth} + $$
 
@@ -125,7 +129,7 @@ $$v_{0i} + v_{1i} \times t + e_{ij} $$
 ## Full Model	
 
 ```s
-    mixed outcome t warmth physical_punishment || country: warmth || id: t // multilevel model
+    mixed outcome t warmth physical_punishment i.group HDI || country: warmth || id: t // multilevel model
 
     est store longitudinal // store estimates
 ```
