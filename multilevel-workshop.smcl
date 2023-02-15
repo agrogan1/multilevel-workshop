@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}14 Feb 2023, 09:22:59
+ {txt}opened on:  {res}15 Feb 2023, 13:18:15
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}14 Feb 2023
+{res}15 Feb 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}09:22:59
+{res}13:18:15
 {txt}
 {com}. //_3q
 . clear all
@@ -350,7 +350,7 @@ LR test vs. linear model:{col 27}chi2({res}4{txt}) = {res}1331.93{col 59}{txt}Pr
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}14 Feb 2023, 09:24:04
+ {txt}closed on:  {res}15 Feb 2023, 13:19:29
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

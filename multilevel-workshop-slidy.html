@@ -106,7 +106,7 @@ Andy Grogan-Kaylor
 class="title-slide slide section level1 title">
 <h1 class="title">Workshop on Multilevel Modeling</h1>
 <p>Andy Grogan-Kaylor</p>
-<p>8 Feb 2023 12:15:36</p>
+<p>15 Feb 2023 13:16:02</p>
 </div>
 
 </div>
@@ -136,6 +136,8 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href
 <p><span class="math display">\[\text{outcome}_{ij} = \beta_0 + \beta_1
 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3
 \text{time} + \]</span></p>
+<p><span class="math display">\[\beta_4 \text{group}_2 + \beta_5 HDI
++\]</span></p>
 <p><span class="math display">\[u_{0j} + u_{1j} \times \text{parental
 warmth} + e_{ij} \]</span></p>
 </div>
@@ -223,16 +225,16 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href
 <div id="full-model" class="slide section level2">
 <h1>Full Model</h1>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>. mixed outcome warmth physical_punishment || country: warmth <span class="co">// multilevel model</span></span>
+class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>. mixed outcome warmth physical_punishment i.<span class="fu">group</span> HDI || country: warmth <span class="co">// multilevel model</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Performing EM optimization: </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>Performing <span class="kw">gradient</span>-based optimization: </span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Iteration 0:   <span class="fu">log</span> likelihood = -9622.5983  </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>Iteration 1:   <span class="fu">log</span> likelihood =  -9622.076  </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>Iteration 2:   <span class="fu">log</span> likelihood = -9622.0697  </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>Iteration 3:   <span class="fu">log</span> likelihood = -9622.0697  </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Iteration 0:   <span class="fu">log</span> likelihood = -9616.8876  </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>Iteration 1:   <span class="fu">log</span> likelihood = -9616.3536  </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>Iteration 2:   <span class="fu">log</span> likelihood = -9616.3475  </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>Iteration 3:   <span class="fu">log</span> likelihood = -9616.3475  </span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>Computing standard errors:</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
@@ -242,32 +244,34 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                                                              <span class="fu">min</span> =        100</span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                                                              avg =      100.0</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                                                              <span class="fu">max</span> =        100</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                                                Wald <span class="fu">chi2</span>(2)      =     749.92</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>Log likelihood = -9622.0697                     Prob &gt; <span class="fu">chi2</span>       =     0.0000</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                                                Wald <span class="fu">chi2</span>(4)      =     764.27</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>Log likelihood = -9616.3475                     Prob &gt; <span class="fu">chi2</span>       =     0.0000</span>
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>────────────────────┬────────────────────────────────────────────────────────────────</span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            outcome │ Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]</span>
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>────────────────────┼────────────────────────────────────────────────────────────────</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>             warmth │   .9822454   .0445447    22.05   0.000     .8949394    1.069551</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>physical_punishment │  -.9259144   .0574361   -16.12   0.000    -1.038487   -.8133417</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>              <span class="dt">_cons</span> │   52.35557   .3833106   136.59   0.000      51.6043    53.10685</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>────────────────────┴────────────────────────────────────────────────────────────────</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┬────────────────────────────────────────────────</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  Random-<span class="kw">effects</span> parameters  │   Estimate   Std. err.     [95% conf. interval]</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>country: Independent         │</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">var</span>(warmth) │   4.83e-15   4.20e-14      1.95e-22    1.20e-07</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">var</span>(<span class="dt">_cons</span>) │   3.442879   .9792352      1.971606     6.01206</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>               <span class="kw">var</span>(Residual) │   34.91739   .9061059      33.18587    36.73927</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┴────────────────────────────────────────────────</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>LR <span class="kw">test</span> vs. linear <span class="kw">model</span>: <span class="fu">chi2</span>(2) = 210.33                Prob &gt; <span class="fu">chi2</span> = 0.0000</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>Note: LR <span class="kw">test</span> is conservative and provided only <span class="kw">for</span> reference.</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>             warmth │   .9826773   .0444598    22.10   0.000     .8955377    1.069817</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>physical_punishment │  -.9239791   .0573291   -16.12   0.000    -1.036342   -.8116161</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            2.<span class="fu">group</span> │   .7280691   .2163084     3.37   0.001     .3041125    1.152026</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                HDI │   .0075692   .0206019     0.37   0.713    -.0328098    .0479482</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>              <span class="dt">_cons</span> │   51.50019   1.392584    36.98   0.000     48.77077     54.2296</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>────────────────────┴────────────────────────────────────────────────────────────────</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┬────────────────────────────────────────────────</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  Random-<span class="kw">effects</span> parameters  │   Estimate   Std. err.     [95% conf. interval]</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>country: Independent         │</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">var</span>(warmth) │   5.38e-17   4.71e-16      1.90e-24    1.53e-09</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">var</span>(<span class="dt">_cons</span>) │    3.43782   .9775981      1.968931    6.002548</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>               <span class="kw">var</span>(Residual) │    34.7837   .9026366       33.0588     36.5986</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┴────────────────────────────────────────────────</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>LR <span class="kw">test</span> vs. linear <span class="kw">model</span>: <span class="fu">chi2</span>(2) = 210.87                Prob &gt; <span class="fu">chi2</span> = 0.0000</span>
 <span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>. </span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>. <span class="kw">est</span> <span class="kw">store</span> crosssectional <span class="co">// store estimates</span></span></code></pre></div>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>Note: LR <span class="kw">test</span> is conservative and provided only <span class="kw">for</span> reference.</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>. </span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>. <span class="kw">est</span> <span class="kw">store</span> crosssectional <span class="co">// store estimates</span></span></code></pre></div>
 </div>
 
 <div id="longitudinal-model" class="title-slide slide section level1">
@@ -285,6 +289,8 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href
 <p><span class="math display">\[\text{outcome}_{ij} = \beta_0 + \beta_1
 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3
 \text{time} + \]</span></p>
+<p><span class="math display">\[\beta_4 \text{group}_2 + \beta_5 HDI
++\]</span></p>
 <p><span class="math display">\[u_{0j} + u_{1j} \times \text{parental
 warmth} + \]</span></p>
 <p><span class="math display">\[v_{0i} + v_{1i} \times t + e_{ij}
@@ -393,63 +399,66 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a hre
 <div id="full-model-1" class="slide section level2">
 <h1>Full Model</h1>
 <div class="sourceCode" id="cb12"><pre
-class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>. mixed outcome t warmth physical_punishment || country: warmth || id: t <span class="co">// multilevel model</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>Performing EM optimization: </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>Performing <span class="kw">gradient</span>-based optimization: </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>Iteration 0:   <span class="fu">log</span> likelihood = -28560.856  </span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>Iteration 1:   <span class="fu">log</span> likelihood = -28539.271  </span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>Iteration 2:   <span class="fu">log</span> likelihood =  -28539.01  </span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>Iteration 3:   <span class="fu">log</span> likelihood =  -28538.97  </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>Iteration 4:   <span class="fu">log</span> likelihood = -28538.966  </span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>Iteration 5:   <span class="fu">log</span> likelihood = -28538.966  </span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>Computing standard errors:</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>Mixed-<span class="kw">effects</span> ML regression                     Number <span class="kw">of</span> <span class="kw">obs</span>     =      9,000</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        Grouping information</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        ────────────────┬────────────────────────────────────────────</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                        │     No. <span class="kw">of</span>       Observations per <span class="fu">group</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>         Group <span class="kw">variable</span> │     groups    Minimum    Average    Maximum</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        ────────────────┼────────────────────────────────────────────</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                country │         30        300      300.0        300</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                     id │      3,000          3        3.0          3</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        ────────────────┴────────────────────────────────────────────</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                                                Wald <span class="fu">chi2</span>(3)      =    1796.70</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>Log likelihood = -28538.966                     Prob &gt; <span class="fu">chi2</span>       =     0.0000</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>────────────────────┬────────────────────────────────────────────────────────────────</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>            outcome │ Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>────────────────────┼────────────────────────────────────────────────────────────────</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>                  t │   .9929284   .0658203    15.09   0.000      .863923    1.121934</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>             warmth │   1.047035   .0336035    31.16   0.000     .9811738    1.112897</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>physical_punishment │  -.9405095   .0383163   -24.55   0.000    -1.015608   -.8654109</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>              <span class="dt">_cons</span> │   51.22522   .3885182   131.85   0.000     50.46373     51.9867</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>────────────────────┴────────────────────────────────────────────────────────────────</span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┬────────────────────────────────────────────────</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>  Random-<span class="kw">effects</span> parameters  │   Estimate   Std. err.     [95% conf. interval]</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>country: Independent         │</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">var</span>(warmth) │   .0064869   .0085229      .0004939    .0851915</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">var</span>(<span class="dt">_cons</span>) │   3.557187   .9801715      2.072816    6.104534</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>id: Independent              │</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>                      <span class="kw">var</span>(t) │   2.16e-07   1.79e-07      4.26e-08    1.09e-06</span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">var</span>(<span class="dt">_cons</span>) │   8.894507   .4833934      7.995788    9.894241</span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>               <span class="kw">var</span>(Residual) │   25.99026   .4745961      25.07652     26.9373</span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┴────────────────────────────────────────────────</span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>LR <span class="kw">test</span> vs. linear <span class="kw">model</span>: <span class="fu">chi2</span>(4) = 1340.10               Prob &gt; <span class="fu">chi2</span> = 0.0000</span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>Note: LR <span class="kw">test</span> is conservative and provided only <span class="kw">for</span> reference.</span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>. </span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>. <span class="kw">est</span> <span class="kw">store</span> longitudinal <span class="co">// store estimates</span></span></code></pre></div>
+class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>. mixed outcome t warmth physical_punishment i.<span class="fu">group</span> HDI || country: warmth || id: t <span class="co">// multil</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>&gt; evel <span class="kw">model</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>Performing EM optimization: </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>Performing <span class="kw">gradient</span>-based optimization: </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>Iteration 0:   <span class="fu">log</span> likelihood = -28546.535  </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>Iteration 1:   <span class="fu">log</span> likelihood = -28524.928  </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>Iteration 2:   <span class="fu">log</span> likelihood = -28524.635  </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>Iteration 3:   <span class="fu">log</span> likelihood = -28524.601  </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>Iteration 4:   <span class="fu">log</span> likelihood = -28524.598  </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>Iteration 5:   <span class="fu">log</span> likelihood = -28524.598  </span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>Computing standard errors:</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>Mixed-<span class="kw">effects</span> ML regression                     Number <span class="kw">of</span> <span class="kw">obs</span>     =      9,000</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        Grouping information</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        ────────────────┬────────────────────────────────────────────</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                        │     No. <span class="kw">of</span>       Observations per <span class="fu">group</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>         Group <span class="kw">variable</span> │     groups    Minimum    Average    Maximum</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        ────────────────┼────────────────────────────────────────────</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                country │         30        300      300.0        300</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                     id │      3,000          3        3.0          3</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        ────────────────┴────────────────────────────────────────────</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>                                                Wald <span class="fu">chi2</span>(5)      =    1818.96</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>Log likelihood = -28524.598                     Prob &gt; <span class="fu">chi2</span>       =     0.0000</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>────────────────────┬────────────────────────────────────────────────────────────────</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>            outcome │ Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>────────────────────┼────────────────────────────────────────────────────────────────</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>                  t │   .9929535   .0658203    15.09   0.000     .8639481    1.121959</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>             warmth │   1.047045   .0338001    30.98   0.000     .9807983    1.113292</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>physical_punishment │  -.9377711   .0381761   -24.56   0.000    -1.012595   -.8629473</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>            2.<span class="fu">group</span> │   .8219777   .1530957     5.37   0.000     .5219157     1.12204</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>                HDI │   .0047772   .0205645     0.23   0.816    -.0355285    .0450829</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>              <span class="dt">_cons</span> │   50.50391   1.389611    36.34   0.000     47.78032     53.2275</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>────────────────────┴────────────────────────────────────────────────────────────────</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┬────────────────────────────────────────────────</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>  Random-<span class="kw">effects</span> parameters  │   Estimate   Std. err.     [95% conf. interval]</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>country: Independent         │</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">var</span>(warmth) │   .0071126   .0086595      .0006542    .0773303</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">var</span>(<span class="dt">_cons</span>) │   3.560166   .9807369      2.074844    6.108788</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>id: Independent              │</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>                      <span class="kw">var</span>(t) │   3.01e-10   2.17e-10      7.29e-11    1.24e-09</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">var</span>(<span class="dt">_cons</span>) │   8.722256   .4792014      7.831839    9.713906</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┼────────────────────────────────────────────────</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>               <span class="kw">var</span>(Residual) │   25.98996   .4745951      25.07622    26.93699</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>─────────────────────────────┴────────────────────────────────────────────────</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>LR <span class="kw">test</span> vs. linear <span class="kw">model</span>: <span class="fu">chi2</span>(4) = 1331.93               Prob &gt; <span class="fu">chi2</span> = 0.0000</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>Note: LR <span class="kw">test</span> is conservative and provided only <span class="kw">for</span> reference.</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>. </span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>. <span class="kw">est</span> <span class="kw">store</span> longitudinal <span class="co">// store estimates</span></span></code></pre></div>
 </div>
 
 <div id="nice-table-of-results"
@@ -464,32 +473,37 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a hre
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            Variable │   crosssectional        longitudinal     </span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>outcome              │</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>              warmth │           0.982***             1.047***  </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a> physical_punishment │          -0.926***            -0.941***  </span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                   t │                                0.993***  </span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │          52.356***            51.225***  </span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>lns1_1_1             │</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │         -16.482***            -2.519***  </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>lns1_1_2             │</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │           0.618***             0.634***  </span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>lnsig_e              │</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │           1.776***             1.629***  </span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>lns2_1_1             │</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │                               -7.674***  </span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>lns2_1_2             │</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │                                1.093***  </span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>Statistics           │                                          </span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>                   <span class="kw">N</span> │            3000                 9000     </span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>                  ll │       -9622.070            -2.85e+04     </span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>                <span class="fu">chi2</span> │         749.924             1796.701     </span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>─────────────────────┴──────────────────────────────────────────</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>                        Legend: * <span class="kw">p</span>&lt;0.05; ** <span class="kw">p</span>&lt;0.01; *** <span class="kw">p</span>&lt;0.001</span></code></pre></div>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>              warmth │           0.983***             1.047***  </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a> physical_punishment │          -0.924***            -0.938***  </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                     │</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group</span> │</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                  2  │           0.728***             0.822***  </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>                     │</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>                 HDI │           0.008                0.005     </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                   t │                                0.993***  </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │          51.500***            50.504***  </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>lns1_1_1             │</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │         -18.731***            -2.473***  </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>lns1_1_2             │</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │           0.617***             0.635***  </span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>lnsig_e              │</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │           1.775***             1.629***  </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>lns2_1_1             │</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │                              -10.963***  </span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>lns2_1_2             │</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>               <span class="dt">_cons</span> │                                1.083***  </span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>─────────────────────┼──────────────────────────────────────────</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>Statistics           │                                          </span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>                   <span class="kw">N</span> │            3000                 9000     </span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>                  ll │       -9616.347            -2.85e+04     </span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>                <span class="fu">chi2</span> │         764.268             1818.962     </span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>─────────────────────┴──────────────────────────────────────────</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>                        Legend: * <span class="kw">p</span>&lt;0.05; ** <span class="kw">p</span>&lt;0.01; *** <span class="kw">p</span>&lt;0.001</span></code></pre></div>
 </div>
 
 <div id="majorsection" class="title-slide slide section level1">
