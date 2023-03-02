@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop2.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 8 Feb 2023, 12:20:27
+ {txt}opened on:  {res} 2 Mar 2023, 12:02:41
 {txt}
 {com}. //_1
 . display c(current_date)
-{res} 8 Feb 2023
+{res} 2 Mar 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}12:20:27
+{res}12:02:41
 {txt}
 {com}. //_3q
 . clear all
@@ -33,9 +33,9 @@
 {res}
 {txt}Performing gradient-based optimization: 
 {res}
-{txt}Iteration 0:{space 3}log likelihood = {res: -28539.38}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res:-28539.351}  
-{res}{txt}Iteration 2:{space 3}log likelihood = {res:-28539.351}  
+{txt}Iteration 0:{space 3}log likelihood = {res:-28554.574}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-28554.549}  
+{res}{txt}Iteration 2:{space 3}log likelihood = {res:-28554.549}  
 {res}
 {txt}Computing standard errors:
 {res}
@@ -50,30 +50,30 @@
 {col 22}id{txt}{col 25}{c |}{res}{col 29}   3,000{col 39}        3{col 50}      3.0{col 61}        3
 {txt}{col 9}{hline 16}{c BT}{hline 44}
 
-{col 49}Wald chi2({res}3{txt}){col 67}={col 70}{res}  2024.27
-{txt}Log likelihood = {res}-28539.351{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{col 49}Wald chi2({res}3{txt}){col 67}={col 70}{res}  1156.04
+{txt}Log likelihood = {res}-28554.549{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
 
 {txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}            outcome{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
 {hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 18}t {c |}{col 21}{res}{space 2} .9929052{col 33}{space 2} .0658231{col 44}{space 1}   15.08{col 53}{space 3}0.000{col 61}{space 4} .8638943{col 74}{space 3} 1.121916
-{txt}{space 13}warmth {c |}{col 21}{res}{space 2} 1.046658{col 33}{space 2} .0302211{col 44}{space 1}   34.63{col 53}{space 3}0.000{col 61}{space 4} .9874255{col 74}{space 3}  1.10589
-{txt}physical_punishment {c |}{col 21}{res}{space 2}-.9408357{col 33}{space 2}  .038315{col 44}{space 1}  -24.56{col 53}{space 3}0.000{col 61}{space 4}-1.015932{col 74}{space 3}-.8657397
-{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 51.22801{col 33}{space 2} .3936058{col 44}{space 1}  130.15{col 53}{space 3}0.000{col 61}{space 4} 50.45655{col 74}{space 3} 51.99946
+{space 18}t {c |}{col 21}{res}{space 2} .9880161{col 33}{space 2} .0658318{col 44}{space 1}   15.01{col 53}{space 3}0.000{col 61}{space 4} .8589881{col 74}{space 3} 1.117044
+{txt}{space 13}warmth {c |}{col 21}{res}{space 2} .9494521{col 33}{space 2} .0383876{col 44}{space 1}   24.73{col 53}{space 3}0.000{col 61}{space 4} .8742138{col 74}{space 3}  1.02469
+{txt}physical_punishment {c |}{col 21}{res}{space 2}-.9247961{col 33}{space 2} .0501648{col 44}{space 1}  -18.44{col 53}{space 3}0.000{col 61}{space 4}-1.023117{col 74}{space 3}-.8264749
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2}  51.4432{col 33}{space 2} .4233657{col 44}{space 1}  121.51{col 53}{space 3}0.000{col 61}{space 4} 50.61342{col 74}{space 3} 52.27299
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {hline 29}{c TT}{hline 48}
 {col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
 {hline 29}{c +}{hline 48}
 {res}country{txt}: Identity{col 30}{c |}
-{space 18}var(_cons) {c |}{res}{col 33} 3.676187{col 44} .9946793{col 58} 2.163142{col 70} 6.247558
+{space 18}var(_cons) {c |}{res}{col 33} 3.672826{col 44} .9942325{col 58}  2.16063{col 70} 6.243387
 {txt}{hline 29}{c +}{hline 48}
 {res}id{txt}: Identity{col 30}{c |}
-{space 18}var(_cons) {c |}{res}{col 33} 8.923072{col 44} .4830621{col 58} 8.024786{col 70}  9.92191
+{space 18}var(_cons) {c |}{res}{col 33}   9.0953{col 44} .4874893{col 58} 8.188312{col 70} 10.10275
 {txt}{hline 29}{c +}{hline 48}
-{col 16}var(Residual){col 30}{c |}{res}{col 33}   25.996{col 44} .4746206{col 58} 25.08221{col 70} 26.94308
+{col 16}var(Residual){col 30}{c |}{res}{col 33} 26.00112{col 44} .4747689{col 58} 25.08704{col 70}  26.9485
 {txt}{hline 29}{c BT}{hline 48}
-LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1339.33{col 59}{txt}Prob > chi2 ={col 73}{res}0.0000
+LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1348.94{col 59}{txt}Prob > chi2 ={col 73}{res}0.0000
 
 {txt}{p 0 6 4}Note: {help j_mixedlr##|_new:LR test is conservative} and provided only for reference.{p_end}
 
@@ -87,9 +87,9 @@ LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1339.33{col 59}{txt}Pr
 {res}
 {txt}Performing gradient-based optimization: 
 {res}
-{txt}Iteration 0:{space 3}log likelihood = {res: -28539.38}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res:-28539.351}  
-{res}{txt}Iteration 2:{space 3}log likelihood = {res:-28539.351}  
+{txt}Iteration 0:{space 3}log likelihood = {res:-28554.574}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-28554.549}  
+{res}{txt}Iteration 2:{space 3}log likelihood = {res:-28554.549}  
 {res}
 {txt}Computing standard errors:
 {res}
@@ -104,30 +104,30 @@ LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1339.33{col 59}{txt}Pr
 {col 22}id{txt}{col 25}{c |}{res}{col 29}   3,000{col 39}        3{col 50}      3.0{col 61}        3
 {txt}{col 9}{hline 16}{c BT}{hline 44}
 
-{col 49}Wald chi2({res}3{txt}){col 67}={col 70}{res}  2024.27
-{txt}Log likelihood = {res}-28539.351{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{col 49}Wald chi2({res}3{txt}){col 67}={col 70}{res}  1156.04
+{txt}Log likelihood = {res}-28554.549{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
 
 {txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}            outcome{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
 {hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 18}t {c |}{col 21}{res}{space 2} .9929052{col 33}{space 2} .0658231{col 44}{space 1}   15.08{col 53}{space 3}0.000{col 61}{space 4} .8638943{col 74}{space 3} 1.121916
-{txt}{space 13}warmth {c |}{col 21}{res}{space 2} 1.046658{col 33}{space 2} .0302211{col 44}{space 1}   34.63{col 53}{space 3}0.000{col 61}{space 4} .9874255{col 74}{space 3}  1.10589
-{txt}physical_punishment {c |}{col 21}{res}{space 2}-.9408357{col 33}{space 2}  .038315{col 44}{space 1}  -24.56{col 53}{space 3}0.000{col 61}{space 4}-1.015932{col 74}{space 3}-.8657397
-{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 51.22801{col 33}{space 2} .3936058{col 44}{space 1}  130.15{col 53}{space 3}0.000{col 61}{space 4} 50.45655{col 74}{space 3} 51.99946
+{space 18}t {c |}{col 21}{res}{space 2} .9880161{col 33}{space 2} .0658318{col 44}{space 1}   15.01{col 53}{space 3}0.000{col 61}{space 4} .8589881{col 74}{space 3} 1.117044
+{txt}{space 13}warmth {c |}{col 21}{res}{space 2} .9494521{col 33}{space 2} .0383876{col 44}{space 1}   24.73{col 53}{space 3}0.000{col 61}{space 4} .8742138{col 74}{space 3}  1.02469
+{txt}physical_punishment {c |}{col 21}{res}{space 2}-.9247961{col 33}{space 2} .0501648{col 44}{space 1}  -18.44{col 53}{space 3}0.000{col 61}{space 4}-1.023117{col 74}{space 3}-.8264749
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2}  51.4432{col 33}{space 2} .4233657{col 44}{space 1}  121.51{col 53}{space 3}0.000{col 61}{space 4} 50.61342{col 74}{space 3} 52.27299
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {hline 29}{c TT}{hline 48}
 {col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
 {hline 29}{c +}{hline 48}
 {res}_all{txt}: Identity{col 30}{c |}
-{col 15}var(R.country){col 30}{c |}{res}{col 33} 3.676187{col 44} .9946793{col 58} 2.163142{col 70} 6.247558
+{col 15}var(R.country){col 30}{c |}{res}{col 33} 3.672826{col 44} .9942325{col 58}  2.16063{col 70} 6.243387
 {txt}{hline 29}{c +}{hline 48}
 {res}id{txt}: Identity{col 30}{c |}
-{space 18}var(_cons) {c |}{res}{col 33} 8.923072{col 44} .4830621{col 58} 8.024786{col 70}  9.92191
+{space 18}var(_cons) {c |}{res}{col 33}   9.0953{col 44} .4874893{col 58} 8.188312{col 70} 10.10275
 {txt}{hline 29}{c +}{hline 48}
-{col 16}var(Residual){col 30}{c |}{res}{col 33}   25.996{col 44} .4746206{col 58} 25.08221{col 70} 26.94308
+{col 16}var(Residual){col 30}{c |}{res}{col 33} 26.00112{col 44} .4747689{col 58} 25.08704{col 70}  26.9485
 {txt}{hline 29}{c BT}{hline 48}
-LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1339.33{col 59}{txt}Prob > chi2 ={col 73}{res}0.0000
+LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1348.94{col 59}{txt}Prob > chi2 ={col 73}{res}0.0000
 
 {txt}{p 0 6 4}Note: {help j_mixedlr##|_new:LR test is conservative} and provided only for reference.{p_end}
 
@@ -143,24 +143,24 @@ LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1339.33{col 59}{txt}Pr
 {ralign 20:Variable} {c |} {center 18:threelevel} {space 1} {center 18:crossed2} {space 1}
 {hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
 {res}{txt}{res}outcome              {txt}{c |}{res}
-{txt}{space 19}t {c |}{res} {ralign 15:0.993}{lalign 3:***}{txt} {space 1}{res} {ralign 15:0.993}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 14}warmth {c |}{res} {ralign 15:1.047}{lalign 3:***}{txt} {space 1}{res} {ralign 15:1.047}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 1}physical_punishment {c |}{res} {ralign 15:-0.941}{lalign 3:***}{txt} {space 1}{res} {ralign 15:-0.941}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 15}_cons {c |}{res} {ralign 15:51.228}{lalign 3:***}{txt} {space 1}{res} {ralign 15:51.228}{lalign 3:***}{txt} {space 1}
+{txt}{space 19}t {c |}{res} {ralign 15:0.988}{lalign 3:***}{txt} {space 1}{res} {ralign 15:0.988}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 14}warmth {c |}{res} {ralign 15:0.949}{lalign 3:***}{txt} {space 1}{res} {ralign 15:0.949}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 1}physical_punishment {c |}{res} {ralign 15:-0.925}{lalign 3:***}{txt} {space 1}{res} {ralign 15:-0.925}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 15}_cons {c |}{res} {ralign 15:51.443}{lalign 3:***}{txt} {space 1}{res} {ralign 15:51.443}{lalign 3:***}{txt} {space 1}
 {res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
 {res}{txt}{res}lns1_1_1             {txt}{c |}{res}
-{txt}{space 15}_cons {c |}{res} {ralign 15:0.651}{lalign 3:***}{txt} {space 1}{res} {ralign 15:0.651}{lalign 3:***}{txt} {space 1}
+{txt}{space 15}_cons {c |}{res} {ralign 15:0.650}{lalign 3:***}{txt} {space 1}{res} {ralign 15:0.650}{lalign 3:***}{txt} {space 1}
 {res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
 {res}{txt}{res}lns2_1_1             {txt}{c |}{res}
-{txt}{space 15}_cons {c |}{res} {ralign 15:1.094}{lalign 3:***}{txt} {space 1}{res} {ralign 15:1.094}{lalign 3:***}{txt} {space 1}
+{txt}{space 15}_cons {c |}{res} {ralign 15:1.104}{lalign 3:***}{txt} {space 1}{res} {ralign 15:1.104}{lalign 3:***}{txt} {space 1}
 {res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
 {res}{txt}{res}lnsig_e              {txt}{c |}{res}
 {txt}{space 15}_cons {c |}{res} {ralign 15:1.629}{lalign 3:***}{txt} {space 1}{res} {ralign 15:1.629}{lalign 3:***}{txt} {space 1}
 {res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
 {res}{lalign 20:Statistics}{txt} {c |} {center 18:} {space 1} {center 18:} {space 1}
 {res}{txt}{ralign 20:N} {c |}{res} {ralign 15:9000}{lalign 3:}{txt} {space 1}{res} {ralign 15:9000}{lalign 3:}{txt} {space 1}
-{res}{txt}{ralign 20:ll} {c |}{res} {ralign 15:-2.85e+04}{lalign 3:}{txt} {space 1}{res} {ralign 15:-2.85e+04}{lalign 3:}{txt} {space 1}
-{res}{txt}{ralign 20:chi2} {c |}{res} {ralign 15:2024.272}{lalign 3:}{txt} {space 1}{res} {ralign 15:2024.272}{lalign 3:}{txt} {space 1}
+{res}{txt}{ralign 20:ll} {c |}{res} {ralign 15:-2.86e+04}{lalign 3:}{txt} {space 1}{res} {ralign 15:-2.86e+04}{lalign 3:}{txt} {space 1}
+{res}{txt}{ralign 20:chi2} {c |}{res} {ralign 15:1156.045}{lalign 3:}{txt} {space 1}{res} {ralign 15:1156.045}{lalign 3:}{txt} {space 1}
 {res}{txt}{hline 20}{c -}{c BT}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
 {ralign 64:Legend: * p<0.05; ** p<0.01; *** p<0.001}
 {res}{txt}
@@ -169,7 +169,7 @@ LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1339.33{col 59}{txt}Pr
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop2.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 8 Feb 2023, 12:21:02
+ {txt}closed on:  {res} 2 Mar 2023, 12:03:08
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

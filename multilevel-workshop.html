@@ -207,9 +207,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <header id="title-block-header">
 <h1 class="title">Workshop on Multilevel Modeling</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">15 Feb 2023 13:16:02</p>
+<p class="date">2 Mar 2023 11:58:26</p>
 </header>
-<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="navigation">Navigation</h1>
 <blockquote>
 <p>When this document is presented in slide show format, some slides may
@@ -220,8 +220,8 @@ text smaller.</p>
 
 <h1 id="cross-sectional-model">Cross Sectional Model</h1>
 <h2 id="get-data">Get Data</h2>
-<pre class='stata'>. use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.d
-> ta", clear
+<pre class='stata'>. use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_da
+> ta.dta", clear
 </pre>
 <h2 id="the-equation">The Equation</h2>
 <p><span class="math display">\[\text{outcome}_{ij} = \beta_0 + \beta_1
@@ -240,11 +240,11 @@ warmth} + e_{ij} \]</span></p>
          HDI │      3,000    64.76667    17.24562         33         87
       family │      3,000        50.5    28.87088          1        100
           id │          0
-       group │      3,000       1.496    .5000674          1          2
+       group │      3,000    1.497667    .5000779          1          2
 ─────────────┼─────────────────────────────────────────────────────────
-physical_p~t │      3,000       1.516    1.884744         -2          5
-      warmth │      3,000    2.543667    2.431336         -2          7
-     outcome │      3,000    53.45039    6.884502   25.02363   81.63657
+physical_p~t │      3,000    2.494667    1.380075          0          5
+      warmth │      3,000    3.524333    1.889956          0          7
+     outcome │      3,000    53.46757     6.65179   33.39014   76.75101
 </pre>
 <h2 id="spaghetti-plot">Spaghetti Plot</h2>
 <pre class='stata'>. spagplot outcome warmth, id(country) scheme(s1color)
@@ -267,8 +267,8 @@ Performing EM optimization:
 
 Performing gradient-based optimization: 
 
-Iteration 0:   log likelihood = -9956.6096  
-Iteration 1:   log likelihood = -9956.6096  
+Iteration 0:   log likelihood = -9856.1548  
+Iteration 1:   log likelihood = -9856.1548  
 
 Computing standard errors:
 
@@ -279,23 +279,23 @@ Group variable: country                         Number of groups  =         30
                                                               avg =      100.0
                                                               max =        100
                                                 Wald chi2(0)      =          .
-Log likelihood = -9956.6096                     Prob > chi2       =          .
+Log likelihood = -9856.1548                     Prob > chi2       =          .
 
 ─────────────┬────────────────────────────────────────────────────────────────
      outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-       _cons │   53.45039   .3702932   144.35   0.000     52.72463    54.17615
+       _cons │   53.46757   .3539097   151.08   0.000     52.77392    54.16122
 ─────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
   Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 country: Identity            │
-                  var(_cons) │   3.676471   1.062168      2.086944    6.476667
+                  var(_cons) │   3.348734   .9702594      1.897816    5.908906
 ─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │   43.70413   1.134121      41.53688    45.98446
+               var(Residual) │   40.88284   1.060908       38.8555    43.01597
 ─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chibar2(01) = 175.05        Prob >= chibar2 = 0.0000
+LR test vs. linear model: chibar2(01) = 169.64        Prob >= chibar2 = 0.0000
 </pre>
 <h3 id="icc">ICC</h3>
 <pre class='stata'>. estat icc
@@ -305,20 +305,22 @@ Intraclass correlation
 ─────────────────────────────┬────────────────────────────────────────────────
                        Level │        ICC   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
-                     country │   .0775944   .0207813      .0454528     .129384
+                     country │   .0757091   .0203761      .0442419    .1265931
 ─────────────────────────────┴────────────────────────────────────────────────
 </pre>
 <h2 id="full-model">Full Model</h2>
-<pre class='stata'>. mixed outcome warmth physical_punishment i.group HDI || country: warmth // multilevel model
+<pre class='stata'>. mixed outcome warmth physical_punishment i.group HDI || country: warmth // multilevel mo
+> del
 
 Performing EM optimization: 
 
 Performing gradient-based optimization: 
 
-Iteration 0:   log likelihood = -9616.8876  
-Iteration 1:   log likelihood = -9616.3536  
-Iteration 2:   log likelihood = -9616.3475  
-Iteration 3:   log likelihood = -9616.3475  
+Iteration 0:   log likelihood =  -9668.198  
+Iteration 1:   log likelihood = -9667.9551  
+Iteration 2:   log likelihood = -9667.9534  
+Iteration 3:   log likelihood = -9667.9533  
+Iteration 4:   log likelihood = -9667.9532  
 
 Computing standard errors:
 
@@ -328,29 +330,29 @@ Group variable: country                         Number of groups  =         30
                                                               min =        100
                                                               avg =      100.0
                                                               max =        100
-                                                Wald chi2(4)      =     764.27
-Log likelihood = -9616.3475                     Prob > chi2       =     0.0000
+                                                Wald chi2(4)      =     401.26
+Log likelihood = -9667.9532                     Prob > chi2       =     0.0000
 
 ────────────────────┬────────────────────────────────────────────────────────────────
             outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 ────────────────────┼────────────────────────────────────────────────────────────────
-             warmth │   .9826773   .0444598    22.10   0.000     .8955377    1.069817
-physical_punishment │  -.9239791   .0573291   -16.12   0.000    -1.036342   -.8116161
-            2.group │   .7280691   .2163084     3.37   0.001     .3041125    1.152026
-                HDI │   .0075692   .0206019     0.37   0.713    -.0328098    .0479482
-              _cons │   51.50019   1.392584    36.98   0.000     48.77077     54.2296
+             warmth │   .9616447   .0581825    16.53   0.000     .8476091     1.07568
+physical_punishment │  -.8453802   .0798155   -10.59   0.000    -1.001816   -.6889448
+            2.group │   1.084344   .2200539     4.93   0.000     .6530461    1.515642
+                HDI │    .010557   .0204522     0.52   0.606    -.0295286    .0506426
+              _cons │   50.96398   1.403621    36.31   0.000     48.21293    53.71502
 ────────────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
   Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 country: Independent         │
-                 var(warmth) │   5.38e-17   4.71e-16      1.90e-24    1.53e-09
-                  var(_cons) │    3.43782   .9775981      1.968931    6.002548
+                 var(warmth) │   1.83e-06   .0000144      3.68e-13    9.111841
+                  var(_cons) │   3.370262   .9633726      1.924651    5.901676
 ─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │    34.7837   .9026366       33.0588     36.5986
+               var(Residual) │   36.01906   .9346936      34.23291    37.89842
 ─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chi2(2) = 210.87                Prob > chi2 = 0.0000
+LR test vs. linear model: chi2(2) = 198.01                Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
 
@@ -359,8 +361,8 @@ Note: LR test is conservative and provided only for reference.
 </pre>
 <h1 id="longitudinal-model">Longitudinal Model</h1>
 <h2 id="setup">Setup</h2>
-<pre class='stata'>. use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_longit
-> udinal_data.dta", clear
+<pre class='stata'>. use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_lo
+> ngitudinal_data.dta", clear
 </pre>
 <h2 id="the-equation-1">The Equation</h2>
 <p><span class="math display">\[\text{outcome}_{ij} = \beta_0 + \beta_1
@@ -381,12 +383,12 @@ warmth} + \]</span></p>
          HDI │      9,000    64.76667     17.2437         33         87
       family │      9,000        50.5    28.86767          1        100
           id │          0
-       group │      9,000       1.496    .5000118          1          2
+       group │      9,000    1.497667    .5000223          1          2
 ─────────────┼─────────────────────────────────────────────────────────
            t │      9,000           2    .8165419          1          3
-physical_p~t │      9,000    1.517111    1.884289         -2          5
-      warmth │      9,000    2.533778    2.449075         -2          7
-     outcome │      9,000    54.43846    7.019933   25.02363   81.63657
+physical_p~t │      9,000    2.489778    1.378847          0          5
+      warmth │      9,000       3.516    1.888893          0          7
+     outcome │      9,000    54.45497    6.630079   28.72382   79.86467
 </pre>
 <h2 id="alternate-plot">Alternate Plot</h2>
 <pre class='stata'>. encode id, generate(idNUMERIC) // numeric version of id
@@ -394,8 +396,8 @@ physical_p~t │      9,000    1.517111    1.884289         -2          5
 .     
 . * spagplot outcome t if idNUMERIC &lt;= 10, id(idNUMERIC) scheme(s1color)
 .     
-. twoway (lfit outcome t) (scatter outcome t) if idNUMERIC &lt;= 10, by(idNUMERIC) scheme(s1color
-> )
+. twoway (lfit outcome t) (scatter outcome t) if idNUMERIC &lt;= 10, by(idNUMERIC) scheme(s1c
+> olor)
 
 . 
 . graph export spagplot2.png, width(1000) replace
@@ -415,8 +417,9 @@ Performing EM optimization:
 
 Performing gradient-based optimization: 
 
-Iteration 0:   log likelihood = -29398.984  
-Iteration 1:   log likelihood = -29398.984  
+Iteration 0:   log likelihood = -29092.154  
+Iteration 1:   log likelihood = -29092.149  
+Iteration 2:   log likelihood = -29092.149  
 
 Computing standard errors:
 
@@ -432,26 +435,26 @@ Mixed-effects ML regression                     Number of obs     =      9,000
         ────────────────┴────────────────────────────────────────────
 
                                                 Wald chi2(0)      =          .
-Log likelihood = -29398.984                     Prob > chi2       =          .
+Log likelihood = -29092.149                     Prob > chi2       =          .
 
 ─────────────┬────────────────────────────────────────────────────────────────
      outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-       _cons │   54.43846   .3767998   144.48   0.000     53.69995    55.17698
+       _cons │   54.45497   .3545946   153.57   0.000     53.75998    55.14997
 ─────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
   Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 country: Identity            │
-                  var(_cons) │   3.995172   1.099853      2.329182     6.85279
+                  var(_cons) │   3.556606   .9740016      2.079353    6.083357
 ─────────────────────────────┼────────────────────────────────────────────────
 id: Identity                 │
-                  var(_cons) │   16.98591   .7068169      15.65556    18.42931
+                  var(_cons) │   12.12878   .5851204      11.03451    13.33156
 ─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │   28.29352   .5165663      27.29897     29.3243
+               var(Residual) │   28.26794   .5160996      27.27429    29.29779
 ─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chi2(2) = 1819.49               Prob > chi2 = 0.0000
+LR test vs. linear model: chi2(2) = 1404.70               Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
 </pre>
@@ -463,24 +466,23 @@ Intraclass correlation
 ─────────────────────────────┬────────────────────────────────────────────────
                        Level │        ICC   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
-                     country │   .0810797   .0205569      .0488675    .1315879
-                  id|country │   .4257992   .0163912      .3940284    .4581946
+                     country │   .0809178   .0204085      .0489023    .1310061
+                  id|country │   .3568646   .0177124      .3229478    .3922796
 ─────────────────────────────┴────────────────────────────────────────────────
 </pre>
 <h2 id="full-model-1">Full Model</h2>
-<pre class='stata'>. mixed outcome t warmth physical_punishment i.group HDI || country: warmth || id: t // multil
-> evel model
+<pre class='stata'>. mixed outcome t warmth physical_punishment i.group HDI || country: warmth || id: t // mu
+> ltilevel model
 
 Performing EM optimization: 
 
 Performing gradient-based optimization: 
 
-Iteration 0:   log likelihood = -28546.535  
-Iteration 1:   log likelihood = -28524.928  
-Iteration 2:   log likelihood = -28524.635  
-Iteration 3:   log likelihood = -28524.601  
-Iteration 4:   log likelihood = -28524.598  
-Iteration 5:   log likelihood = -28524.598  
+Iteration 0:   log likelihood = -28560.818  
+Iteration 1:   log likelihood = -28534.485  
+Iteration 2:   log likelihood =  -28534.01  
+Iteration 3:   log likelihood = -28533.997  
+Iteration 4:   log likelihood = -28533.997  
 
 Computing standard errors:
 
@@ -495,34 +497,34 @@ Mixed-effects ML regression                     Number of obs     =      9,000
                      id │      3,000          3        3.0          3
         ────────────────┴────────────────────────────────────────────
 
-                                                Wald chi2(5)      =    1818.96
-Log likelihood = -28524.598                     Prob > chi2       =     0.0000
+                                                Wald chi2(5)      =    1206.21
+Log likelihood = -28533.997                     Prob > chi2       =     0.0000
 
 ────────────────────┬────────────────────────────────────────────────────────────────
             outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 ────────────────────┼────────────────────────────────────────────────────────────────
-                  t │   .9929535   .0658203    15.09   0.000     .8639481    1.121959
-             warmth │   1.047045   .0338001    30.98   0.000     .9807983    1.113292
-physical_punishment │  -.9377711   .0381761   -24.56   0.000    -1.012595   -.8629473
-            2.group │   .8219777   .1530957     5.37   0.000     .5219157     1.12204
-                HDI │   .0047772   .0205645     0.23   0.816    -.0355285    .0450829
-              _cons │   50.50391   1.389611    36.34   0.000     47.78032     53.2275
+                  t │   .9879647   .0658315    15.01   0.000     .8589373    1.116992
+             warmth │   .9462548   .0381869    24.78   0.000     .8714098      1.0211
+physical_punishment │  -.9267739   .0499549   -18.55   0.000    -1.024684   -.8288641
+            2.group │    .985819   .1534866     6.42   0.000     .6849907    1.286647
+                HDI │   .0075436    .020711     0.36   0.716    -.0330493    .0481364
+              _cons │   50.48029   1.408031    35.85   0.000      47.7206    53.23998
 ────────────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
   Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 country: Independent         │
-                 var(warmth) │   .0071126   .0086595      .0006542    .0773303
-                  var(_cons) │   3.560166   .9807369      2.074844    6.108788
+                 var(warmth) │   2.12e-11   6.89e-09      2.1e-288    2.1e+266
+                  var(_cons) │   3.650644   .9879047      2.147954    6.204604
 ─────────────────────────────┼────────────────────────────────────────────────
 id: Independent              │
-                      var(t) │   3.01e-10   2.17e-10      7.29e-11    1.24e-09
-                  var(_cons) │   8.722256   .4792014      7.831839    9.713906
+                      var(t) │   2.01e-09   1.46e-09      4.83e-10    8.37e-09
+                  var(_cons) │   8.852638    .481528      7.957427     9.84856
 ─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │   25.98996   .4745951      25.07622    26.93699
+               var(Residual) │   26.00092   .4747631      25.08686    26.94829
 ─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chi2(4) = 1331.93               Prob > chi2 = 0.0000
+LR test vs. linear model: chi2(4) = 1328.22               Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
 
@@ -538,35 +540,35 @@ Note: LR test is conservative and provided only for reference.
             Variable │   crosssectional        longitudinal     
 ─────────────────────┼──────────────────────────────────────────
 outcome              │
-              warmth │           0.983***             1.047***  
- physical_punishment │          -0.924***            -0.938***  
+              warmth │           0.962***             0.946***  
+ physical_punishment │          -0.845***            -0.927***  
                      │
                group │
-                  2  │           0.728***             0.822***  
+                  2  │           1.084***             0.986***  
                      │
-                 HDI │           0.008                0.005     
-                   t │                                0.993***  
-               _cons │          51.500***            50.504***  
+                 HDI │           0.011                0.008     
+                   t │                                0.988***  
+               _cons │          50.964***            50.480***  
 ─────────────────────┼──────────────────────────────────────────
 lns1_1_1             │
-               _cons │         -18.731***            -2.473***  
+               _cons │          -6.605              -12.289     
 ─────────────────────┼──────────────────────────────────────────
 lns1_1_2             │
-               _cons │           0.617***             0.635***  
+               _cons │           0.607***             0.647***  
 ─────────────────────┼──────────────────────────────────────────
 lnsig_e              │
-               _cons │           1.775***             1.629***  
+               _cons │           1.792***             1.629***  
 ─────────────────────┼──────────────────────────────────────────
 lns2_1_1             │
-               _cons │                              -10.963***  
+               _cons │                              -10.012***  
 ─────────────────────┼──────────────────────────────────────────
 lns2_1_2             │
-               _cons │                                1.083***  
+               _cons │                                1.090***  
 ─────────────────────┼──────────────────────────────────────────
 Statistics           │                                          
                    N │            3000                 9000     
-                  ll │       -9616.347            -2.85e+04     
-                chi2 │         764.268             1818.962     
+                  ll │       -9667.953            -2.85e+04     
+                chi2 │         401.262             1206.210     
 ─────────────────────┴──────────────────────────────────────────
                         Legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001
 </pre>
