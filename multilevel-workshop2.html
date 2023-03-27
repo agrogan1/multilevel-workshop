@@ -1,43 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-<style>
-/* CSS for Markstat 2.0 using Pandoc 2.0 */
-body{padding:14px 28px;}
-body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
-h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
-h1 {font-size: 200%;}
-h2 {font-size: 150%;}
-h3 {font-size: 120%;}
-h4 {font-size: 100%; font-weight:bold}
-img.center {display:block; margin-left:auto; margin-right:auto}
-.small{font-size:8pt;}
-a {color: black;}
-a:visited {color: #808080;}
-a.plain {text-decoration:none;}
-a.plain:hover {text-decoration:underline;}
-.em {font-weight:bold;}
-pre, code {font-family: "lucida console", monospace;}
-pre.stata {font-size:13px; line-height:13px;}
-pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
-code {color:#3366cc; background-color:#fafafa;}
-pre code { color:black; background-color:white}
-/* Added for Pandoc */
-figure > img, div.figure > img {display:block; margin:auto}
-figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
-h1.title {text-align:center; margin-bottom:0}
-p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
-p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
-/* Tables*/
-table { margin:auto; border-collapse:collapse; }
-table caption { margin-bottom:1ex;}
-th, td { padding:4px 6px;}
-thead tr:first-child th {border-top:1px solid black; padding-top:6px}
-thead tr:last-child  th {padding-bottom:6px}
-tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
-tbody tr:last-child  td {padding-bottom:6px;}
-table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
-</style>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -199,13 +162,52 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px; max-width:45em;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+td {padding:0 0 0 0} /* override */
+table:not([class]) th { padding:4px 6px } 
+table:not([class]) td { padding:4px 6px } 
+table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+table:not([class]) thead tr:last-child  th {padding-bottom:6px}
+table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
+table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
 </head>
 <body>
 <header id="title-block-header">
 <h1 class="title">Workshop on Multilevel Modeling 2 (Cross Classified
 Models)</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">2 Mar 2023 12:01:59</p>
+<p class="date">27 Mar 2023 19:07:36</p>
 </header>
 <style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="navigation">Navigation</h1>
@@ -228,7 +230,7 @@ different countries at different times.</p>
 <p>However, because <code>id</code> is in fact nested inside
 <code>country</code>, in this case, estimating the random effects as
 cross classified will be more time consuming, but will give us
-equivalent results.</p>
+equivalent results to a three level model.</p>
 <h2 id="standard-less-computationally-efficient-syntax">Standard (Less
 Computationally Efficient) Syntax</h2>
 <pre class='stata'>. * mixed outcome t warmth physical_punishment || _all: R.country || _all: R.id
@@ -239,74 +241,18 @@ Computationally Efficient) Syntax</h2>
 computationally efficient version of the above command, which is what we
 do in these notes. The user can verify that both versions of the command
 will produce equivalent results.</p>
-<h2 id="three-level-model">Three Level Model</h2>
-<pre class='stata'>. mixed outcome t warmth physical_punishment || country: || id:  // 3 level w/ random inte
-> rcepts only
-
-Performing EM optimization: 
-
-Performing gradient-based optimization: 
-
-Iteration 0:   log likelihood = -28554.574  
-Iteration 1:   log likelihood = -28554.549  
-Iteration 2:   log likelihood = -28554.549  
-
-Computing standard errors:
-
-Mixed-effects ML regression                     Number of obs     =      9,000
-
-        Grouping information
-        ────────────────┬────────────────────────────────────────────
-                        │     No. of       Observations per group
-         Group variable │     groups    Minimum    Average    Maximum
-        ────────────────┼────────────────────────────────────────────
-                country │         30        300      300.0        300
-                     id │      3,000          3        3.0          3
-        ────────────────┴────────────────────────────────────────────
-
-                                                Wald chi2(3)      =    1156.04
-Log likelihood = -28554.549                     Prob > chi2       =     0.0000
-
-────────────────────┬────────────────────────────────────────────────────────────────
-            outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
-────────────────────┼────────────────────────────────────────────────────────────────
-                  t │   .9880161   .0658318    15.01   0.000     .8589881    1.117044
-             warmth │   .9494521   .0383876    24.73   0.000     .8742138     1.02469
-physical_punishment │  -.9247961   .0501648   -18.44   0.000    -1.023117   -.8264749
-              _cons │    51.4432   .4233657   121.51   0.000     50.61342    52.27299
-────────────────────┴────────────────────────────────────────────────────────────────
-
-─────────────────────────────┬────────────────────────────────────────────────
-  Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
-─────────────────────────────┼────────────────────────────────────────────────
-country: Identity            │
-                  var(_cons) │   3.672826   .9942325       2.16063    6.243387
-─────────────────────────────┼────────────────────────────────────────────────
-id: Identity                 │
-                  var(_cons) │     9.0953   .4874893      8.188312    10.10275
-─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │   26.00112   .4747689      25.08704     26.9485
-─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chi2(2) = 1348.94               Prob > chi2 = 0.0000
-
-Note: LR test is conservative and provided only for reference.
-
-.     
-. est store threelevel // store random intercept model
-</pre>
 <h2 id="cross-classified-with-computationally-efficient-syntax">Cross
 Classified With Computationally Efficient Syntax</h2>
 <pre class='stata'>. mixed outcome t warmth physical_punishment || _all: R.country || id:
 
-Performing EM optimization: 
+Performing EM optimization ...
 
 Performing gradient-based optimization: 
-
 Iteration 0:   log likelihood = -28554.574  
 Iteration 1:   log likelihood = -28554.549  
 Iteration 2:   log likelihood = -28554.549  
 
-Computing standard errors:
+Computing standard errors ...
 
 Mixed-effects ML regression                     Number of obs     =      9,000
 
@@ -348,6 +294,60 @@ Note: LR test is conservative and provided only for reference.
 
 .     
 . est store crossed2 // store crossed effects result
+</pre>
+<h1 id="three-level-model">Three Level Model</h1>
+<pre class='stata'>. mixed outcome t warmth physical_punishment || country: || id:  // 3 level w/ random inte
+> rcepts only
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:   log likelihood = -28554.574  
+Iteration 1:   log likelihood = -28554.549  
+Iteration 2:   log likelihood = -28554.549  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                     Number of obs     =      9,000
+
+        Grouping information
+        ────────────────┬────────────────────────────────────────────
+                        │     No. of       Observations per group
+         Group variable │     groups    Minimum    Average    Maximum
+        ────────────────┼────────────────────────────────────────────
+                country │         30        300      300.0        300
+                     id │      3,000          3        3.0          3
+        ────────────────┴────────────────────────────────────────────
+
+                                                Wald chi2(3)      =    1156.04
+Log likelihood = -28554.549                     Prob > chi2       =     0.0000
+
+────────────────────┬────────────────────────────────────────────────────────────────
+            outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+────────────────────┼────────────────────────────────────────────────────────────────
+                  t │   .9880161   .0658318    15.01   0.000     .8589881    1.117044
+             warmth │   .9494521   .0383876    24.73   0.000     .8742138     1.02469
+physical_punishment │  -.9247961   .0501648   -18.44   0.000    -1.023117   -.8264749
+              _cons │    51.4432   .4233657   121.51   0.000     50.61342    52.27299
+────────────────────┴────────────────────────────────────────────────────────────────
+
+─────────────────────────────┬────────────────────────────────────────────────
+  Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
+─────────────────────────────┼────────────────────────────────────────────────
+country: Identity            │
+                  var(_cons) │   3.672826   .9942325       2.16063    6.243387
+─────────────────────────────┼────────────────────────────────────────────────
+id: Identity                 │
+                  var(_cons) │     9.0953   .4874893      8.188312    10.10275
+─────────────────────────────┼────────────────────────────────────────────────
+               var(Residual) │   26.00112   .4747689      25.08704     26.9485
+─────────────────────────────┴────────────────────────────────────────────────
+LR test vs. linear model: chi2(2) = 1348.94               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+.     
+. est store threelevel // store random intercept model
 </pre>
 <h1
 id="nice-table-of-results-of-three-level-and-cross-classified-model">Nice
