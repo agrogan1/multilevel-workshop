@@ -207,7 +207,7 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <h1 class="title">Workshop on Multilevel Modeling 2 (Cross Classified
 Models)</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">27 Mar 2023 19:07:36</p>
+<p class="date">2 Apr 2023 19:26:08</p>
 </header>
 <style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="navigation">Navigation</h1>
@@ -233,6 +233,8 @@ cross classified will be more time consuming, but will give us
 equivalent results to a three level model.</p>
 <h2 id="standard-less-computationally-efficient-syntax">Standard (Less
 Computationally Efficient) Syntax</h2>
+<p>The below syntax will take a very long time to run with the full
+sample, and thus we have commented it out.</p>
 <pre class='stata'>. * mixed outcome t warmth physical_punishment || _all: R.country || _all: R.id
 .     
 . * est store crossed1
@@ -241,6 +243,8 @@ Computationally Efficient) Syntax</h2>
 computationally efficient version of the above command, which is what we
 do in these notes. The user can verify that both versions of the command
 will produce equivalent results.</p>
+<p>In fact, at the end of handout we verify the similarity of both sets
+of syntax using a random sample.</p>
 <h2 id="cross-classified-with-computationally-efficient-syntax">Cross
 Classified With Computationally Efficient Syntax</h2>
 <pre class='stata'>. mixed outcome t warmth physical_punishment || _all: R.country || id:
@@ -380,6 +384,59 @@ Statistics           │
                 chi2 │        1156.045             1156.045     
 ─────────────────────┴──────────────────────────────────────────
                         Legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001
+</pre>
+<h1 id="majorsection">Verification of Syntax Equivalence for Cross
+Classified Model</h1>
+<pre class='stata'>. 
+. keep if family &lt;= 5 // random sample of families
+(8,550 observations deleted)
+
+.     
+. quietly mixed outcome t warmth physical_punishment || _all: R.country || _all: R.id
+
+.     
+. est store crossed1A // less efficient syntax
+
+.     
+. quietly mixed outcome t warmth physical_punishment || _all: R.country || id:
+
+.     
+. est store crossed2A // more efficient syntax
+
+.     
+. est table crossed1A crossed2A, ///
+> b(%9.3f) star stats(N ll chi2) ///
+> varwidth(20) modelwidth(15)
+
+─────────────────────┬──────────────────────────────────────────
+            Variable │     crossed1A            crossed2A       
+─────────────────────┼──────────────────────────────────────────
+outcome              │
+                   t │           1.222***             1.222***  
+              warmth │           0.854***             0.854***  
+ physical_punishment │          -1.214***            -1.214***  
+               _cons │          51.616***            51.616***  
+─────────────────────┼──────────────────────────────────────────
+lns1_1_1             │
+               _cons │           0.649*               0.649*    
+─────────────────────┼──────────────────────────────────────────
+lns1_2_1             │
+               _cons │           1.132***                       
+─────────────────────┼──────────────────────────────────────────
+lnsig_e              │
+               _cons │           1.716***             1.716***  
+─────────────────────┼──────────────────────────────────────────
+lns2_1_1             │
+               _cons │                                1.132***  
+─────────────────────┼──────────────────────────────────────────
+Statistics           │                                          
+                   N │             450                  450     
+                  ll │       -1469.923            -1469.923     
+                chi2 │          58.301               58.301     
+─────────────────────┴──────────────────────────────────────────
+                        Legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001
+
+.     
 </pre>
 <h1 id="majorsection">QUESTIONS???</h1>
 </body>

@@ -35,6 +35,8 @@ However, because `id` is in fact nested inside `country`, in this case, estimati
 
 ## Standard (Less Computationally Efficient) Syntax
 
+The below syntax will take a very long time to run with the full sample, and thus we have commented it out.
+
 ```s
     * mixed outcome t warmth physical_punishment || _all: R.country || _all: R.id
 	
@@ -42,6 +44,8 @@ However, because `id` is in fact nested inside `country`, in this case, estimati
 ```
 	
 The documentation notes that we can use a *much* more computationally efficient version of the above command, which is what we do in these notes. The user can verify that both versions of the command will produce equivalent results.
+
+In fact, at the end of handout we verify the similarity of both sets of syntax using a random sample.
 
 ## Cross Classified With Computationally Efficient Syntax
 
@@ -65,6 +69,26 @@ The documentation notes that we can use a *much* more computationally efficient 
     est table threelevel crossed2, ///
     b(%9.3f) star stats(N ll chi2) ///
     varwidth(20) modelwidth(15)
+```
+
+# Verification of Syntax Equivalence for Cross Classified Model {#majorsection}
+
+```s
+
+    keep if family <= 5 // random sample of families
+	
+	quietly mixed outcome t warmth physical_punishment || _all: R.country || _all: R.id
+	
+    est store crossed1A // less efficient syntax
+	
+	quietly mixed outcome t warmth physical_punishment || _all: R.country || id:
+	
+	est store crossed2A // more efficient syntax
+	
+	est table crossed1A crossed2A, ///
+	b(%9.3f) star stats(N ll chi2) ///
+    varwidth(20) modelwidth(15)
+	
 ```
 
 # QUESTIONS??? {#majorsection}

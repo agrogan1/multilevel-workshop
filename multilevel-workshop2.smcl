@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop2.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}27 Mar 2023, 19:08:09
+ {txt}opened on:  {res} 2 Apr 2023, 19:26:59
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}27 Mar 2023
+{res} 2 Apr 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}19:08:09
+{res}19:26:59
 {txt}
 {com}. //_3q
 . clear all
@@ -162,12 +162,63 @@ LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1348.94{col 59}{txt}Pr
 {res}{txt}{hline 20}{c -}{c BT}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
 {ralign 64:Legend: * p<0.05; ** p<0.01; *** p<0.001}
 {res}{txt}
-{com}. //_^
+{com}. //_9
+. 
+. keep if family <= 5 // random sample of families
+{txt}(8,550 observations deleted)
+
+{com}.     
+. quietly mixed outcome t warmth physical_punishment || _all: R.country || _all: R.id
+{txt}
+{com}.     
+. est store crossed1A // less efficient syntax
+{txt}
+{com}.     
+. quietly mixed outcome t warmth physical_punishment || _all: R.country || id:
+{txt}
+{com}.     
+. est store crossed2A // more efficient syntax
+{txt}
+{com}.     
+. est table crossed1A crossed2A, ///
+> b(%9.3f) star stats(N ll chi2) ///
+> varwidth(20) modelwidth(15)
+{res}
+{txt}{hline 20}{c -}{c TT}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{ralign 20:Variable} {c |} {center 18:crossed1A} {space 1} {center 18:crossed2A} {space 1}
+{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}outcome              {txt}{c |}{res}
+{txt}{space 19}t {c |}{res} {ralign 15:1.222}{lalign 3:***}{txt} {space 1}{res} {ralign 15:1.222}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 14}warmth {c |}{res} {ralign 15:0.854}{lalign 3:***}{txt} {space 1}{res} {ralign 15:0.854}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 1}physical_punishment {c |}{res} {ralign 15:-1.214}{lalign 3:***}{txt} {space 1}{res} {ralign 15:-1.214}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 15}_cons {c |}{res} {ralign 15:51.616}{lalign 3:***}{txt} {space 1}{res} {ralign 15:51.616}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lns1_1_1             {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:0.649}{lalign 3:*}{txt} {space 1}{res} {ralign 15:0.649}{lalign 3:*}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lns1_2_1             {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:1.132}{lalign 3:***}{txt} {space 1}{res} {ralign 15:}{lalign 3:}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lnsig_e              {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:1.716}{lalign 3:***}{txt} {space 1}{res} {ralign 15:1.716}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{txt}{res}lns2_1_1             {txt}{c |}{res}
+{txt}{space 15}_cons {c |}{res} {ralign 15:}{lalign 3:}{txt} {space 1}{res} {ralign 15:1.132}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c +}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{res}{lalign 20:Statistics}{txt} {c |} {center 18:} {space 1} {center 18:} {space 1}
+{res}{txt}{ralign 20:N} {c |}{res} {ralign 15:450}{lalign 3:}{txt} {space 1}{res} {ralign 15:450}{lalign 3:}{txt} {space 1}
+{res}{txt}{ralign 20:ll} {c |}{res} {ralign 15:-1469.923}{lalign 3:}{txt} {space 1}{res} {ralign 15:-1469.923}{lalign 3:}{txt} {space 1}
+{res}{txt}{ralign 20:chi2} {c |}{res} {ralign 15:58.301}{lalign 3:}{txt} {space 1}{res} {ralign 15:58.301}{lalign 3:}{txt} {space 1}
+{res}{txt}{hline 20}{c -}{c BT}{c -}{hline 18}{c -}{c -}{c -}{hline 18}{c -}{c -}
+{ralign 64:Legend: * p<0.05; ** p<0.01; *** p<0.001}
+{res}{txt}
+{com}.     
+. //_^
 . log close
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop2.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}27 Mar 2023, 19:08:33
+ {txt}closed on:  {res} 2 Apr 2023, 19:27:25
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
