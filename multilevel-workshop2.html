@@ -8,9 +8,6 @@
   <title>Workshop on Multilevel Modeling 2 (Cross Classified Models)</title>
   <style>
     html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
@@ -29,13 +26,16 @@
     @media (max-width: 600px) {
       body {
         font-size: 0.9em;
-        padding: 1em;
+        padding: 12px;
       }
       h1 {
         font-size: 1.8em;
       }
     }
     @media print {
+      html {
+        background-color: white;
+      }
       body {
         background-color: transparent;
         color: black;
@@ -85,9 +85,10 @@
       color: #606060;
     }
     code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
+      hyphens: manual;
     }
     pre {
       margin: 1em 0;
@@ -207,7 +208,7 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <h1 class="title">Workshop on Multilevel Modeling 2 (Cross Classified
 Models)</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">20 Apr 2023 10:49:56</p>
+<p class="date">11 Sep 2023 10:30:51</p>
 </header>
 <style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="navigation">Navigation</h1>
@@ -218,9 +219,17 @@ show format <code>b</code> makes text bigger, and <code>s</code> makes
 text smaller.</p>
 </blockquote>
 
+<h1 id="introduction">Introduction</h1>
+<p>A two level multilevel model imagines that <em>Level 1</em> units are
+nested in <em>Level 2</em> units. A three level multilevel model
+imagines that <em>Level 1</em> units are nested in <em>Level 2</em>
+units, which are in turn nested in <em>Level 3</em>.</p>
+<p>A cross-classified model imagines that the nesting is not
+hierarchical, but rather that there are two sets of clusters or nestings
+in which individuals may be nested.</p>
 <h1 id="setup">Setup</h1>
-<pre class='stata'>. use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_lo
-> ngitudinal_data.dta", clear
+<pre class='stata'>. use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_long
+> itudinal_data.dta", clear
 </pre>
 <h1 id="cross-classified-model">Cross Classified Model</h1>
 <p>We can treat these random effects as being <em>cross
@@ -252,13 +261,13 @@ Classified With Computationally Efficient Syntax</h2>
 Performing EM optimization ...
 
 Performing gradient-based optimization: 
-Iteration 0:   log likelihood = -28554.574  
-Iteration 1:   log likelihood = -28554.549  
-Iteration 2:   log likelihood = -28554.549  
+Iteration 0:  Log likelihood = -28554.574  
+Iteration 1:  Log likelihood = -28554.549  
+Iteration 2:  Log likelihood = -28554.549  
 
 Computing standard errors ...
 
-Mixed-effects ML regression                     Number of obs     =      9,000
+Mixed-effects ML regression                            Number of obs =   9,000
 
         Grouping information
         ────────────────┬────────────────────────────────────────────
@@ -269,8 +278,8 @@ Mixed-effects ML regression                     Number of obs     =      9,000
                      id │      3,000          3        3.0          3
         ────────────────┴────────────────────────────────────────────
 
-                                                Wald chi2(3)      =    1156.04
-Log likelihood = -28554.549                     Prob > chi2       =     0.0000
+                                                       Wald chi2(3)  = 1156.04
+Log likelihood = -28554.549                            Prob > chi2   =  0.0000
 
 ────────────────────┬────────────────────────────────────────────────────────────────
             outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
@@ -300,19 +309,19 @@ Note: LR test is conservative and provided only for reference.
 . est store crossed2 // store crossed effects result
 </pre>
 <h1 id="three-level-model">Three Level Model</h1>
-<pre class='stata'>. mixed outcome t warmth physical_punishment || country: || id:  // 3 level w/ random inte
-> rcepts only
+<pre class='stata'>. mixed outcome t warmth physical_punishment || country: || id:  // 3 level w/ random interc
+> epts only
 
 Performing EM optimization ...
 
 Performing gradient-based optimization: 
-Iteration 0:   log likelihood = -28554.574  
-Iteration 1:   log likelihood = -28554.549  
-Iteration 2:   log likelihood = -28554.549  
+Iteration 0:  Log likelihood = -28554.574  
+Iteration 1:  Log likelihood = -28554.549  
+Iteration 2:  Log likelihood = -28554.549  
 
 Computing standard errors ...
 
-Mixed-effects ML regression                     Number of obs     =      9,000
+Mixed-effects ML regression                            Number of obs =   9,000
 
         Grouping information
         ────────────────┬────────────────────────────────────────────
@@ -323,8 +332,8 @@ Mixed-effects ML regression                     Number of obs     =      9,000
                      id │      3,000          3        3.0          3
         ────────────────┴────────────────────────────────────────────
 
-                                                Wald chi2(3)      =    1156.04
-Log likelihood = -28554.549                     Prob > chi2       =     0.0000
+                                                       Wald chi2(3)  = 1156.04
+Log likelihood = -28554.549                            Prob > chi2   =  0.0000
 
 ────────────────────┬────────────────────────────────────────────────────────────────
             outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]

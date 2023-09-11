@@ -19,6 +19,12 @@ geometry: margin=1 in
     quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
 ```
 
+# Introduction
+
+A two level multilevel model imagines that *Level 1* units are nested in *Level 2* units. A three level multilevel model imagines that *Level 1* units are nested in *Level 2* units, which are in turn nested in *Level 3*. 
+
+A cross-classified model imagines that the nesting is not hierarchical, but rather that there are two sets of clusters or nestings in which individuals may be nested. 
+
 # Setup
 
 ```s

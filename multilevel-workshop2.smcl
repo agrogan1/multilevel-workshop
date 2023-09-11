@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop2.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}20 Apr 2023, 10:50:27
+ {txt}opened on:  {res}11 Sep 2023, 10:31:49
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}20 Apr 2023
+{res}11 Sep 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}10:50:27
+{res}10:31:49
 {txt}
 {com}. //_3q
 . clear all
@@ -31,14 +31,14 @@
 {res}
 {txt}Performing EM optimization ...
 {res}
-{txt}Performing gradient-based optimization: {res}
-{txt}Iteration 0:{space 3}log likelihood = {res:-28554.574}  
-Iteration 1:{space 3}log likelihood = {res:-28554.549}  
-Iteration 2:{space 3}log likelihood = {res:-28554.549}  
+{txt}Performing gradient-based optimization: 
+{res}{txt}Iteration 0:{space 2}Log likelihood = {res:-28554.574}  
+Iteration 1:{space 2}Log likelihood = {res:-28554.549}  
+Iteration 2:{space 2}Log likelihood = {res:-28554.549}  
 {res}
 {txt}Computing standard errors ...
 {res}
-{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     9,000
+{txt}Mixed-effects ML regression{col 56}Number of obs{col 69} = {res}  9,000
 
 {txt}{col 9}Grouping information
 {col 9}{hline 16}{c TT}{hline 44}
@@ -49,8 +49,8 @@ Iteration 2:{space 3}log likelihood = {res:-28554.549}
 {col 22}id{txt}{col 25}{c |}{res}{col 29}   3,000{col 39}        3{col 50}      3.0{col 61}        3
 {txt}{col 9}{hline 16}{c BT}{hline 44}
 
-{col 49}Wald chi2({res}3{txt}){col 67}={col 70}{res}  1156.04
-{txt}Log likelihood = {res}-28554.549{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{col 56}Wald chi2({res}3{txt}){col 69} = {res}1156.04
+{txt}Log likelihood = {res}-28554.549{col 56}{txt}Prob > chi2{col 69} = {res} 0.0000
 
 {txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}            outcome{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
@@ -84,14 +84,14 @@ LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1348.94{col 59}{txt}Pr
 {res}
 {txt}Performing EM optimization ...
 {res}
-{txt}Performing gradient-based optimization: {res}
-{txt}Iteration 0:{space 3}log likelihood = {res:-28554.574}  
-Iteration 1:{space 3}log likelihood = {res:-28554.549}  
-Iteration 2:{space 3}log likelihood = {res:-28554.549}  
+{txt}Performing gradient-based optimization: 
+{res}{txt}Iteration 0:{space 2}Log likelihood = {res:-28554.574}  
+Iteration 1:{space 2}Log likelihood = {res:-28554.549}  
+Iteration 2:{space 2}Log likelihood = {res:-28554.549}  
 {res}
 {txt}Computing standard errors ...
 {res}
-{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     9,000
+{txt}Mixed-effects ML regression{col 56}Number of obs{col 69} = {res}  9,000
 
 {txt}{col 9}Grouping information
 {col 9}{hline 16}{c TT}{hline 44}
@@ -102,8 +102,8 @@ Iteration 2:{space 3}log likelihood = {res:-28554.549}
 {col 22}id{txt}{col 25}{c |}{res}{col 29}   3,000{col 39}        3{col 50}      3.0{col 61}        3
 {txt}{col 9}{hline 16}{c BT}{hline 44}
 
-{col 49}Wald chi2({res}3{txt}){col 67}={col 70}{res}  1156.04
-{txt}Log likelihood = {res}-28554.549{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{col 56}Wald chi2({res}3{txt}){col 69} = {res}1156.04
+{txt}Log likelihood = {res}-28554.549{col 56}{txt}Prob > chi2{col 69} = {res} 0.0000
 
 {txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}            outcome{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
@@ -218,7 +218,7 @@ LR test vs. linear model:{col 27}chi2({res}2{txt}) = {res}1348.94{col 59}{txt}Pr
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel-workshop/multilevel-workshop2.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}20 Apr 2023, 10:50:49
+ {txt}closed on:  {res}11 Sep 2023, 10:32:16
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
