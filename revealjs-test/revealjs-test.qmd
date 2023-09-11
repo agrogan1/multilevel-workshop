@@ -1,0 +1,81 @@
+---
+title: "Reveal.js Test"
+format: 
+  revealjs:
+    title-slide-attributes:
+       data-background-color: darkblue
+    theme: simple
+    scrollable: true
+    controls: true
+    controls-tutorial: true
+    slide-level: 3
+editor: source
+---
+
+```{r}
+
+library(Statamarkdown)
+
+```
+
+# Cross Sectional Model
+
+## Get Data
+
+```{stata, collectcode = TRUE}
+
+    use "C:/Users/agrogan/Desktop/GitHub/multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", clear
+
+```
+
+## The Equation
+
+$$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
+
+$$\beta_4 \text{group}_2 + \beta_5 HDI +$$
+
+$$u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} $$
+
+## Descriptive Statistics
+
+```{stata}
+    summarize // descriptive statistics
+```
+
+## Spaghetti Plot
+
+```{stata}
+    spagplot outcome warmth, id(country) scheme(s1color)
+
+	graph export spagplot1.png, width(1000) replace
+```
+
+![Spaghetti Plot of Outcome by Warmth by Country](spagplot1.png){width=50%}
+
+
+## Unconditional Model
+
+### Model
+
+```{stata, collectcode = TRUE}   
+
+    mixed outcome || country: // unconditional model
+
+```
+
+### ICC
+
+```{stata}   
+
+    estat icc
+
+```
+	
+## Full Model
+
+```{stata}
+
+    mixed outcome warmth physical_punishment i.group HDI || country: warmth // multilevel model
+
+    est store crosssectional // store estimates
+```
