@@ -1,0 +1,18 @@
+
+
+Running /Users/agrogan/Desktop/GitHub/multilevel-workshop/profile.do ...
+variable group not found
+r(111);
+
+
+. 
+. mixed outcome || country: || id: // unconditional model
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -9802.8371  (not concave)
+Iteration 1:  Log likelihood = -9802.8371  (not concave)
+Iteration 2:  Log likelihood = -9802.8371  (not concave)
+Iteration 3:  Log likelihood = -9802.8371  (backed up)
+Iteration 4:  Log likelihood = -9802.8371  (backed up)
