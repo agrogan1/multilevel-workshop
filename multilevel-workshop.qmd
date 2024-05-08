@@ -147,6 +147,7 @@ graph export spagplot2.png, width(1000) replace
 ### Model
 
 ```{stata, collectcode=TRUE}
+#| eval: false
 
 mixed outcome || country: || id: // unconditional model
 
