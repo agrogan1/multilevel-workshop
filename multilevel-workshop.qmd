@@ -22,6 +22,20 @@ library(Statamarkdown)
 
 ```
 
+```{r}
+#| echo: false
+#| output: false
+
+file.copy("../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", 
+          ".",
+          overwrite = TRUE) # copy over most recent version
+
+file.copy("../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_longitudinal_data.dta", 
+          ".",
+          overwrite = TRUE) # copy over most recent version
+
+```
+
 
 ```{stata, collectcode=TRUE, echo=FALSE}
 
@@ -37,7 +51,7 @@ quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
 
 ```{stata, collectcode=TRUE}
 
-use "../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", clear
+use "simulated_multilevel_data.dta", clear
 
 ```
 

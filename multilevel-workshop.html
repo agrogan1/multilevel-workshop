@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2024-05-08">
+<meta name="dcterms.date" content="2024-05-09">
 
 <title>Workshop on Multilevel Modeling</title>
 <style>
@@ -165,7 +165,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 8, 2024</p>
+      <p class="date">May 9, 2024</p>
     </div>
   </div>
   
@@ -180,23 +180,13 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Statamarkdown)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-collectcode="true">
-<div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
-r(111);</code></pre>
-</div>
-</div>
 <section id="cross-sectional-model" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Cross Sectional Model</h1>
 <section id="get-data" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="get-data"><span class="header-section-number">1.1</span> Get Data</h2>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
-r(111);</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"simulated_multilevel_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="the-equation" class="level2" data-number="1.2">
@@ -208,13 +198,10 @@ r(111);</code></pre>
 <section id="descriptive-statistics" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">1.3</span> Descriptive Statistics</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="co">// descriptive statistics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="co">// descriptive statistics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
-r(111);
-
-    Variable |        Obs        Mean    Std. dev.       Min        Max
+<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
      country |      3,000        15.5    8.656884          1         30
          HDI |      3,000    64.76667    17.24562         33         87
@@ -232,17 +219,12 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 <section id="spaghetti-plot" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="spaghetti-plot"><span class="header-section-number">1.4</span> Spaghetti Plot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country) <span class="dv">scheme</span>(s1color)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot1.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country) <span class="dv">scheme</span>(s1color)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot1.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
-r(111);
-
-
-
-file /Users/agrogan/Desktop/GitHub/multilevel-workshop/spagplot1.png saved as PNG format</code></pre>
+<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel-workshop/spagplot1.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -257,15 +239,10 @@ file /Users/agrogan/Desktop/GitHub/multilevel-workshop/spagplot1.png saved as PN
 <section id="model" class="level3" data-number="1.5.1">
 <h3 data-number="1.5.1" class="anchored" data-anchor-id="model"><span class="header-section-number">1.5.1</span> Model</h3>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mixed outcome || country: <span class="co">// unconditional model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mixed outcome || country: <span class="co">// unconditional model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
-r(111);
-
-
-
-Performing EM optimization ...
+<pre><code>Performing EM optimization ...
 
 Performing gradient-based optimization: 
 Iteration 0:  Log likelihood = -9802.8371  
@@ -303,15 +280,10 @@ LR test vs. linear model: chibar2(01) = 166.31        Prob &gt;= chibar2 = 0.000
 <section id="icc" class="level3" data-number="1.5.2">
 <h3 data-number="1.5.2" class="anchored" data-anchor-id="icc"><span class="header-section-number">1.5.2</span> ICC</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> icc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> icc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
-r(111);
-
-
-
-Intraclass correlation
+<pre><code>Intraclass correlation
 
 ------------------------------------------------------------------------------
                        Level |        ICC   Std. err.     [95% conf. interval]
@@ -325,16 +297,12 @@ Intraclass correlation
 <section id="full-model" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="full-model"><span class="header-section-number">1.6</span> Full Model</h2>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment <span class="kw">identity</span> i.treatment HDI || country: warmth <span class="co">// multilevel model</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> crosssectional <span class="co">// store estimates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment <span class="kw">identity</span> i.treatment HDI || country: warmth <span class="co">// multilevel model</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> crosssectional <span class="co">// store estimates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
-r(111);
-
-
-variable treatment not found
+<pre><code>variable treatment not found
 r(111);
 
 r(111);</code></pre>
@@ -347,10 +315,10 @@ r(111);</code></pre>
 <section id="setup" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">2.1</span> Setup</h2>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_longitudinal_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_longitudinal_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
+<pre><code>variable treatment not found
 r(111);</code></pre>
 </div>
 </div>
@@ -365,10 +333,10 @@ r(111);</code></pre>
 <section id="descriptive-statistics-1" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="descriptive-statistics-1"><span class="header-section-number">2.3</span> Descriptive Statistics</h2>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="co">// descriptive statistics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="co">// descriptive statistics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
+<pre><code>variable treatment not found
 r(111);
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -389,16 +357,16 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 <section id="alternate-plot" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="alternate-plot"><span class="header-section-number">2.4</span> Alternate Plot</h2>
 <div class="cell" data-collectcode="false">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">encode</span> id, <span class="kw">generate</span>(idNUMERIC) <span class="co">// numeric version of id</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>* spagplot outcome t <span class="kw">if</span> idNUMERIC &lt;= 10, id(idNUMERIC) <span class="dv">scheme</span>(s1color)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">lfit</span> outcome t) (<span class="kw">scatter</span> outcome t) <span class="kw">if</span> idNUMERIC &lt;= 10, <span class="kw">by</span>(idNUMERIC) <span class="dv">scheme</span>(stcolor)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot2.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">encode</span> id, <span class="kw">generate</span>(idNUMERIC) <span class="co">// numeric version of id</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>* spagplot outcome t <span class="kw">if</span> idNUMERIC &lt;= 10, id(idNUMERIC) <span class="dv">scheme</span>(s1color)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">lfit</span> outcome t) (<span class="kw">scatter</span> outcome t) <span class="kw">if</span> idNUMERIC &lt;= 10, <span class="kw">by</span>(idNUMERIC) <span class="dv">scheme</span>(stcolor)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot2.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
+<pre><code>variable treatment not found
 r(111);
 
 
@@ -421,16 +389,16 @@ r(111);</code></pre>
 <section id="model-1" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="model-1"><span class="header-section-number">2.5.1</span> Model</h3>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mixed outcome || country: || id: <span class="co">// unconditional model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mixed outcome || country: || id: <span class="co">// unconditional model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="icc-1" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="icc-1"><span class="header-section-number">2.5.2</span> ICC</h3>
 <div class="cell" data-collectcode="false">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> icc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> icc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
+<pre><code>variable treatment not found
 r(111);
 
 
@@ -449,12 +417,12 @@ Intraclass correlation
 <section id="full-model-1" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="full-model-1"><span class="header-section-number">2.6</span> Full Model</h2>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mixed outcome t warmth physical_punishment i.<span class="kw">identity</span> i.treatment HDI || country: warmth || id: t <span class="co">// multilevel model</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> longitudinal <span class="co">// store estimates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>mixed outcome t warmth physical_punishment i.<span class="kw">identity</span> i.treatment HDI || country: warmth || id: t <span class="co">// multilevel model</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> longitudinal <span class="co">// store estimates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
+<pre><code>variable treatment not found
 r(111);
 
 
@@ -469,12 +437,12 @@ r(111);</code></pre>
 <section id="nice-table-of-results" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Nice Table of Results</h1>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">table</span> crosssectional longitudinal, <span class="co">///</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>b(%9.3f) <span class="kw">star</span> <span class="kw">stats</span>(<span class="kw">N</span> ll <span class="fu">chi2</span>) <span class="co">///</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>varwidth(20) modelwidth(15)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">table</span> crosssectional longitudinal, <span class="co">///</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>b(%9.3f) <span class="kw">star</span> <span class="kw">stats</span>(<span class="kw">N</span> ll <span class="fu">chi2</span>) <span class="co">///</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>varwidth(20) modelwidth(15)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>variable group not found
+<pre><code>variable treatment not found
 r(111);
 
 
@@ -883,7 +851,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
