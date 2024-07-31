@@ -1,19 +1,4 @@
----
-title: "Workshop on Multilevel Modeling"
-author: "Andy Grogan-Kaylor"
-date: "today"
-format:
-  html:
-    toc: true
-    number-sections: true
-    theme: yeti
-    lightbox: true
-  pdf:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    colorlinks: true
----
+# Two Level Cross Sectional; And Three Level Longitudinal Models
 
 ```{r}
 #| output: false

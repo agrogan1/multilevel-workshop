@@ -1,20 +1,4 @@
----
-title: "Workshop on Multilevel Modeling 2" 
-subtitle: "Cross Classified Models"
-author: "Andy Grogan-Kaylor"
-date: "today"
-format:
-  html:
-    toc: true
-    number-sections: true
-    theme: yeti
-    lightbox: true
-  pdf:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    colorlinks: true
----
+# Cross-Classified Models
 
 ```{r}
 #| echo: false
