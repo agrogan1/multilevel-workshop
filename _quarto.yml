@@ -1,0 +1,79 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Multilevel Thinking"
+  subtitle: "Discovering Diversity, Universals, and Particulars in Cross-Cultural Research"
+  author: "Andrew Grogan-Kaylor"
+  date: "today"
+  cover-image: bookcover.png
+  downloads: [pdf]
+  twitter-card: true
+  open-graph: true
+  favicon: logo.png
+  site-url: https://agrogan1.github.io/multilevel-thinking/
+  search: true
+  repo-url: https://github.com/agrogan1/multilevel-thinking
+  repo-actions: [issue]
+  sharing: [twitter, facebook, linkedin]
+  chapters:
+    - index.qmd
+    - acknowledgements.qmd
+    - license.qmd
+    - preliminaries.qmd
+    - intro.qmd
+    - simulated-multi-country-data.qmd
+    - conceptual-framework.qmd
+    - cross-sectional.qmd
+    - longitudinal.qmd
+    - logistic.qmd
+    - morelevels.qmd
+    - conclusion.qmd
+    - references.qmd
+    - about.qmd
+
+citation:
+  url: https://agrogan1.github.io/multilevel-thinking/
+  
+bibliography: multilevel-thinking.bib
+
+csl: apa.csl
+
+google-scholar: true
+
+prefer-html: true
+
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: vapor
+    css: multilevel-thinking.css
+    lightbox: true
+    execute:
+      echo: false
+      warning: false
+  docx:
+    reference-doc: markstat.docx
+    fig-dpi: 600
+    execute:
+      echo: false
+      warning: false
+  pdf:
+    lot: true
+    lof: true
+    linestretch: 2.0
+    keep-tex: true
+    execute:
+      echo: false
+      warning: false    
+    include-in-header: 
+      text: |
+        \usepackage{makeidx}
+        \makeindex
+    include-after-body: 
+      text: |
+        \printindex   
+      
+
