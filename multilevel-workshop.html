@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2024-05-10">
+<meta name="dcterms.date" content="2024-07-31">
 
 <title>Workshop on Multilevel Modeling</title>
 <style>
@@ -165,7 +165,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 10, 2024</p>
+      <p class="date">July 31, 2024</p>
     </div>
   </div>
   
@@ -204,7 +204,7 @@ window.Quarto = {
          HDI |      3,000    64.76667    17.24562         33         87
       family |      3,000        50.5    28.87088          1        100
           id |          0
-    identity |      3,000    1.497667    .5000779          1          2
+    identity |      3,000    .4976667    .5000779          0          1
 -------------+---------------------------------------------------------
 intervention |      3,000    .4843333    .4998378          0          1
 physical_p~t |      3,000    2.478667    1.360942          0          5
@@ -216,7 +216,7 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 <section id="spaghetti-plot" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="spaghetti-plot"><span class="header-section-number">1.4</span> Spaghetti Plot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country) <span class="dv">scheme</span>(s1color)</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country) <span class="dv">scheme</span>(stcolor)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot1.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -321,7 +321,7 @@ physical_punishment |  -.9916657   .0797906   -12.43   0.000    -1.148052   -.83
            identity |  -.3004767   .2170295    -1.38   0.166    -.7258466    .1248933
      1.intervention |   .6396427   .2174519     2.94   0.003     .2134448    1.065841
                 HDI |   -.003228   .0199257    -0.16   0.871    -.0422817    .0358256
-              _cons |   52.30039   1.404073    37.25   0.000     49.54846    55.05232
+              _cons |   51.99991   1.371257    37.92   0.000      49.3123    54.68753
 -------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
@@ -368,7 +368,7 @@ Note: LR test is conservative and provided only for reference.</code></pre>
          HDI |      9,000    64.76667     17.2437         33         87
       family |      9,000        50.5    28.86767          1        100
           id |          0
-    identity |      9,000    1.497667    .5000223          1          2
+    identity |      9,000    .4976667    .5000223          0          1
 -------------+---------------------------------------------------------
 intervention |      9,000    .4843333    .4997823          0          1
            t |      9,000           2    .8165419          1          3
@@ -383,7 +383,7 @@ physical_p~t |      9,000    2.485333    1.373639          0          5
 <div class="cell" data-collectcode="false">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">encode</span> id, <span class="kw">generate</span>(idNUMERIC) <span class="co">// numeric version of id</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>* spagplot outcome t <span class="kw">if</span> idNUMERIC &lt;= 10, id(idNUMERIC) <span class="dv">scheme</span>(s1color)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>* spagplot outcome t <span class="kw">if</span> idNUMERIC &lt;= 10, id(idNUMERIC) <span class="dv">scheme</span>(stcolor)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">lfit</span> outcome t) (<span class="kw">scatter</span> outcome t) <span class="kw">if</span> idNUMERIC &lt;= 10, <span class="kw">by</span>(idNUMERIC) <span class="dv">scheme</span>(stcolor)</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -461,7 +461,7 @@ Log likelihood = -28499.603                            Prob &gt; chi2   =  0.000
                   t |    .943864   .0658716    14.33   0.000      .814758     1.07297
              warmth |   .9134959   .0423732    21.56   0.000      .830446    .9965459
 physical_punishment |  -1.007897   .0497622   -20.25   0.000    -1.105429   -.9103647
-         2.identity |  -.1276926   .1515835    -0.84   0.400    -.4247908    .1694057
+         1.identity |  -.1276926   .1515835    -0.84   0.400    -.4247908    .1694057
      1.intervention |   .8589966   .1519095     5.65   0.000     .5612596    1.156734
                 HDI |  -.0005657   .0196437    -0.03   0.977    -.0390666    .0379352
               _cons |   50.46724   1.338318    37.71   0.000     47.84418    53.09029
@@ -509,9 +509,9 @@ outcome              |
                    t |                                0.944***  
                      |
             identity |
-                  2  |                               -0.128     
+                  1  |                               -0.128     
                      |
-               _cons |          52.300***            50.467***  
+               _cons |          52.000***            50.467***  
 ---------------------+------------------------------------------
 lns1_1_1             |
                _cons |          -1.892***            -2.266***  
@@ -935,7 +935,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false,"selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

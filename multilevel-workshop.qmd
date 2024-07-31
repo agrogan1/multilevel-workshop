@@ -77,7 +77,7 @@ summarize // descriptive statistics
 ```{stata}
 #| output: false
 
-spagplot outcome warmth, id(country) scheme(s1color)
+spagplot outcome warmth, id(country) scheme(stcolor)
 
 graph export spagplot1.png, width(1000) replace
 
@@ -149,7 +149,7 @@ summarize // descriptive statistics
 
 encode id, generate(idNUMERIC) // numeric version of id
 	
-* spagplot outcome t if idNUMERIC <= 10, id(idNUMERIC) scheme(s1color)
+* spagplot outcome t if idNUMERIC <= 10, id(idNUMERIC) scheme(stcolor)
 	
 twoway (lfit outcome t) (scatter outcome t) if idNUMERIC <= 10, by(idNUMERIC) scheme(stcolor)
 
