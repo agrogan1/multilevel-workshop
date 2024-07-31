@@ -10,7 +10,6 @@ book:
   downloads: [pdf]
   twitter-card: true
   open-graph: true
-  favicon: logo.png
   site-url: https://agrogan1.github.io/multilevel-workshop/
   search: true
   repo-url: https://github.com/agrogan1/multilevel-workshop
@@ -20,6 +19,8 @@ book:
     - index.qmd
     - multilevel-workshop.qmd
     - multilevel-workshop2.qmd
+  navbar:
+    background: red
 
 citation:
   url: https://agrogan1.github.io/multilevel-workshop/
@@ -38,12 +39,14 @@ format:
     execute:
       echo: true
       warning: false
+      freeze: auto
   pdf:
     lot: true
     lof: true
     keep-tex: true
     execute:
       echo: true
-      warning: false    
+      warning: false
+      freeze: auto
 
 
