@@ -18,13 +18,13 @@ quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
 
 ```
 
-# Introduction
+## Introduction
 
 A two level multilevel model imagines that *Level 1* units are nested in *Level 2* units. A three level multilevel model imagines that *Level 1* units are nested in *Level 2* units, which are in turn nested in *Level 3*. 
 
 A cross-classified model imagines that the nesting is not hierarchical, but rather that there are two sets of clusters or nestings in which individuals may be nested. 
 
-# Setup
+# Get Data
 
 ```{stata, collectcode=TRUE}
 
@@ -32,7 +32,7 @@ use "simulated_multilevel_longitudinal_data.dta", clear
 
 ```
 
-# Cross Classified Model
+## Cross Classified Model
 
 We can treat these random effects as being *cross classified*. 
 
@@ -40,7 +40,7 @@ This might be useful if we had data where individuals lived in different countri
 
 However, because `id` is in fact nested inside `country`, in this case, estimating the random effects as cross classified will be more time consuming, but will give us equivalent results to a three level model.
 
-## Standard (Less Computationally Efficient) Syntax
+### Standard (Less Computationally Efficient) Syntax
 
 The below syntax will take a very long time to run with the full sample, and thus we have commented it out.
 
@@ -56,7 +56,7 @@ The documentation notes that we can use a *much* more computationally efficient 
 
 In fact, at the end of handout we verify the similarity of both sets of syntax using a random sample.
 
-## Cross Classified With Computationally Efficient Syntax
+### Cross Classified With Computationally Efficient Syntax
 
 ```{stata, collectcode=TRUE}
 
@@ -66,7 +66,7 @@ est store crossed2 // store crossed effects result
 
 ```
 
-# Three Level Model
+## Three Level Model
 
 ```{stata, collectcode=TRUE}	
 
@@ -76,7 +76,7 @@ est store threelevel // store random intercept model
 
 ```
 	
-# Nice Table of Results of Three Level and Cross Classified Model
+## Nice Table of Results of Three Level and Cross Classified Model
 
 ```{stata}
 
@@ -86,7 +86,7 @@ varwidth(20) modelwidth(15)
 
 ```
 
-# Verification of Syntax Equivalence for Cross Classified Model
+## Verification of Syntax Equivalence for Cross Classified Model
 
 ```{stata, collectcode=TRUE}
 
@@ -106,4 +106,4 @@ varwidth(20) modelwidth(15)
 	
 ```
 
-# QUESTIONS??? 
+## QUESTIONS??? 

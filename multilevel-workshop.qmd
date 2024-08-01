@@ -31,9 +31,9 @@ quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
 
 ```
 
-# Cross Sectional Model
+## Cross Sectional Model
 
-## Get Data
+### Get Data
 
 ```{stata, collectcode=TRUE}
 
@@ -41,7 +41,7 @@ use "simulated_multilevel_data.dta", clear
 
 ```
 
-## The Equation
+### The Equation
 
 $$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
 
@@ -49,7 +49,7 @@ $$\beta_4 \text{identity}_2 + \beta_5 \text{intervention} + \beta_6 HDI +$$
 
 $$u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} $$
 
-## Descriptive Statistics
+### Descriptive Statistics
 
 ```{stata}
 
@@ -57,7 +57,7 @@ summarize // descriptive statistics
 
 ```
 
-## Spaghetti Plot
+### Spaghetti Plot
 
 ```{stata}
 #| output: false
@@ -71,9 +71,9 @@ graph export spagplot1.png, width(1000) replace
 ![Spaghetti Plot of Outcome by Warmth by Country](spagplot1.png){width=50%}
 
 
-## Unconditional Model
+### Unconditional Model
 
-### Model
+#### Model
 
 ```{stata, collectcode=TRUE}
 
@@ -81,7 +81,7 @@ mixed outcome || country: // unconditional model
 
 ```
 
-### ICC
+#### ICC
 
 ```{stata}
 
@@ -89,7 +89,7 @@ estat icc
 
 ```
 	
-## Full Model
+### Conditional Model
 
 ```{stata, collectcode=TRUE}
 
@@ -99,9 +99,9 @@ est store crosssectional // store estimates
 
 ```
 
-# Longitudinal Model
+## Longitudinal Model
 
-## Setup
+### Get Data
 
 ```{stata, collectcode=TRUE}
 
@@ -109,7 +109,7 @@ use "simulated_multilevel_longitudinal_data.dta", clear
 
 ```
 
-## The Equation
+### The Equation
 
 $$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
 
@@ -119,7 +119,7 @@ $$u_{0j} + u_{1j} \times \text{parental warmth} + $$
 
 $$v_{0i} + v_{1i} \times t + e_{ij} $$
 
-## Descriptive Statistics
+### Descriptive Statistics
 
 ```{stata, collectcode=TRUE}
 
@@ -127,7 +127,7 @@ summarize // descriptive statistics
 
 ```
 
-## Alternate Plot
+### Alternate Plot
 
 ```{stata, collectcode=FALSE}
 #| output: false
@@ -144,9 +144,9 @@ graph export spagplot2.png, width(1000) replace
 
 ![Alternate Plot of Outcome by Time by Individual; First 10 Observations](spagplot2.png){width=50%}
 
-## Unconditional Model
+### Unconditional Model
 
-### Model
+#### Model
 
 ```{stata, collectcode=TRUE}
 #| eval: false
@@ -155,7 +155,7 @@ mixed outcome || country: || id: // unconditional model
 
 ```
 
-### ICC
+#### ICC
 
 ```{stata, collectcode=FALSE}
 
@@ -163,7 +163,7 @@ estat icc
 
 ```
 	
-## Full Model	
+### Conditional Model	
 
 ```{stata, collectcode=TRUE}
 
@@ -173,7 +173,7 @@ est store longitudinal // store estimates
 
 ```
 
-# Nice Table of Results
+## Nice Table of Results
 
 ```{stata, collectcode=TRUE}
 
@@ -183,7 +183,7 @@ varwidth(20) modelwidth(15)
 
 ```
 
-# QUESTIONS??? {#majorsection}
+## QUESTIONS??? {#majorsection}
 
 
 
