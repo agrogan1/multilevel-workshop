@@ -206,11 +206,9 @@ Workshop materials for a workshop on Multilevel Modeling
 \chapter{Two Level Cross Sectional; And Three Level Longitudinal
 Models}\label{two-level-cross-sectional-and-three-level-longitudinal-models}
 
-\bookmarksetup{startatroot}
+\section{Cross Sectional Model}\label{cross-sectional-model}
 
-\chapter{Cross Sectional Model}\label{cross-sectional-model}
-
-\section{Get Data}\label{get-data}
+\subsection{Get Data}\label{get-data}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -219,7 +217,7 @@ Models}\label{two-level-cross-sectional-and-three-level-longitudinal-models}
 \end{Highlighting}
 \end{Shaded}
 
-\section{The Equation}\label{the-equation}
+\subsection{The Equation}\label{the-equation}
 
 \[\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + \]
 
@@ -227,7 +225,7 @@ Models}\label{two-level-cross-sectional-and-three-level-longitudinal-models}
 
 \[u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} \]
 
-\section{Descriptive Statistics}\label{descriptive-statistics}
+\subsection{Descriptive Statistics}\label{descriptive-statistics}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -251,7 +249,7 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
      outcome |      3,000    52.43327    6.530996   29.60798   74.83553
 \end{verbatim}
 
-\section{Spaghetti Plot}\label{spaghetti-plot}
+\subsection{Spaghetti Plot}\label{spaghetti-plot}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -271,9 +269,9 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 
 \end{figure}%
 
-\section{Unconditional Model}\label{unconditional-model}
+\subsection{Unconditional Model}\label{unconditional-model}
 
-\subsection{Model}\label{model}
+\subsubsection{Model}\label{model}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -317,7 +315,7 @@ country: Identity            |
 LR test vs. linear model: chibar2(01) = 166.31        Prob >= chibar2 = 0.0000
 \end{verbatim}
 
-\subsection{ICC}\label{icc}
+\subsubsection{ICC}\label{icc}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -336,7 +334,7 @@ Intraclass correlation
 ------------------------------------------------------------------------------
 \end{verbatim}
 
-\section{Full Model}\label{full-model}
+\subsection{Conditional Model}\label{conditional-model}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -391,11 +389,9 @@ LR test vs. linear model: chi2(2) = 205.74                Prob > chi2 = 0.0000
 Note: LR test is conservative and provided only for reference.
 \end{verbatim}
 
-\bookmarksetup{startatroot}
+\section{Longitudinal Model}\label{longitudinal-model}
 
-\chapter{Longitudinal Model}\label{longitudinal-model}
-
-\section{Setup}\label{setup}
+\subsection{Get Data}\label{get-data-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -404,7 +400,7 @@ Note: LR test is conservative and provided only for reference.
 \end{Highlighting}
 \end{Shaded}
 
-\section{The Equation}\label{the-equation-1}
+\subsection{The Equation}\label{the-equation-1}
 
 \[\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + \]
 
@@ -414,7 +410,7 @@ Note: LR test is conservative and provided only for reference.
 
 \[v_{0i} + v_{1i} \times t + e_{ij} \]
 
-\section{Descriptive Statistics}\label{descriptive-statistics-1}
+\subsection{Descriptive Statistics}\label{descriptive-statistics-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -439,7 +435,7 @@ physical_p~t |      9,000    2.485333    1.373639          0          5
      outcome |      9,000    53.37768    6.572285   29.60798   79.02199
 \end{verbatim}
 
-\section{Alternate Plot}\label{alternate-plot}
+\subsection{Alternate Plot}\label{alternate-plot}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -464,9 +460,9 @@ Observations}
 
 \end{figure}%
 
-\section{Unconditional Model}\label{unconditional-model-1}
+\subsection{Unconditional Model}\label{unconditional-model-1}
 
-\subsection{Model}\label{model-1}
+\subsubsection{Model}\label{model-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -474,7 +470,7 @@ Observations}
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{ICC}\label{icc-1}
+\subsubsection{ICC}\label{icc-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -494,7 +490,7 @@ Intraclass correlation
 ------------------------------------------------------------------------------
 \end{verbatim}
 
-\section{Full Model}\label{full-model-1}
+\subsection{Conditional Model}\label{conditional-model-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -561,72 +557,60 @@ LR test vs. linear model: chi2(4) = 1247.03               Prob > chi2 = 0.0000
 Note: LR test is conservative and provided only for reference.
 \end{verbatim}
 
-\bookmarksetup{startatroot}
-
-\chapter{Nice Table of Results}\label{nice-table-of-results}
+\section{Nice Table of Results}\label{nice-table-of-results}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 
-\KeywordTok{est} \KeywordTok{table}\NormalTok{ crosssectional longitudinal, }\CommentTok{///}
-\NormalTok{b(\%9.3f) }\KeywordTok{star} \KeywordTok{stats}\NormalTok{(}\KeywordTok{N}\NormalTok{ ll }\FunctionTok{chi2}\NormalTok{) }\CommentTok{///}
-\NormalTok{varwidth(20) modelwidth(15)}
+\NormalTok{etable, }\KeywordTok{estimates}\NormalTok{(crosssectional longitudinal) }\CommentTok{///}
+\NormalTok{showstars showstarsnote }\CommentTok{/// show stars and note}
+\NormalTok{column(estimate) }\CommentTok{// column is modelname}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-            Variable |   crosssectional        longitudinal     
----------------------+------------------------------------------
-outcome              |
-              warmth |           0.835***             0.913***  
- physical_punishment |          -0.992***            -1.008***  
-            identity |          -0.300                          
-                     |
-        intervention |
-                  1  |           0.640**              0.859***  
-                     |
-                 HDI |          -0.003               -0.001     
-                   t |                                0.944***  
-                     |
-            identity |
-                  1  |                               -0.128     
-                     |
-               _cons |          52.000***            50.467***  
----------------------+------------------------------------------
-lns1_1_1             |
-               _cons |          -1.892***            -2.266***  
----------------------+------------------------------------------
-lns1_1_2             |
-               _cons |           0.543***             0.576***  
----------------------+------------------------------------------
-lnsig_e              |
-               _cons |           1.777***             1.630***  
----------------------+------------------------------------------
-lns2_1_1             |
-               _cons |                               -9.724     
----------------------+------------------------------------------
-lns2_1_2             |
-               _cons |                                1.063***  
----------------------+------------------------------------------
-Statistics           |                                          
-                   N |            3000                 9000     
-                  ll |       -9626.607            -2.85e+04     
-                chi2 |         334.143             1096.148     
+                                     crosssectional longitudinal
 ----------------------------------------------------------------
-                        Legend: * p<0.05; ** p<0.01; *** p<0.001
+parental warmth in past week             0.835 **      0.913 ** 
+                                       (0.064)       (0.042)    
+physical punishment in past week        -0.992 **     -1.008 ** 
+                                       (0.080)       (0.050)    
+hypothetical identity group variable    -0.300                  
+                                       (0.217)                  
+recieved intervention                                           
+  1                                      0.640 **      0.859 ** 
+                                       (0.217)       (0.152)    
+Human Development Index                 -0.003        -0.001    
+                                       (0.020)       (0.020)    
+time                                                   0.944 ** 
+                                                     (0.066)    
+hypothetical identity group variable                            
+  1                                                   -0.128    
+                                                     (0.152)    
+Intercept                               52.000 **     50.467 ** 
+                                       (1.371)       (1.338)    
+var(warmth)                              0.023         0.011    
+                                       (0.026)       (0.013)    
+var(_cons)                               2.964         3.167    
+                                       (0.974)       (0.915)    
+var(e)                                  34.975        26.027    
+                                       (0.910)       (0.475)    
+var(_cons)                                             8.387    
+                                                     (0.472)    
+var(t)                                                 0.000    
+                                                     (0.000)    
+Number of observations                    3000          9000    
+----------------------------------------------------------------
+** p<.01, * p<.05
 \end{verbatim}
 
-\bookmarksetup{startatroot}
-
-\chapter{QUESTIONS???}\label{majorsection}
+\section{QUESTIONS???}\label{majorsection}
 
 \bookmarksetup{startatroot}
 
 \chapter{Cross-Classified Models}\label{cross-classified-models}
 
-\bookmarksetup{startatroot}
-
-\chapter{Introduction}\label{introduction-1}
+\section{Introduction}\label{introduction-1}
 
 A two level multilevel model imagines that \emph{Level 1} units are
 nested in \emph{Level 2} units. A three level multilevel model imagines
@@ -637,9 +621,7 @@ A cross-classified model imagines that the nesting is not hierarchical,
 but rather that there are two sets of clusters or nestings in which
 individuals may be nested.
 
-\bookmarksetup{startatroot}
-
-\chapter{Setup}\label{setup-1}
+\section{Get Data}\label{get-data-2}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -648,9 +630,7 @@ individuals may be nested.
 \end{Highlighting}
 \end{Shaded}
 
-\bookmarksetup{startatroot}
-
-\chapter{Cross Classified Model}\label{cross-classified-model}
+\section{Cross Classified Model}\label{cross-classified-model}
 
 We can treat these random effects as being \emph{cross classified}.
 
@@ -662,7 +642,7 @@ in this case, estimating the random effects as cross classified will be
 more time consuming, but will give us equivalent results to a three
 level model.
 
-\section{Standard (Less Computationally Efficient)
+\subsection{Standard (Less Computationally Efficient)
 Syntax}\label{standard-less-computationally-efficient-syntax}
 
 The below syntax will take a very long time to run with the full sample,
@@ -685,7 +665,7 @@ will produce equivalent results.
 In fact, at the end of handout we verify the similarity of both sets of
 syntax using a random sample.
 
-\section{Cross Classified With Computationally Efficient
+\subsection{Cross Classified With Computationally Efficient
 Syntax}\label{cross-classified-with-computationally-efficient-syntax}
 
 \begin{Shaded}
@@ -746,9 +726,7 @@ LR test vs. linear model: chi2(2) = 1260.84               Prob > chi2 = 0.0000
 Note: LR test is conservative and provided only for reference.
 \end{verbatim}
 
-\bookmarksetup{startatroot}
-
-\chapter{Three Level Model}\label{three-level-model}
+\section{Three Level Model}\label{three-level-model}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -808,49 +786,26 @@ LR test vs. linear model: chi2(2) = 1260.84               Prob > chi2 = 0.0000
 Note: LR test is conservative and provided only for reference.
 \end{verbatim}
 
-\bookmarksetup{startatroot}
-
-\chapter{Nice Table of Results of Three Level and Cross Classified
+\section{Nice Table of Results of Three Level and Cross Classified
 Model}\label{nice-table-of-results-of-three-level-and-cross-classified-model}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 
-\KeywordTok{est} \KeywordTok{table}\NormalTok{ threelevel crossed2, }\CommentTok{///}
-\NormalTok{b(\%9.3f) }\KeywordTok{star} \KeywordTok{stats}\NormalTok{(}\KeywordTok{N}\NormalTok{ ll }\FunctionTok{chi2}\NormalTok{) }\CommentTok{///}
-\NormalTok{varwidth(20) modelwidth(15)}
+\NormalTok{etable, }\KeywordTok{estimates}\NormalTok{(threelevel crossed2), }\CommentTok{///}
+\NormalTok{showstars showstarsnote }\CommentTok{/// show stars and note}
+\NormalTok{column(estimate) }\CommentTok{// column is modelname}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-            Variable |     threelevel            crossed2       
----------------------+------------------------------------------
-outcome              |
-                   t |           0.943***             0.943***  
-              warmth |           0.905***             0.905***  
- physical_punishment |          -1.014***            -1.014***  
-               _cons |          50.830***            50.830***  
----------------------+------------------------------------------
-lns1_1_1             |
-               _cons |           0.616***             0.616***  
----------------------+------------------------------------------
-lns2_1_1             |
-               _cons |           1.076***             1.076***  
----------------------+------------------------------------------
-lnsig_e              |
-               _cons |           1.630***             1.630***  
----------------------+------------------------------------------
-Statistics           |                                          
-                   N |            9000                 9000     
-                  ll |       -2.85e+04            -2.85e+04     
-                chi2 |        1168.689             1168.689     
-----------------------------------------------------------------
-                        Legend: * p<0.05; ** p<0.01; *** p<0.001
+invalid 'showstars' 
+r(198);
+
+r(198);
 \end{verbatim}
 
-\bookmarksetup{startatroot}
-
-\chapter{Verification of Syntax Equivalence for Cross Classified
+\section{Verification of Syntax Equivalence for Cross Classified
 Model}\label{verification-of-syntax-equivalence-for-cross-classified-model}
 
 \begin{Shaded}
@@ -866,10 +821,9 @@ Model}\label{verification-of-syntax-equivalence-for-cross-classified-model}
     
 \KeywordTok{est} \KeywordTok{store}\NormalTok{ crossed2A }\CommentTok{// more efficient syntax}
     
-\KeywordTok{est} \KeywordTok{table}\NormalTok{ crossed1A crossed2A, }\CommentTok{///}
-\NormalTok{b(\%9.3f) }\KeywordTok{star} \KeywordTok{stats}\NormalTok{(}\KeywordTok{N}\NormalTok{ ll }\FunctionTok{chi2}\NormalTok{) }\CommentTok{///}
-\NormalTok{varwidth(20) modelwidth(15)}
-    
+\NormalTok{etable, }\KeywordTok{estimates}\NormalTok{(crossed1A crossed2A) }\CommentTok{///}
+\NormalTok{showstars showstarsnote }\CommentTok{/// show stars and note}
+\NormalTok{column(estimate) }\CommentTok{// column is modelname}
 \end{Highlighting}
 \end{Shaded}
 
@@ -881,38 +835,31 @@ Model}\label{verification-of-syntax-equivalence-for-cross-classified-model}
 
 
 
-----------------------------------------------------------------
-            Variable |     crossed1A            crossed2A       
----------------------+------------------------------------------
-outcome              |
-                   t |           0.745**              0.745**   
-              warmth |           0.871***             0.871***  
- physical_punishment |          -1.262***            -1.262***  
-               _cons |          51.755***            51.755***  
----------------------+------------------------------------------
-lns1_1_1             |
-               _cons |           0.404                0.404     
----------------------+------------------------------------------
-lns1_2_1             |
-               _cons |           0.846***                       
----------------------+------------------------------------------
-lnsig_e              |
-               _cons |           1.581***             1.581***  
----------------------+------------------------------------------
-lns2_1_1             |
-               _cons |                                0.846***  
----------------------+------------------------------------------
-Statistics           |                                          
-                   N |             450                  450     
-                  ll |       -1398.626            -1398.626     
-                chi2 |          72.575               72.575     
-----------------------------------------------------------------
-                        Legend: * p<0.05; ** p<0.01; *** p<0.001
+------------------------------------------------------
+                                  crossed1A  crossed2A
+------------------------------------------------------
+time                               0.745 **   0.745 **
+                                 (0.281)    (0.281)   
+parental warmth in past week       0.871 **   0.871 **
+                                 (0.160)    (0.160)   
+physical punishment in past week  -1.262 **  -1.262 **
+                                 (0.206)    (0.206)   
+Intercept                         51.755 **  51.755 **
+                                 (1.009)    (1.009)   
+var(R_country)                     2.245      2.245   
+                                 (1.319)    (1.319)   
+var(R_id)                          5.425              
+                                 (1.843)              
+var(e)                            23.638     23.638   
+                                 (1.933)    (1.933)   
+var(_cons)                                    5.425   
+                                            (1.843)   
+Number of observations               450        450   
+------------------------------------------------------
+** p<.01, * p<.05
 \end{verbatim}
 
-\bookmarksetup{startatroot}
-
-\chapter{QUESTIONS???}\label{questions}
+\section{QUESTIONS???}\label{questions}
 
 
 

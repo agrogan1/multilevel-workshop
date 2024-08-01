@@ -204,17 +204,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4</span> Introduction</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">5</span> Setup</a></li>
-  <li><a href="#cross-classified-model" id="toc-cross-classified-model" class="nav-link" data-scroll-target="#cross-classified-model"><span class="header-section-number">6</span> Cross Classified Model</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="header-section-number">3.2</span> Get Data</a></li>
+  <li><a href="#cross-classified-model" id="toc-cross-classified-model" class="nav-link" data-scroll-target="#cross-classified-model"><span class="header-section-number">3.3</span> Cross Classified Model</a>
   <ul class="collapse">
-  <li><a href="#standard-less-computationally-efficient-syntax" id="toc-standard-less-computationally-efficient-syntax" class="nav-link" data-scroll-target="#standard-less-computationally-efficient-syntax"><span class="header-section-number">6.1</span> Standard (Less Computationally Efficient) Syntax</a></li>
-  <li><a href="#cross-classified-with-computationally-efficient-syntax" id="toc-cross-classified-with-computationally-efficient-syntax" class="nav-link" data-scroll-target="#cross-classified-with-computationally-efficient-syntax"><span class="header-section-number">6.2</span> Cross Classified With Computationally Efficient Syntax</a></li>
+  <li><a href="#standard-less-computationally-efficient-syntax" id="toc-standard-less-computationally-efficient-syntax" class="nav-link" data-scroll-target="#standard-less-computationally-efficient-syntax"><span class="header-section-number">3.3.1</span> Standard (Less Computationally Efficient) Syntax</a></li>
+  <li><a href="#cross-classified-with-computationally-efficient-syntax" id="toc-cross-classified-with-computationally-efficient-syntax" class="nav-link" data-scroll-target="#cross-classified-with-computationally-efficient-syntax"><span class="header-section-number">3.3.2</span> Cross Classified With Computationally Efficient Syntax</a></li>
   </ul></li>
-  <li><a href="#three-level-model" id="toc-three-level-model" class="nav-link" data-scroll-target="#three-level-model"><span class="header-section-number">7</span> Three Level Model</a></li>
-  <li><a href="#nice-table-of-results-of-three-level-and-cross-classified-model" id="toc-nice-table-of-results-of-three-level-and-cross-classified-model" class="nav-link" data-scroll-target="#nice-table-of-results-of-three-level-and-cross-classified-model"><span class="header-section-number">8</span> Nice Table of Results of Three Level and Cross Classified Model</a></li>
-  <li><a href="#verification-of-syntax-equivalence-for-cross-classified-model" id="toc-verification-of-syntax-equivalence-for-cross-classified-model" class="nav-link" data-scroll-target="#verification-of-syntax-equivalence-for-cross-classified-model"><span class="header-section-number">9</span> Verification of Syntax Equivalence for Cross Classified Model</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10</span> QUESTIONS???</a></li>
+  <li><a href="#three-level-model" id="toc-three-level-model" class="nav-link" data-scroll-target="#three-level-model"><span class="header-section-number">3.4</span> Three Level Model</a></li>
+  <li><a href="#nice-table-of-results-of-three-level-and-cross-classified-model" id="toc-nice-table-of-results-of-three-level-and-cross-classified-model" class="nav-link" data-scroll-target="#nice-table-of-results-of-three-level-and-cross-classified-model"><span class="header-section-number">3.5</span> Nice Table of Results of Three Level and Cross Classified Model</a></li>
+  <li><a href="#verification-of-syntax-equivalence-for-cross-classified-model" id="toc-verification-of-syntax-equivalence-for-cross-classified-model" class="nav-link" data-scroll-target="#verification-of-syntax-equivalence-for-cross-classified-model"><span class="header-section-number">3.6</span> Verification of Syntax Equivalence for Cross Classified Model</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">3.7</span> QUESTIONS???</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/agrogan1/multilevel-workshop/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -240,25 +240,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Introduction</h1>
+<section id="introduction" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
 <p>A two level multilevel model imagines that <em>Level 1</em> units are nested in <em>Level 2</em> units. A three level multilevel model imagines that <em>Level 1</em> units are nested in <em>Level 2</em> units, which are in turn nested in <em>Level 3</em>.</p>
 <p>A cross-classified model imagines that the nesting is not hierarchical, but rather that there are two sets of clusters or nestings in which individuals may be nested.</p>
 </section>
-<section id="setup" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Setup</h1>
+<section id="get-data" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="get-data"><span class="header-section-number">3.2</span> Get Data</h2>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"simulated_multilevel_longitudinal_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="cross-classified-model" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Cross Classified Model</h1>
+<section id="cross-classified-model" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="cross-classified-model"><span class="header-section-number">3.3</span> Cross Classified Model</h2>
 <p>We can treat these random effects as being <em>cross classified</em>.</p>
 <p>This might be useful if we had data where individuals lived in different countries at different times.</p>
 <p>However, because <code>id</code> is in fact nested inside <code>country</code>, in this case, estimating the random effects as cross classified will be more time consuming, but will give us equivalent results to a three level model.</p>
-<section id="standard-less-computationally-efficient-syntax" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="standard-less-computationally-efficient-syntax"><span class="header-section-number">6.1</span> Standard (Less Computationally Efficient) Syntax</h2>
+<section id="standard-less-computationally-efficient-syntax" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="standard-less-computationally-efficient-syntax"><span class="header-section-number">3.3.1</span> Standard (Less Computationally Efficient) Syntax</h3>
 <p>The below syntax will take a very long time to run with the full sample, and thus we have commented it out.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -269,8 +269,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The documentation notes that we can use a <em>much</em> more computationally efficient version of the above command, which is what we do in these notes. The user can verify that both versions of the command will produce equivalent results.</p>
 <p>In fact, at the end of handout we verify the similarity of both sets of syntax using a random sample.</p>
 </section>
-<section id="cross-classified-with-computationally-efficient-syntax" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="cross-classified-with-computationally-efficient-syntax"><span class="header-section-number">6.2</span> Cross Classified With Computationally Efficient Syntax</h2>
+<section id="cross-classified-with-computationally-efficient-syntax" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="cross-classified-with-computationally-efficient-syntax"><span class="header-section-number">3.3.2</span> Cross Classified With Computationally Efficient Syntax</h3>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mixed outcome t warmth physical_punishment || <span class="dt">_all</span>: R.country || id:</span>
@@ -327,8 +327,8 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 </div>
 </section>
 </section>
-<section id="three-level-model" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Three Level Model</h1>
+<section id="three-level-model" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="three-level-model"><span class="header-section-number">3.4</span> Three Level Model</h2>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mixed outcome t warmth physical_punishment || country: || id:  <span class="co">// 3 level w/ random intercepts only</span></span>
@@ -384,42 +384,23 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 </div>
 </div>
 </section>
-<section id="nice-table-of-results-of-three-level-and-cross-classified-model" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Nice Table of Results of Three Level and Cross Classified Model</h1>
+<section id="nice-table-of-results-of-three-level-and-cross-classified-model" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="nice-table-of-results-of-three-level-and-cross-classified-model"><span class="header-section-number">3.5</span> Nice Table of Results of Three Level and Cross Classified Model</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">table</span> threelevel crossed2, <span class="co">///</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>b(%9.3f) <span class="kw">star</span> <span class="kw">stats</span>(<span class="kw">N</span> ll <span class="fu">chi2</span>) <span class="co">///</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>varwidth(20) modelwidth(15)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(threelevel crossed2), <span class="co">///</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>showstars showstarsnote <span class="co">/// show stars and note</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>column(estimate) <span class="co">// column is modelname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Variable |     threelevel            crossed2       
----------------------+------------------------------------------
-outcome              |
-                   t |           0.943***             0.943***  
-              warmth |           0.905***             0.905***  
- physical_punishment |          -1.014***            -1.014***  
-               _cons |          50.830***            50.830***  
----------------------+------------------------------------------
-lns1_1_1             |
-               _cons |           0.616***             0.616***  
----------------------+------------------------------------------
-lns2_1_1             |
-               _cons |           1.076***             1.076***  
----------------------+------------------------------------------
-lnsig_e              |
-               _cons |           1.630***             1.630***  
----------------------+------------------------------------------
-Statistics           |                                          
-                   N |            9000                 9000     
-                  ll |       -2.85e+04            -2.85e+04     
-                chi2 |        1168.689             1168.689     
-----------------------------------------------------------------
-                        Legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001</code></pre>
+<pre><code>invalid 'showstars' 
+r(198);
+
+r(198);</code></pre>
 </div>
 </div>
 </section>
-<section id="verification-of-syntax-equivalence-for-cross-classified-model" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Verification of Syntax Equivalence for Cross Classified Model</h1>
+<section id="verification-of-syntax-equivalence-for-cross-classified-model" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="verification-of-syntax-equivalence-for-cross-classified-model"><span class="header-section-number">3.6</span> Verification of Syntax Equivalence for Cross Classified Model</h2>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="kw">family</span> &lt;= 5 <span class="co">// random sample of families</span></span>
@@ -432,10 +413,9 @@ Statistics           |
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> crossed2A <span class="co">// more efficient syntax</span></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">table</span> crossed1A crossed2A, <span class="co">///</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>b(%9.3f) <span class="kw">star</span> <span class="kw">stats</span>(<span class="kw">N</span> ll <span class="fu">chi2</span>) <span class="co">///</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>varwidth(20) modelwidth(15)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(crossed1A crossed2A) <span class="co">///</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>showstars showstarsnote <span class="co">/// show stars and note</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>column(estimate) <span class="co">// column is modelname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(8,550 observations deleted)
 
@@ -444,38 +424,33 @@ Statistics           |
 
 
 
-----------------------------------------------------------------
-            Variable |     crossed1A            crossed2A       
----------------------+------------------------------------------
-outcome              |
-                   t |           0.745**              0.745**   
-              warmth |           0.871***             0.871***  
- physical_punishment |          -1.262***            -1.262***  
-               _cons |          51.755***            51.755***  
----------------------+------------------------------------------
-lns1_1_1             |
-               _cons |           0.404                0.404     
----------------------+------------------------------------------
-lns1_2_1             |
-               _cons |           0.846***                       
----------------------+------------------------------------------
-lnsig_e              |
-               _cons |           1.581***             1.581***  
----------------------+------------------------------------------
-lns2_1_1             |
-               _cons |                                0.846***  
----------------------+------------------------------------------
-Statistics           |                                          
-                   N |             450                  450     
-                  ll |       -1398.626            -1398.626     
-                chi2 |          72.575               72.575     
-----------------------------------------------------------------
-                        Legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001</code></pre>
+------------------------------------------------------
+                                  crossed1A  crossed2A
+------------------------------------------------------
+time                               0.745 **   0.745 **
+                                 (0.281)    (0.281)   
+parental warmth in past week       0.871 **   0.871 **
+                                 (0.160)    (0.160)   
+physical punishment in past week  -1.262 **  -1.262 **
+                                 (0.206)    (0.206)   
+Intercept                         51.755 **  51.755 **
+                                 (1.009)    (1.009)   
+var(R_country)                     2.245      2.245   
+                                 (1.319)    (1.319)   
+var(R_id)                          5.425              
+                                 (1.843)              
+var(e)                            23.638     23.638   
+                                 (1.933)    (1.933)   
+var(_cons)                                    5.425   
+                                            (1.843)   
+Number of observations               450        450   
+------------------------------------------------------
+** p&lt;.01, * p&lt;.05</code></pre>
 </div>
 </div>
 </section>
-<section id="questions" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> QUESTIONS???</h1>
+<section id="questions" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="questions"><span class="header-section-number">3.7</span> QUESTIONS???</h2>
 
 
 </section>

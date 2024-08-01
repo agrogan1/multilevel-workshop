@@ -177,9 +177,9 @@ est store longitudinal // store estimates
 
 ```{stata, collectcode=TRUE}
 
-est table crosssectional longitudinal, ///
-b(%9.3f) star stats(N ll chi2) ///
-varwidth(20) modelwidth(15)
+etable, estimates(crosssectional longitudinal) ///
+showstars showstarsnote /// show stars and note
+column(estimate) // column is modelname
 
 ```
 

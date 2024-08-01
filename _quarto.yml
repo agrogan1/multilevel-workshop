@@ -32,7 +32,7 @@ prefer-html: true
 format:
   html:
     theme: 
-      light: cosmo
+      light: [cosmo, theme-light.scss]
       dark: vapor
     css: multilevel-workshop.css
     lightbox: true

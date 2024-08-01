@@ -24,7 +24,7 @@ A two level multilevel model imagines that *Level 1* units are nested in *Level 
 
 A cross-classified model imagines that the nesting is not hierarchical, but rather that there are two sets of clusters or nestings in which individuals may be nested. 
 
-# Get Data
+## Get Data
 
 ```{stata, collectcode=TRUE}
 
@@ -80,9 +80,9 @@ est store threelevel // store random intercept model
 
 ```{stata}
 
-est table threelevel crossed2, ///
-b(%9.3f) star stats(N ll chi2) ///
-varwidth(20) modelwidth(15)
+etable, estimates(threelevel crossed2), ///
+showstars showstarsnote /// show stars and note
+column(estimate) // column is modelname
 
 ```
 
@@ -100,10 +100,10 @@ quietly mixed outcome t warmth physical_punishment || _all: R.country || id:
 	
 est store crossed2A // more efficient syntax
 	
-est table crossed1A crossed2A, ///
-b(%9.3f) star stats(N ll chi2) ///
-varwidth(20) modelwidth(15)
-	
+etable, estimates(crossed1A crossed2A) ///
+showstars showstarsnote /// show stars and note
+column(estimate) // column is modelname
+
 ```
 
 ## QUESTIONS??? 
