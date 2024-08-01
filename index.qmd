@@ -1,3 +1,13 @@
 # Introduction
 
-Workshop materials for a workshop on Multilevel Modeling
+This site contains materials for a workshop on multilevel modeling.
+
+Multilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.
+
+Multilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.
+
+More details can be found in [Multilevel Thinking](https://agrogan1.github.io/multilevel-thinking/)
+
+
+
+
