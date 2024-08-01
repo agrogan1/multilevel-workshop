@@ -20,7 +20,7 @@ book:
     - multilevel-workshop.qmd
     - multilevel-workshop2.qmd
   navbar:
-    background: red
+    background: "#00274C"
 
 citation:
   url: https://agrogan1.github.io/multilevel-workshop/
