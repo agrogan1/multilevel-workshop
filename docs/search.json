@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Multilevel Workshop",
     "section": "",
-    "text": "1 Introduction\nThis site contains materials for a workshop on multilevel modeling.\nMultilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.\nMultilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.\nMore details can be found in Multilevel Thinking",
+    "text": "1 Introduction\nThis site contains materials for a workshop on multilevel modeling.\nMultilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.\nMultilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -54,7 +54,7 @@
     "href": "multilevel-workshop.html#majorsection",
     "title": "2  Two Level Cross Sectional; And Three Level Longitudinal Models",
     "section": "2.4 QUESTIONS???",
-    "text": "2.4 QUESTIONS???\n\n\n\nSpaghetti Plot of Outcome by Warmth by Country\nAlternate Plot of Outcome by Time by Individual; First 10 Observations",
+    "text": "2.4 QUESTIONS???",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Two Level Cross Sectional; And Three Level Longitudinal Models</span>"
     ]
