@@ -120,15 +120,17 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 
@@ -178,9 +180,6 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage{bookmark}
 
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -198,7 +197,7 @@
 
 \title{Multilevel Workshop}
 \author{Andrew Grogan-Kaylor}
-\date{2024-10-31}
+\date{2025-05-05}
 
 \begin{document}
 \maketitle
@@ -218,12 +217,61 @@
 
 This site contains materials for a workshop on multilevel modeling.
 
+\section{Background}\label{background}
+
 Multilevel models are useful when you have data that are nested or
 clustered inside social units such as schools, neighborhoods, states, or
 countries.
 
 Multilevel models are also useful when you have longitudinal data where
 repeated measures are collected for study participants.
+
+\section{Simulated Multilevel Data}\label{simulated-multilevel-data}
+
+The data used in these workshop materials are \emph{simulated} data on
+parents, children and families. The data are simulated to come from 30
+hypothetical countries around the world.
+
+There are two versions of the data: a \emph{cross-sectional} data set
+from a single point in time; a \emph{longitudinal} version of the data
+spanning several time points.
+
+\begin{figure}
+
+\centering{
+
+\begin{longtable*}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0833}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3056}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4306}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+pos
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+label
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & country & country id \\
+2 & HDI & Human Development Index \\
+3 & family & family id \\
+4 & id & unique country family id \\
+5 & identity & hypothetical identity group variable \\
+6 & intervention & recieved intervention \\
+7 & physical\_punishment & physical punishment in past week \\
+8 & warmth & parental warmth in past week \\
+9 & outcome & beneficial outcome \\
+\end{longtable*}
+
+}
+
+\caption{\label{fig-describe}Simulated Multilevel Data}
+
+\end{figure}%
 
 \bookmarksetup{startatroot}
 
@@ -285,7 +333,7 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{spagplot1.png}
+{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{spagplot1.png}
 
 }
 
@@ -475,7 +523,7 @@ physical_p~t |      9,000    2.485333    1.373639          0          5
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{spagplot2.png}
+{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{spagplot2.png}
 
 }
 

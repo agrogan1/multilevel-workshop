@@ -2,32 +2,62 @@
 
 This site contains materials for a workshop on multilevel modeling.
 
+## Background
+
 Multilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.
 
 Multilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.
 
-These data are *simulated* data on parents, children and families. The data are simulated to come from 30 hypothetical countries around the world.
+## Simulated Multilevel Data
+
+The data used in these workshop materials are *simulated* data on parents, children and families. The data are simulated to come from 30 hypothetical countries around the world.
+
+There are two versions of the data: a *cross-sectional* data set from a single point in time; a *longitudinal* version of the data spanning several time points.
+
 
 ```{r}
+#| label: fig-globe
+#| fig-cap: "Countries of the World"
+#| warning: false
+#| echo: false
+#| fig-height: 3
 
-library(Statamarkdown)
+if (knitr::is_html_output()) {
+
+library(plotly)
+
+plot_geo() %>%
+  layout(title = "", 
+         geo = list(projection = list(type = 'orthographic'),
+                    showland = TRUE,  
+                    landcolor = toRGB("#1CABE2"),
+                    showcountries = TRUE,
+                    showocean = FALSE, 
+                    oceancolor = "LightBlue",
+                    lataxis = list(showgrid = TRUE,
+                                   gridcolor = toRGB("black")),
+                    lonaxis = list(showgrid = TRUE,
+                                   gridcolor = toRGB("black"))))
+}
 
 ```
 
+```{r}
+#| echo: false
+#| fig-cap: "Simulated Multilevel Data"
+#| label: fig-describe
 
-```{stata, collectcode=TRUE}
+library(haven)
 
-use "simulated_multilevel_data.dta", clear
+library(labelled)
+
+library(pander)
+
+simulated_multilevel_data <- read_dta("simulated_multilevel_data.dta")
+
+pander(labelled::look_for(simulated_multilevel_data)[1:3])
 
 ```
-
-```{stata, collectcode=TRUE}
-
-describe // describe the data
-
-```
-
-
 
 
 

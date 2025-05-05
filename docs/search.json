@@ -4,7 +4,27 @@
     "href": "index.html",
     "title": "Multilevel Workshop",
     "section": "",
-    "text": "1 Introduction\nThis site contains materials for a workshop on multilevel modeling.\nMultilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.\nMultilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.\nThese data are simulated data on parents, children and families. The data are simulated to come from 30 hypothetical countries around the world.\n\nlibrary(Statamarkdown)\n\n\n\nuse \"simulated_multilevel_data.dta\", clear\n\n\n\ndescribe // describe the data",
+    "text": "1 Introduction\nThis site contains materials for a workshop on multilevel modeling.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#background",
+    "href": "index.html#background",
+    "title": "Multilevel Workshop",
+    "section": "1.1 Background",
+    "text": "1.1 Background\nMultilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.\nMultilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#simulated-multilevel-data",
+    "href": "index.html#simulated-multilevel-data",
+    "title": "Multilevel Workshop",
+    "section": "1.2 Simulated Multilevel Data",
+    "text": "1.2 Simulated Multilevel Data\nThe data used in these workshop materials are simulated data on parents, children and families. The data are simulated to come from 30 hypothetical countries around the world.\nThere are two versions of the data: a cross-sectional data set from a single point in time; a longitudinal version of the data spanning several time points.\n\n\n\n\n\n\n\n\nFigure 1.1: Countries of the World\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npos\nvariable\nlabel\n\n\n\n\n1\ncountry\ncountry id\n\n\n2\nHDI\nHuman Development Index\n\n\n3\nfamily\nfamily id\n\n\n4\nid\nunique country family id\n\n\n5\nidentity\nhypothetical identity group variable\n\n\n6\nintervention\nrecieved intervention\n\n\n7\nphysical_punishment\nphysical punishment in past week\n\n\n8\nwarmth\nparental warmth in past week\n\n\n9\noutcome\nbeneficial outcome\n\n\n\n\n\nFigure 1.2: Simulated Multilevel Data",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
