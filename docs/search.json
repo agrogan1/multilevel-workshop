@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Multilevel Workshop",
     "section": "",
-    "text": "1 Introduction\nThis site contains materials for a workshop on multilevel modeling.\nMultilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.\nMultilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.",
+    "text": "1 Introduction\nThis site contains materials for a workshop on multilevel modeling.\nMultilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.\nMultilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.\nThese data are simulated data on parents, children and families. The data are simulated to come from 30 hypothetical countries around the world.\n\nlibrary(Statamarkdown)\n\n\n\nuse \"simulated_multilevel_data.dta\", clear\n\n\n\ndescribe // describe the data",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]

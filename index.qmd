@@ -6,6 +6,27 @@ Multilevel models are useful when you have data that are nested or clustered ins
 
 Multilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.
 
+These data are *simulated* data on parents, children and families. The data are simulated to come from 30 hypothetical countries around the world.
+
+```{r}
+
+library(Statamarkdown)
+
+```
+
+
+```{stata, collectcode=TRUE}
+
+use "simulated_multilevel_data.dta", clear
+
+```
+
+```{stata, collectcode=TRUE}
+
+describe // describe the data
+
+```
+
 
 
 

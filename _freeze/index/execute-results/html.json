@@ -1,0 +1,15 @@
+{
+  "hash": "7626c02a2107ec60e7396626a6369f12",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Introduction\n\nThis site contains materials for a workshop on multilevel modeling.\n\nMultilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.\n\nMultilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.\n\nThese data are *simulated* data on parents, children and families. The data are simulated to come from 30 hypothetical countries around the world.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(Statamarkdown)\n```\n:::\n\n\n\n\n::: {.cell collectcode='true'}\n\n```{.stata .cell-code}\n\nuse \"simulated_multilevel_data.dta\", clear\n\n```\n:::\n\n\n\n::: {.cell collectcode='true'}\n\n```{.stata .cell-code}\n\ndescribe // describe the data\n\n```\n:::\n\n\n\n\n\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
