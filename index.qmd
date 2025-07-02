@@ -14,6 +14,12 @@ The data used in these workshop materials are *simulated* data on parents, child
 
 There are two versions of the data: a *cross-sectional* data set from a single point in time; a *longitudinal* version of the data spanning several time points.
 
+::: {.callout-note collapse="true"}
+### The Data Can Be Downloaded Here:
+
+* [Cross Sectional Data](https://github.com/agrogan1/multilevel-workshop/raw/refs/heads/main/simulated_multilevel_data.dta)
+* [Longitudinal Data](https://github.com/agrogan1/multilevel-workshop/raw/refs/heads/main/simulated_multilevel_longitudinal_data.dta)
+:::
 
 ```{r}
 #| label: fig-globe
