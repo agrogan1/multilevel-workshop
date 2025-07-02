@@ -4,7 +4,9 @@ project:
 
 book:
   title: "Multilevel Workshop"
-  author: "Andrew Grogan-Kaylor"
+  author: 
+    - name: "Andrew Grogan-Kaylor"
+      url: https://agrogan1.github.io/
   date: "today"
   cover-image: multilevel-workshop.png
   downloads: [pdf]
@@ -32,7 +34,7 @@ prefer-html: true
 format:
   html:
     theme: 
-      light: [cosmo, theme-light.scss]
+      light: [yeti, theme-light.scss]
       dark: vapor
     css: multilevel-workshop.css
     lightbox: true
