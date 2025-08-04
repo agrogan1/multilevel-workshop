@@ -3,6 +3,8 @@ blockquote {
   border-left: 3px solid #FFCB05; 
   padding: 0.5em 10px;
 }
-
+img.quarto-cover-image {
+  box-shadow: 9px 9px 7px lightgrey;
+}
 
 
