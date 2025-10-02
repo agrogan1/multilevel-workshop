@@ -223,7 +223,7 @@
 
 \title{Multilevel Workshop}
 \author{Andrew Grogan-Kaylor}
-\date{2025-09-24}
+\date{2025-10-02}
 \begin{document}
 \maketitle
 
@@ -265,7 +265,7 @@ There are two versions of the data: a \emph{cross-sectional} data set
 from a single point in time; a \emph{longitudinal} version of the data
 spanning several time points.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, opacitybacktitle=0.6, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, breakable, toptitle=1mm, titlerule=0mm, arc=.35mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, toptitle=1mm, toprule=.15mm, colback=white, breakable, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, opacityback=0, coltitle=black, rightrule=.15mm, titlerule=0mm, bottomtitle=1mm, bottomrule=.15mm, left=2mm, leftrule=.75mm, opacitybacktitle=0.6]
 
 \begin{itemize}
 \tightlist
@@ -284,7 +284,7 @@ spanning several time points.
   >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3056}}
   >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4306}}@{}}
 
-\caption{\label{tbl-describe}Simulated Multilevel Data}
+\caption{\label{tbl-describe}Variables in Simulated Multilevel Data}
 
 \tabularnewline
 
@@ -309,6 +309,53 @@ label
 7 & physical\_punishment & physical punishment in past week \\
 8 & warmth & parental warmth in past week \\
 9 & outcome & beneficial outcome \\
+
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1000}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0600}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0900}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0800}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1100}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1500}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.2200}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0900}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1000}}@{}}
+
+\caption{\label{tbl-head}Sample Data From Simulated Multilevel Data}
+
+\tabularnewline
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+country
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+HDI
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+family
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+id
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+identity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+intervention
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+physical\_punishment
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+warmth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+outcome
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+22 & 86 & 90 & 22.90 & 1 & 1 & 5 & 3 & 52.73 \\
+2 & 83 & 20 & 2.20 & 1 & 0 & 2 & 3 & 56.6 \\
+26 & 71 & 83 & 26.83 & 1 & 1 & 0 & 2 & 46.99 \\
+19 & 72 & 69 & 19.69 & 1 & 1 & 4 & 2 & 46.72 \\
+17 & 87 & 71 & 17.71 & 1 & 0 & 3 & 6 & 57.26 \\
 
 \end{longtable}
 

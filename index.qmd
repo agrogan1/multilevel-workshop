@@ -70,7 +70,7 @@ plot_geo(df) %>%
 
 ```{r}
 #| echo: false
-#| tbl-cap: "Simulated Multilevel Data"
+#| tbl-cap: "Variables in Simulated Multilevel Data"
 #| label: tbl-describe
 
 library(haven)
@@ -79,12 +79,28 @@ library(labelled)
 
 library(pander)
 
+library(dplyr)
+
 simulated_multilevel_data <- read_dta("simulated_multilevel_data.dta")
 
 pander(labelled::look_for(simulated_multilevel_data)[1:3])
 
 ```
 
+```{r}
+#| echo: false
+#| tbl-cap: "Sample Data From Simulated Multilevel Data"
+#| label: tbl-head
+
+panderOptions('table.split.table', Inf) # pander table width
+
+simulated_multilevel_data %>% 
+  # select(country, HDI, identity, intervention,
+  #        physical_punishment, warmth, outcome) %>%
+  slice_sample(n=5) %>% 
+  pander()
+
+```
 
 
 
