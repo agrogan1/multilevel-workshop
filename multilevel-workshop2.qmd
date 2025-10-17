@@ -20,9 +20,24 @@ quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
 
 ## Introduction
 
-A two level multilevel model imagines that *Level 1* units are nested in *Level 2* units. A three level multilevel model imagines that *Level 1* units are nested in *Level 2* units, which are in turn nested in *Level 3*. 
+A two level multilevel model imagines that *Level 1* units are nested in *Level 2* units. A three level multilevel model imagines that *Level 1* units are nested in *Level 2* units, which are in turn nested in *Level 3* units. 
 
-A cross-classified model imagines that the nesting is not hierarchical, but rather that there are two sets of clusters or nestings in which individuals may be nested. 
+A cross-classified model imagines that the nesting is not hierarchical, but rather that there are two sets of clusters or nestings which overlap, but are not hierarchical. 
+
+```{mermaid}
+%%| echo: false
+%%| eval: false
+
+flowchart LR
+    school1 --> student1
+    school1 --> student2
+    school1 --> student3
+    
+    school2 --> student4
+    school2 --> student5
+    school2 --> student6
+    
+```
 
 ## Get Data
 

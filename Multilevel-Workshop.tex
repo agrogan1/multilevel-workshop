@@ -223,7 +223,7 @@
 
 \title{Multilevel Workshop}
 \author{Andrew Grogan-Kaylor}
-\date{2025-10-02}
+\date{2025-10-17}
 \begin{document}
 \maketitle
 
@@ -265,7 +265,7 @@ There are two versions of the data: a \emph{cross-sectional} data set
 from a single point in time; a \emph{longitudinal} version of the data
 spanning several time points.
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, toptitle=1mm, toprule=.15mm, colback=white, breakable, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, opacityback=0, coltitle=black, rightrule=.15mm, titlerule=0mm, bottomtitle=1mm, bottomrule=.15mm, left=2mm, leftrule=.75mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, bottomtitle=1mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, colback=white, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, coltitle=black, left=2mm]
 
 \begin{itemize}
 \tightlist
@@ -773,11 +773,11 @@ Number of observations                    3000          9000
 A two level multilevel model imagines that \emph{Level 1} units are
 nested in \emph{Level 2} units. A three level multilevel model imagines
 that \emph{Level 1} units are nested in \emph{Level 2} units, which are
-in turn nested in \emph{Level 3}.
+in turn nested in \emph{Level 3} units.
 
 A cross-classified model imagines that the nesting is not hierarchical,
-but rather that there are two sets of clusters or nestings in which
-individuals may be nested.
+but rather that there are two sets of clusters or nestings which
+overlap, but are not hierarchical.
 
 \section{Get Data}\label{get-data-2}
 
@@ -859,14 +859,14 @@ Mixed-effects ML regression                            Number of obs =   9,000
                                                        Wald chi2(3)  = 1168.69
 Log likelihood = -28516.277                            Prob > chi2   =  0.0000
 
--------------------------------------------------------------------------------------
-            outcome | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
---------------------+----------------------------------------------------------------
-                  t |   .9434605    .065866    14.32   0.000     .8143654    1.072556
-             warmth |   .9053924   .0380439    23.80   0.000     .8308277    .9799572
-physical_punishment |  -1.014385   .0499354   -20.31   0.000    -1.112257    -.916514
-              _cons |    50.8301   .4123007   123.28   0.000       50.022    51.63819
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+           outcome | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------------+----------------------------------------------------------------
+                 t |   .9434605    .065866    14.32   0.000     .8143654    1.072556
+            warmth |   .9053924   .0380439    23.80   0.000     .8308277    .9799572
+physical_punishm~t |  -1.014385   .0499354   -20.31   0.000    -1.112257    -.916514
+             _cons |    50.8301   .4123007   123.28   0.000       50.022    51.63819
+------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
@@ -919,14 +919,14 @@ Mixed-effects ML regression                            Number of obs =   9,000
                                                        Wald chi2(3)  = 1168.69
 Log likelihood = -28516.277                            Prob > chi2   =  0.0000
 
--------------------------------------------------------------------------------------
-            outcome | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
---------------------+----------------------------------------------------------------
-                  t |   .9434605    .065866    14.32   0.000     .8143654    1.072556
-             warmth |   .9053924   .0380439    23.80   0.000     .8308277    .9799572
-physical_punishment |  -1.014385   .0499354   -20.31   0.000    -1.112257    -.916514
-              _cons |    50.8301   .4123007   123.28   0.000       50.022    51.63819
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+           outcome | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------------+----------------------------------------------------------------
+                 t |   .9434605    .065866    14.32   0.000     .8143654    1.072556
+            warmth |   .9053924   .0380439    23.80   0.000     .8308277    .9799572
+physical_punishm~t |  -1.014385   .0499354   -20.31   0.000    -1.112257    -.916514
+             _cons |    50.8301   .4123007   123.28   0.000       50.022    51.63819
+------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
