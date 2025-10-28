@@ -21,6 +21,7 @@ book:
     - index.qmd
     - multilevel-workshop.qmd
     - multilevel-workshop2.qmd
+    - references.qmd
     - license-and-citation.qmd
   navbar:
     background: "#00274C"
