@@ -1,3 +1,5 @@
+> "Listening to the world. Well, I did that, and I still do it. I still do it." [Mary Oliver in @Oliver2015]
+
 # Introduction
 
 This site contains materials for a workshop on multilevel modeling.

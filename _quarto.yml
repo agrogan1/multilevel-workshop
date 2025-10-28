@@ -21,11 +21,14 @@ book:
     - index.qmd
     - multilevel-workshop.qmd
     - multilevel-workshop2.qmd
+    - license-and-citation.qmd
   navbar:
     background: "#00274C"
 
 citation:
   url: https://agrogan1.github.io/multilevel-workshop/
+
+bibliography: multilevel-workshop.bib
 
 google-scholar: true
 

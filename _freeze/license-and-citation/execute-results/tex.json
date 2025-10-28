@@ -1,0 +1,21 @@
+{
+  "hash": "6811d78d5bde50ba1fa4f940ea70bfaa",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# License and Citation {.unnumbered}\n\n## License\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](88x31.png){width=0.29in}\n:::\n:::\n\n\n\n*Multilevel Workshop* by [Andrew Grogan-Kaylor](https://agrogan1.github.io/) is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)\n\n## Citation\n\nFor attribution, please cite as:\n\nGrogan-Kaylor (2025). *Multilevel Thinking*. Retrieved from [https://agrogan1.github.io/multilevel-workshop](https://agrogan1.github.io/multilevel-workshop)\n\n## BibTeX Citation\n\n\n```{.default}\n@book{,\n   author = {Andrew Grogan-Kaylor},\n   city = {Ann Arbor, MI},\n   title = {Multilevel Workshop},\n   url = {https://agrogan1.github.io/multilevel-workshop},\n   year = {2025},\n}\n\n```\n\n\n\n\n\n\n\n\n\n\n\n",
+    "supporting": [
+      "license-and-citation_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}

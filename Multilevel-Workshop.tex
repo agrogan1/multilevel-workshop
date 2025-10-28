@@ -133,6 +133,39 @@
 \makeatother
 
 
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
 
@@ -223,7 +256,7 @@
 
 \title{Multilevel Workshop}
 \author{Andrew Grogan-Kaylor}
-\date{2025-10-17}
+\date{2025-10-28}
 \begin{document}
 \maketitle
 
@@ -239,6 +272,11 @@
 \bookmarksetup{startatroot}
 
 \chapter{Introduction}\label{introduction}
+
+\begin{quote}
+``Listening to the world. Well, I did that, and I still do it. I still
+do it.'' (Mary Oliver in Oliver and Tippett 2015)
+\end{quote}
 
 This site contains materials for a workshop on multilevel modeling.
 
@@ -265,7 +303,7 @@ There are two versions of the data: a \emph{cross-sectional} data set
 from a single point in time; a \emph{longitudinal} version of the data
 spanning several time points.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, bottomtitle=1mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, colback=white, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, coltitle=black, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, opacitybacktitle=0.6, arc=.35mm, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, breakable, toptitle=1mm, leftrule=.75mm, bottomtitle=1mm, opacityback=0, titlerule=0mm, left=2mm, bottomrule=.15mm, toprule=.15mm]
 
 \begin{itemize}
 \tightlist
@@ -351,11 +389,11 @@ outcome
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-22 & 86 & 90 & 22.90 & 1 & 1 & 5 & 3 & 52.73 \\
-2 & 83 & 20 & 2.20 & 1 & 0 & 2 & 3 & 56.6 \\
-26 & 71 & 83 & 26.83 & 1 & 1 & 0 & 2 & 46.99 \\
-19 & 72 & 69 & 19.69 & 1 & 1 & 4 & 2 & 46.72 \\
-17 & 87 & 71 & 17.71 & 1 & 0 & 3 & 6 & 57.26 \\
+5 & 83 & 97 & 5.97 & 1 & 1 & 2 & 0 & 41.42 \\
+26 & 71 & 26 & 26.26 & 0 & 1 & 2 & 1 & 56.88 \\
+2 & 83 & 51 & 2.51 & 0 & 0 & 5 & 3 & 47.48 \\
+4 & 37 & 78 & 4.78 & 1 & 1 & 5 & 4 & 47.9 \\
+19 & 72 & 16 & 19.16 & 1 & 1 & 4 & 6 & 46.44 \\
 
 \end{longtable}
 
@@ -1018,6 +1056,61 @@ Number of observations               450        450
 \end{verbatim}
 
 \section{QUESTIONS???}\label{questions}
+
+\bookmarksetup{startatroot}
+
+\chapter*{License and Citation}\label{license-and-citation}
+\addcontentsline{toc}{chapter}{License and Citation}
+
+\markboth{License and Citation}{License and Citation}
+
+\section*{License}\label{license}
+\addcontentsline{toc}{section}{License}
+
+\markright{License}
+
+\includegraphics[width=0.29in,height=\textheight,keepaspectratio]{88x31.png}
+
+\emph{Multilevel Workshop} by \href{https://agrogan1.github.io/}{Andrew
+Grogan-Kaylor} is licensed under a
+\href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons
+Attribution 4.0 International License}
+
+\section*{Citation}\label{citation}
+\addcontentsline{toc}{section}{Citation}
+
+\markright{Citation}
+
+For attribution, please cite as:
+
+Grogan-Kaylor (2025). \emph{Multilevel Thinking}. Retrieved from
+\url{https://agrogan1.github.io/multilevel-workshop}
+
+\section*{BibTeX Citation}\label{bibtex-citation}
+\addcontentsline{toc}{section}{BibTeX Citation}
+
+\markright{BibTeX Citation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{@book\{,}
+\NormalTok{   author = \{Andrew Grogan{-}Kaylor\},}
+\NormalTok{   city = \{Ann Arbor, MI\},}
+\NormalTok{   title = \{Multilevel Workshop\},}
+\NormalTok{   url = \{https://agrogan1.github.io/multilevel{-}workshop\},}
+\NormalTok{   year = \{2025\},}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-Oliver2015}
+Oliver, Mary, and Krista Tippett. 2015. {``{M}ary {O}liver: {`{I} Got
+Saved by the Beauty of the World.'}''} The On Being Project.
+\url{https://onbeing.org/programs/mary-oliver-i-got-saved-by-the-beauty-of-the-world/}.
+
+\end{CSLReferences}
 
 
 

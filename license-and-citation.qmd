@@ -1,0 +1,46 @@
+# License and Citation {.unnumbered}
+
+## License
+
+```{r}
+#| echo: FALSE
+
+knitr::include_graphics("88x31.png")
+
+```
+
+
+*Multilevel Workshop* by [Andrew Grogan-Kaylor](https://agrogan1.github.io/) is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
+
+## Citation
+
+For attribution, please cite as:
+
+Grogan-Kaylor (2025). *Multilevel Thinking*. Retrieved from [https://agrogan1.github.io/multilevel-workshop](https://agrogan1.github.io/multilevel-workshop)
+
+## BibTeX Citation
+
+```{verbatim}
+#| eval: FALSE
+#| echo: TRUE
+
+@book{,
+   author = {Andrew Grogan-Kaylor},
+   city = {Ann Arbor, MI},
+   title = {Multilevel Workshop},
+   url = {https://agrogan1.github.io/multilevel-workshop},
+   year = {2025},
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
