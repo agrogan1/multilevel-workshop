@@ -9,15 +9,19 @@ library(lme4) # MLM
 
 library(ggplot2) # beautiful graphs
 
+library(haven) # read and write to Stata
+
+library(Statamarkdown) # use Stata
+
 # library(gganimate) # animated ggplots
 
 # library(plotly) # animated graphs
 
 # library(broom)
-
-library(pander) # nice tables
-
-library(sjPlot) # nice tables for MLM
+# 
+# library(pander) # nice tables
+# 
+# library(sjPlot) # nice tables for MLM
 
 ```
 
@@ -67,6 +71,8 @@ mydata <- data.frame(id,
                      x_individual, 
                      y_individual)
 
+write_dta(mydata, "clustered_data.dta")
+
 ```
 
 ::: {.callout-note}
@@ -108,21 +114,16 @@ ggplot(mydata,
 
 An OLS analysis indicates that there is a statistically significant association of $x$ and $y$.
 
-```{r}
-#| html-table-processing: none
+```{stata, collectcode=TRUE}
 #| echo: false
 
-myOLS <- lm(y_individual ~ x_individual, data = mydata)
+use clustered_data.dta, clear
 
-# summary(myOLS)
+quietly: regress y_individual x_individual
 
-sjPlot::tab_model(myOLS,
-                  dv.labels = c("OLS"),
-                  show.se = TRUE,
-                  show.ci = FALSE,
-                  show.stat = TRUE)
+est store OLS
 
-# pander(tidy(myOLS))
+etable, estimates(OLS) cstat(_r_b) showstars showstarsnote column(estimate)
 
 ```
 
@@ -130,37 +131,28 @@ sjPlot::tab_model(myOLS,
 
 In contrast, an MLM analysis (correctly) finds that there is no statistically significant association of $x$ and $y$.
 
-```{r}
+```{stata, collectcode=TRUE}
 #| echo: false
 
-myMLM <- lmer(y_individual ~ x_individual + (1 | group_num), 
-              data = mydata)
+use clustered_data.dta, clear
 
-# summary(myMLM)
+quietly: mixed y_individual x_individual || group_num:
 
-sjPlot::tab_model(myMLM,
-                  dv.labels = c("MLM"),
-                  show.se = TRUE,
-                  show.ci = FALSE,
-                  show.stat = TRUE)
+est store MLM
 
-# pander(tidy(myMLM))
+etable, estimates(MLM) cstat(_r_b) showstars showstarsnote column(estimate)
 
 ```
 
 ## Compare OLS and MLM
 
-```{r}
+```{stata}
 #| echo: false
 
-tab_model(myOLS, myMLM,
-          dv.labels = c("OLS", "MLM"), 
-          show.se = TRUE,
-          show.ci = FALSE,
-          show.stat = TRUE)
+etable, estimates(OLS MLM) ///
+cstat(_r_b) showstars showstarsnote column(estimate)
 
 ```
-
 
 
 
