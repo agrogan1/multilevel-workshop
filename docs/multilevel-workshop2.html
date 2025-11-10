@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Cross-Classified Models – Multilevel Workshop</title>
+<title>4&nbsp; Cross-Classified Models – Multilevel Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,15 +114,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="multilevel-workshop.css">
-<meta property="og:title" content="3&nbsp; Cross-Classified Models – Multilevel Workshop">
+<meta property="og:title" content="4&nbsp; Cross-Classified Models – Multilevel Workshop">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="Multilevel Workshop">
-<meta name="twitter:title" content="3&nbsp; Cross-Classified Models – Multilevel Workshop">
+<meta name="twitter:title" content="4&nbsp; Cross-Classified Models – Multilevel Workshop">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
-<meta name="citation_title" content="[3]{.chapter-number}&nbsp; [Cross-Classified Models]{.chapter-title}">
+<meta name="citation_title" content="[4]{.chapter-number}&nbsp; [Cross-Classified Models]{.chapter-title}">
 <meta name="citation_fulltext_html_url" content="https://agrogan1.github.io/multilevel-workshop/">
 <meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Statistics notes: Correlation, regression, and repeated data;,citation_abstract=In clinical research we are often able to take several measurements on the same patient. The correct analysis of such data is more complex than if each patient were measured once. This is because the variability of measurements made on different subjects is usually much greater than the variability between measurements on the same subject, and we must take both kinds of variability into account. For example, we may want to investigate the relation between two variables and take several pairs of readings from each of a group of subjects. Such data violate the assumption of independence inherent in many analyses, such as t …;,citation_author=J M Bland;,citation_author=D G Altman;,citation_publication_date=1994-04;,citation_cover_date=1994-04;,citation_year=1994;,citation_fulltext_html_url=http://www.bmj.com/content/308/6933/896.abstract;,citation_doi=10.1136/bmj.308.6933.896;,citation_volume=308;,citation_journal_title=BMJ;">
 <meta name="citation_reference" content="citation_title=Mary Oliver: “I got saved by the beauty of the world.”;,citation_author=Mary Oliver;,citation_author=Krista Tippett;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_fulltext_html_url=https://onbeing.org/programs/mary-oliver-i-got-saved-by-the-beauty-of-the-world/;,citation_publisher=The On Being Project;">
 </head>
 
@@ -329,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multilevel-workshop2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multilevel-workshop2.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -349,14 +350,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Importance of Accounting for Clustered Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./multilevel-workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multilevel-workshop2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -381,17 +388,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
-  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="header-section-number">3.2</span> Get Data</a></li>
-  <li><a href="#cross-classified-model" id="toc-cross-classified-model" class="nav-link" data-scroll-target="#cross-classified-model"><span class="header-section-number">3.3</span> Cross Classified Model</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a></li>
+  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="header-section-number">4.2</span> Get Data</a></li>
+  <li><a href="#cross-classified-model" id="toc-cross-classified-model" class="nav-link" data-scroll-target="#cross-classified-model"><span class="header-section-number">4.3</span> Cross Classified Model</a>
   <ul class="collapse">
-  <li><a href="#standard-less-computationally-efficient-syntax" id="toc-standard-less-computationally-efficient-syntax" class="nav-link" data-scroll-target="#standard-less-computationally-efficient-syntax"><span class="header-section-number">3.3.1</span> Standard (Less Computationally Efficient) Syntax</a></li>
-  <li><a href="#cross-classified-with-computationally-efficient-syntax" id="toc-cross-classified-with-computationally-efficient-syntax" class="nav-link" data-scroll-target="#cross-classified-with-computationally-efficient-syntax"><span class="header-section-number">3.3.2</span> Cross Classified With Computationally Efficient Syntax</a></li>
+  <li><a href="#standard-less-computationally-efficient-syntax" id="toc-standard-less-computationally-efficient-syntax" class="nav-link" data-scroll-target="#standard-less-computationally-efficient-syntax"><span class="header-section-number">4.3.1</span> Standard (Less Computationally Efficient) Syntax</a></li>
+  <li><a href="#cross-classified-with-computationally-efficient-syntax" id="toc-cross-classified-with-computationally-efficient-syntax" class="nav-link" data-scroll-target="#cross-classified-with-computationally-efficient-syntax"><span class="header-section-number">4.3.2</span> Cross Classified With Computationally Efficient Syntax</a></li>
   </ul></li>
-  <li><a href="#three-level-model" id="toc-three-level-model" class="nav-link" data-scroll-target="#three-level-model"><span class="header-section-number">3.4</span> Three Level Model</a></li>
-  <li><a href="#nice-table-of-results-of-three-level-and-cross-classified-model" id="toc-nice-table-of-results-of-three-level-and-cross-classified-model" class="nav-link" data-scroll-target="#nice-table-of-results-of-three-level-and-cross-classified-model"><span class="header-section-number">3.5</span> Nice Table of Results of Three Level and Cross Classified Model</a></li>
-  <li><a href="#verification-of-syntax-equivalence-for-cross-classified-model" id="toc-verification-of-syntax-equivalence-for-cross-classified-model" class="nav-link" data-scroll-target="#verification-of-syntax-equivalence-for-cross-classified-model"><span class="header-section-number">3.6</span> Verification of Syntax Equivalence for Cross Classified Model</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">3.7</span> QUESTIONS???</a></li>
+  <li><a href="#three-level-model" id="toc-three-level-model" class="nav-link" data-scroll-target="#three-level-model"><span class="header-section-number">4.4</span> Three Level Model</a></li>
+  <li><a href="#nice-table-of-results-of-three-level-and-cross-classified-model" id="toc-nice-table-of-results-of-three-level-and-cross-classified-model" class="nav-link" data-scroll-target="#nice-table-of-results-of-three-level-and-cross-classified-model"><span class="header-section-number">4.5</span> Nice Table of Results of Three Level and Cross Classified Model</a></li>
+  <li><a href="#verification-of-syntax-equivalence-for-cross-classified-model" id="toc-verification-of-syntax-equivalence-for-cross-classified-model" class="nav-link" data-scroll-target="#verification-of-syntax-equivalence-for-cross-classified-model"><span class="header-section-number">4.6</span> Verification of Syntax Equivalence for Cross Classified Model</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">4.7</span> QUESTIONS???</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/agrogan1/multilevel-workshop/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -401,7 +408,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></h1>
 </div>
 
 
@@ -418,8 +425,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
 <p>A two level multilevel model imagines that <em>Level 1</em> units are nested in <em>Level 2</em> units. A three level multilevel model imagines that <em>Level 1</em> units are nested in <em>Level 2</em> units, which are in turn nested in <em>Level 3</em> units.</p>
 <p>A cross-classified model imagines that the nesting is not hierarchical, but rather that there are two sets of clusters or nestings which overlap, but are not hierarchical.</p>
 <div class="cell" data-eval="false" data-layout-align="default">
@@ -434,20 +441,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="get-data" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="get-data"><span class="header-section-number">3.2</span> Get Data</h2>
+<section id="get-data" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="get-data"><span class="header-section-number">4.2</span> Get Data</h2>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"simulated_multilevel_longitudinal_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="cross-classified-model" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="cross-classified-model"><span class="header-section-number">3.3</span> Cross Classified Model</h2>
+<section id="cross-classified-model" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="cross-classified-model"><span class="header-section-number">4.3</span> Cross Classified Model</h2>
 <p>We can treat these random effects as being <em>cross classified</em>.</p>
 <p>This might be useful if we had data where individuals lived in different countries at different times.</p>
 <p>However, because <code>id</code> is in fact nested inside <code>country</code>, in this case, estimating the random effects as cross classified will be more time consuming, but will give us equivalent results to a three level model.</p>
-<section id="standard-less-computationally-efficient-syntax" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="standard-less-computationally-efficient-syntax"><span class="header-section-number">3.3.1</span> Standard (Less Computationally Efficient) Syntax</h3>
+<section id="standard-less-computationally-efficient-syntax" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="standard-less-computationally-efficient-syntax"><span class="header-section-number">4.3.1</span> Standard (Less Computationally Efficient) Syntax</h3>
 <p>The below syntax will take a very long time to run with the full sample, and thus we have commented it out.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -458,8 +465,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The documentation notes that we can use a <em>much</em> more computationally efficient version of the above command, which is what we do in these notes. The user can verify that both versions of the command will produce equivalent results.</p>
 <p>In fact, at the end of handout we verify the similarity of both sets of syntax using a random sample.</p>
 </section>
-<section id="cross-classified-with-computationally-efficient-syntax" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="cross-classified-with-computationally-efficient-syntax"><span class="header-section-number">3.3.2</span> Cross Classified With Computationally Efficient Syntax</h3>
+<section id="cross-classified-with-computationally-efficient-syntax" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="cross-classified-with-computationally-efficient-syntax"><span class="header-section-number">4.3.2</span> Cross Classified With Computationally Efficient Syntax</h3>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mixed outcome t warmth physical_punishment || <span class="dt">_all</span>: R.country || id:</span>
@@ -516,8 +523,8 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 </div>
 </section>
 </section>
-<section id="three-level-model" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="three-level-model"><span class="header-section-number">3.4</span> Three Level Model</h2>
+<section id="three-level-model" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="three-level-model"><span class="header-section-number">4.4</span> Three Level Model</h2>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mixed outcome t warmth physical_punishment || country: || id:  <span class="co">// 3 level w/ random intercepts only</span></span>
@@ -573,8 +580,8 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 </div>
 </div>
 </section>
-<section id="nice-table-of-results-of-three-level-and-cross-classified-model" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="nice-table-of-results-of-three-level-and-cross-classified-model"><span class="header-section-number">3.5</span> Nice Table of Results of Three Level and Cross Classified Model</h2>
+<section id="nice-table-of-results-of-three-level-and-cross-classified-model" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="nice-table-of-results-of-three-level-and-cross-classified-model"><span class="header-section-number">4.5</span> Nice Table of Results of Three Level and Cross Classified Model</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(threelevel crossed2), <span class="co">///</span></span>
@@ -588,8 +595,8 @@ r(198);</code></pre>
 </div>
 </div>
 </section>
-<section id="verification-of-syntax-equivalence-for-cross-classified-model" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="verification-of-syntax-equivalence-for-cross-classified-model"><span class="header-section-number">3.6</span> Verification of Syntax Equivalence for Cross Classified Model</h2>
+<section id="verification-of-syntax-equivalence-for-cross-classified-model" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="verification-of-syntax-equivalence-for-cross-classified-model"><span class="header-section-number">4.6</span> Verification of Syntax Equivalence for Cross Classified Model</h2>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="kw">family</span> &lt;= 5 <span class="co">// random sample of families</span></span>
@@ -638,8 +645,8 @@ Number of observations               450        450
 </div>
 </div>
 </section>
-<section id="questions" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="questions"><span class="header-section-number">3.7</span> QUESTIONS???</h2>
+<section id="questions" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="questions"><span class="header-section-number">4.7</span> QUESTIONS???</h2>
 
 
 </section>
@@ -1060,7 +1067,7 @@ Number of observations               450        450
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./multilevel-workshop.html" class="pagination-link" aria-label="Two Level Cross Sectional; And Three Level Longitudinal Models">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

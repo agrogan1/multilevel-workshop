@@ -10,6 +10,15 @@ Multilevel models are useful when you have data that are nested or clustered ins
 
 Multilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.
 
+::: {.callout-tip}
+### The Importance of Multilevel Models
+
+Multilevel models may improve one's statistical inferences in two important substantive ways.
+
+* Multilevel models adjust standard errors for clustering, and thus calculate appropriate p values. Failure to use a model that accounts for the clustering in the data may lead to improperly calculated standard errors and p values, possibly leading to false attributions of statistical significance (false positives). (See @sec-clustering).
+* Multilevel models adjust regression coefficients ($\beta$'s) for the presence of clustering. Failure to use a model that accounts for the clustering in the data may lead to improperly calculated regression coefficients ($\beta$'s) which may have the wrong magnitude, the wrong statistical significance, and even the wrong sign.
+:::
+
 ## Simulated Multilevel Data
 
 The data used in these workshop materials are *simulated* data on parents, children and families. The data are simulated to come from 30 hypothetical countries around the world. These are the same data used and discussed in my book *[Multilevel Thinking: Discovering Variation, Universals, and Particulars in Cross-Cultural Research](https://academic.oup.com/book/60530)*.

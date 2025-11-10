@@ -10,6 +10,7 @@ library(Statamarkdown)
 
 ```{r}
 #| echo: false
+#| eval: true
 #| output: false
 
 file.copy("../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", 

@@ -19,6 +19,7 @@ book:
   sharing: [facebook, linkedin]
   chapters:
     - index.qmd
+    - clustering.qmd
     - multilevel-workshop.qmd
     - multilevel-workshop2.qmd
     - references.qmd
