@@ -87,10 +87,10 @@ The graph below illustrates the process of simulating the data.
 ggplot(mydata,
        aes(color = factor(group_num),
            label = group_num)) +
-  geom_segment(aes(x = x_individual, 
-                   y = y_individual, 
-                   xend = x_group, 
-                   yend = y_group),
+  geom_segment(aes(x = x_group, 
+                   y = y_group, 
+                   xend = x_individual, 
+                   yend = y_individual),
                color = "red") +
   geom_point(aes(x = x_individual, 
                  y = y_individual),
