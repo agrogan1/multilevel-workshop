@@ -87,6 +87,15 @@ The graph below illustrates the process of simulating the data.
 ggplot(mydata,
        aes(color = factor(group_num),
            label = group_num)) +
+  geom_segment(aes(x = x_individual, 
+                   y = y_individual, 
+                   xend = x_group, 
+                   yend = y_group),
+               color = "red") +
+  geom_point(aes(x = x_individual, 
+                 y = y_individual),
+             size = 3,
+             show.legend = FALSE) +   
   geom_point(aes(x = x_group, 
                  y = y_group),
              size = 10,
@@ -96,10 +105,6 @@ ggplot(mydata,
             color = "white",
             size = 7,
             show.legend = FALSE) +
-  geom_point(aes(x = x_individual, 
-                y = y_individual),
-             size = 3,
-             show.legend = FALSE) + 
   labs(title = "Illustrating the Process of Simulating Clustered Data",
        x = "x",
        y = "y") +
