@@ -408,12 +408,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#grouped-and-individual-data" id="toc-grouped-and-individual-data" class="nav-link active" data-scroll-target="#grouped-and-individual-data"><span class="header-section-number">3</span> Grouped and Individual Data</a></li>
-  <li><a href="#analyses" id="toc-analyses" class="nav-link" data-scroll-target="#analyses"><span class="header-section-number">4</span> Analyses</a>
+  <li><a href="#grouped-and-individual-data" id="toc-grouped-and-individual-data" class="nav-link active" data-scroll-target="#grouped-and-individual-data"><span class="header-section-number">2.1</span> Grouped and Individual Data</a></li>
+  <li><a href="#analyses" id="toc-analyses" class="nav-link" data-scroll-target="#analyses"><span class="header-section-number">2.2</span> Analyses</a>
   <ul class="collapse">
-  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols"><span class="header-section-number">4.1</span> OLS</a></li>
-  <li><a href="#mlm" id="toc-mlm" class="nav-link" data-scroll-target="#mlm"><span class="header-section-number">4.2</span> MLM</a></li>
-  <li><a href="#compare-ols-and-mlm" id="toc-compare-ols-and-mlm" class="nav-link" data-scroll-target="#compare-ols-and-mlm"><span class="header-section-number">4.3</span> Compare OLS and MLM</a></li>
+  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols"><span class="header-section-number">2.2.1</span> OLS</a></li>
+  <li><a href="#mlm" id="toc-mlm" class="nav-link" data-scroll-target="#mlm"><span class="header-section-number">2.2.2</span> MLM</a></li>
+  <li><a href="#compare-ols-and-mlm" id="toc-compare-ols-and-mlm" class="nav-link" data-scroll-target="#compare-ols-and-mlm"><span class="header-section-number">2.2.3</span> Compare OLS and MLM</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/agrogan1/multilevel-workshop/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -441,8 +441,8 @@ window.Quarto = {
 </header>
 
 
-<section id="grouped-and-individual-data" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Grouped and Individual Data</h1>
+<section id="grouped-and-individual-data" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="grouped-and-individual-data"><span class="header-section-number">2.1</span> Grouped and Individual Data</h2>
 <p><span class="citation" data-cites="BlandAltman1994">Bland and Altman (<a href="references.html#ref-BlandAltman1994" role="doc-biblioref">1994</a>)</span> suggested the following procedure for simulating some data:</p>
 <blockquote class="blockquote">
 <p>“The data were generated from random numbers, and there is no relation between X and Y at all. Firstly, values of X and Y were generated for each ‘subject,’ then a further random number was added to make the individual observation.” <span class="citation" data-cites="BlandAltman1994">(<a href="references.html#ref-BlandAltman1994" role="doc-biblioref">Bland and Altman 1994</a>)</span></p>
@@ -471,10 +471,10 @@ Simulating The Data
 </div>
 </div>
 </section>
-<section id="analyses" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Analyses</h1>
-<section id="ols" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="ols"><span class="header-section-number">4.1</span> OLS</h2>
+<section id="analyses" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="analyses"><span class="header-section-number">2.2</span> Analyses</h2>
+<section id="ols" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="ols"><span class="header-section-number">2.2.1</span> OLS</h3>
 <p>An OLS analysis indicates that there is a statistically significant association of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <div class="cell" data-collectcode="true">
 <div class="cell-output cell-output-stdout">
@@ -488,8 +488,8 @@ Number of observations    25
 </div>
 </div>
 </section>
-<section id="mlm" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="mlm"><span class="header-section-number">4.2</span> MLM</h2>
+<section id="mlm" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="mlm"><span class="header-section-number">2.2.2</span> MLM</h3>
 <p>In contrast, an MLM analysis (correctly) finds that there is no statistically significant association of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <div class="cell" data-collectcode="true">
 <div class="cell-output cell-output-stdout">
@@ -505,8 +505,8 @@ Number of observations     25
 </div>
 </div>
 </section>
-<section id="compare-ols-and-mlm" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="compare-ols-and-mlm"><span class="header-section-number">4.3</span> Compare OLS and MLM</h2>
+<section id="compare-ols-and-mlm" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="compare-ols-and-mlm"><span class="header-section-number">2.2.3</span> Compare OLS and MLM</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>                          OLS      MLM   

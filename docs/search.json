@@ -34,37 +34,27 @@
     "href": "clustering.html",
     "title": "2  The Importance of Accounting for Clustered Data",
     "section": "",
-    "text": "3 Grouped and Individual Data\nBland and Altman (1994) suggested the following procedure for simulating some data:\nSo… we follow their procedure.",
+    "text": "2.1 Grouped and Individual Data\nBland and Altman (1994) suggested the following procedure for simulating some data:\nSo… we follow their procedure.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Importance of Accounting for Clustered Data</span>"
     ]
   },
   {
-    "objectID": "clustering.html#ols",
-    "href": "clustering.html#ols",
+    "objectID": "clustering.html#grouped-and-individual-data",
+    "href": "clustering.html#grouped-and-individual-data",
     "title": "2  The Importance of Accounting for Clustered Data",
-    "section": "4.1 OLS",
-    "text": "4.1 OLS\nAn OLS analysis indicates that there is a statistically significant association of \\(x\\) and \\(y\\).\n\n\n                          OLS  \n-------------------------------\nx_individual           1.046 **\nIntercept              4.488   \nNumber of observations    25   \n-------------------------------\n** p&lt;.01, * p&lt;.05",
+    "section": "",
+    "text": "“The data were generated from random numbers, and there is no relation between X and Y at all. Firstly, values of X and Y were generated for each ‘subject,’ then a further random number was added to make the individual observation.” (Bland and Altman 1994)\n\n\n\n\n\n\n\n\nSimulating The Data\n\n\n\nThe graph below illustrates the process of simulating the data.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Importance of Accounting for Clustered Data</span>"
     ]
   },
   {
-    "objectID": "clustering.html#mlm",
-    "href": "clustering.html#mlm",
+    "objectID": "clustering.html#analyses",
+    "href": "clustering.html#analyses",
     "title": "2  The Importance of Accounting for Clustered Data",
-    "section": "4.2 MLM",
-    "text": "4.2 MLM\nIn contrast, an MLM analysis (correctly) finds that there is no statistically significant association of \\(x\\) and \\(y\\).\n\n\n                          MLM   \n--------------------------------\nx_individual            0.039   \nIntercept              97.005 **\nvar(_cons)             74.523   \nvar(e)                  0.594   \nNumber of observations     25   \n--------------------------------\n** p&lt;.01, * p&lt;.05",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Importance of Accounting for Clustered Data</span>"
-    ]
-  },
-  {
-    "objectID": "clustering.html#compare-ols-and-mlm",
-    "href": "clustering.html#compare-ols-and-mlm",
-    "title": "2  The Importance of Accounting for Clustered Data",
-    "section": "4.3 Compare OLS and MLM",
-    "text": "4.3 Compare OLS and MLM\n\n\n                          OLS      MLM   \n-----------------------------------------\nx_individual           1.046 **  0.039   \nIntercept              4.488    97.005 **\nvar(_cons)                      74.523   \nvar(e)                           0.594   \nNumber of observations    25        25   \n-----------------------------------------\n** p&lt;.01, * p&lt;.05\n\n\n\n\n\n\nBland, J M, and D G Altman. 1994. “Statistics Notes: Correlation, Regression, and Repeated Data.” BMJ 308 (April): 896. https://doi.org/10.1136/bmj.308.6933.896.",
+    "section": "2.2 Analyses",
+    "text": "2.2 Analyses\n\n2.2.1 OLS\nAn OLS analysis indicates that there is a statistically significant association of \\(x\\) and \\(y\\).\n\n\n                          OLS  \n-------------------------------\nx_individual           1.046 **\nIntercept              4.488   \nNumber of observations    25   \n-------------------------------\n** p&lt;.01, * p&lt;.05\n\n\n\n\n2.2.2 MLM\nIn contrast, an MLM analysis (correctly) finds that there is no statistically significant association of \\(x\\) and \\(y\\).\n\n\n                          MLM   \n--------------------------------\nx_individual            0.039   \nIntercept              97.005 **\nvar(_cons)             74.523   \nvar(e)                  0.594   \nNumber of observations     25   \n--------------------------------\n** p&lt;.01, * p&lt;.05\n\n\n\n\n2.2.3 Compare OLS and MLM\n\n\n                          OLS      MLM   \n-----------------------------------------\nx_individual           1.046 **  0.039   \nIntercept              4.488    97.005 **\nvar(_cons)                      74.523   \nvar(e)                           0.594   \nNumber of observations    25        25   \n-----------------------------------------\n** p&lt;.01, * p&lt;.05\n\n\n\n\n\n\nBland, J M, and D G Altman. 1994. “Statistics Notes: Correlation, Regression, and Repeated Data.” BMJ 308 (April): 896. https://doi.org/10.1136/bmj.308.6933.896.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Importance of Accounting for Clustered Data</span>"
     ]

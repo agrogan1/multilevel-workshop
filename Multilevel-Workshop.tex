@@ -256,7 +256,7 @@
 
 \title{Multilevel Workshop}
 \author{Andrew Grogan-Kaylor}
-\date{2025-11-10}
+\date{2025-11-11}
 \begin{document}
 \maketitle
 
@@ -289,7 +289,7 @@ countries.
 Multilevel models are also useful when you have longitudinal data where
 repeated measures are collected for study participants.
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, bottomtitle=1mm, opacitybacktitle=0.6, coltitle=black, colback=white, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{The Importance of Multilevel Models}, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, rightrule=.15mm, bottomrule=.15mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, breakable, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{The Importance of Multilevel Models}, opacityback=0, colback=white, coltitle=black, colframe=quarto-callout-tip-color-frame, leftrule=.75mm, toprule=.15mm, arc=.35mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, left=2mm]
 
 Multilevel models may improve one's statistical inferences in two
 important substantive ways.
@@ -327,7 +327,7 @@ There are two versions of the data: a \emph{cross-sectional} data set
 from a single point in time; a \emph{longitudinal} version of the data
 spanning several time points.
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, bottomtitle=1mm, opacitybacktitle=0.6, coltitle=black, colback=white, leftrule=.75mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, bottomrule=.15mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, breakable, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, opacityback=0, colback=white, coltitle=black, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toprule=.15mm, arc=.35mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, left=2mm]
 
 \begin{itemize}
 \tightlist
@@ -426,9 +426,7 @@ outcome
 \chapter{The Importance of Accounting for Clustered
 Data}\label{sec-clustering}
 
-\bookmarksetup{startatroot}
-
-\chapter{Grouped and Individual Data}\label{grouped-and-individual-data}
+\section{Grouped and Individual Data}\label{grouped-and-individual-data}
 
 Bland and Altman (1994) suggested the following procedure for simulating
 some data:
@@ -442,7 +440,7 @@ individual observation.'' (Bland and Altman 1994)
 
 So\ldots{} we follow their procedure.
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, bottomtitle=1mm, opacitybacktitle=0.6, coltitle=black, colback=white, leftrule=.75mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Simulating The Data}, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, bottomrule=.15mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, breakable, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Simulating The Data}, opacityback=0, colback=white, coltitle=black, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toprule=.15mm, arc=.35mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, left=2mm]
 
 The graph below illustrates the process of simulating the data.
 
@@ -450,11 +448,9 @@ The graph below illustrates the process of simulating the data.
 
 \pandocbounded{\includegraphics[keepaspectratio]{clustering_files/figure-pdf/unnamed-chunk-3-1.pdf}}
 
-\bookmarksetup{startatroot}
+\section{Analyses}\label{analyses}
 
-\chapter{Analyses}\label{analyses}
-
-\section{OLS}\label{ols}
+\subsection{OLS}\label{ols}
 
 An OLS analysis indicates that there is a statistically significant
 association of \(x\) and \(y\).
@@ -469,7 +465,7 @@ Number of observations    25
 ** p<.01, * p<.05
 \end{verbatim}
 
-\section{MLM}\label{mlm}
+\subsection{MLM}\label{mlm}
 
 In contrast, an MLM analysis (correctly) finds that there is no
 statistically significant association of \(x\) and \(y\).
@@ -486,7 +482,7 @@ Number of observations     25
 ** p<.01, * p<.05
 \end{verbatim}
 
-\section{Compare OLS and MLM}\label{compare-ols-and-mlm}
+\subsection{Compare OLS and MLM}\label{compare-ols-and-mlm}
 
 \begin{verbatim}
                           OLS      MLM   

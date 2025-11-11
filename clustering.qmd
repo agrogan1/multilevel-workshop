@@ -26,7 +26,7 @@ library(Statamarkdown) # use Stata
 ```
 
 
-# Grouped and Individual Data
+## Grouped and Individual Data
 
 @BlandAltman1994 suggested the following procedure for simulating some data:
 
@@ -76,7 +76,7 @@ write_dta(mydata, "clustered_data.dta")
 ```
 
 ::: {.callout-note}
-## Simulating The Data
+### Simulating The Data
 
 The graph below illustrates the process of simulating the data.
 :::
@@ -113,9 +113,9 @@ ggplot(mydata,
 
 ```
 
-# Analyses
+## Analyses
 
-## OLS
+### OLS
 
 An OLS analysis indicates that there is a statistically significant association of $x$ and $y$.
 
@@ -132,7 +132,7 @@ etable, estimates(OLS) cstat(_r_b) showstars showstarsnote column(estimate)
 
 ```
 
-## MLM
+### MLM
 
 In contrast, an MLM analysis (correctly) finds that there is no statistically significant association of $x$ and $y$.
 
@@ -149,7 +149,7 @@ etable, estimates(MLM) cstat(_r_b) showstars showstarsnote column(estimate)
 
 ```
 
-## Compare OLS and MLM
+### Compare OLS and MLM
 
 ```{stata}
 #| echo: false
