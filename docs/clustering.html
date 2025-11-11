@@ -50,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./multilevel-workshop.html" rel="next">
+<link href="./multilevel-structure.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -145,6 +145,10 @@ window.Quarto = {
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Statistics notes: Correlation, regression, and repeated data;,citation_abstract=In clinical research we are often able to take several measurements on the same patient. The correct analysis of such data is more complex than if each patient were measured once. This is because the variability of measurements made on different subjects is usually much greater than the variability between measurements on the same subject, and we must take both kinds of variability into account. For example, we may want to investigate the relation between two variables and take several pairs of readings from each of a group of subjects. Such data violate the assumption of independence inherent in many analyses, such as t …;,citation_author=J M Bland;,citation_author=D G Altman;,citation_publication_date=1994-04;,citation_cover_date=1994-04;,citation_year=1994;,citation_fulltext_html_url=http://www.bmj.com/content/308/6933/896.abstract;,citation_doi=10.1136/bmj.308.6933.896;,citation_volume=308;,citation_journal_title=BMJ;">
 <meta name="citation_reference" content="citation_title=Mary Oliver: “I got saved by the beauty of the world.”;,citation_author=Mary Oliver;,citation_author=Krista Tippett;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_fulltext_html_url=https://onbeing.org/programs/mary-oliver-i-got-saved-by-the-beauty-of-the-world/;,citation_publisher=The On Being Project;">
+<meta name="citation_reference" content="citation_title=Ecological fallacy, statistics of;,citation_abstract=Researchers are said to commit the “ecological fallacy” when they make untested inferences about individual-level relationships from aggregate data. That practice is called a fallacy because it is based on the problematic assumption that relationships that hold at one level of aggregation also hold at another level of aggregation. Because individual-level data often are unavailable, researchers are subject to the ecological fallacy in virtually all the social and behavioral sciences, from history to political science to epidemiology. An expanding technical literature continues to seek solutions to the problem.;,citation_author=Glen Firebaugh;,citation_editor=Neil J. Smelser;,citation_editor=Paul B. Baltes;,citation_publication_date=2001;,citation_cover_date=2001;,citation_year=2001;,citation_doi=https://doi.org/10.1016/B0-08-043076-7/00765-8;,citation_isbn=978-0-08-043076-8;,citation_inbook_title=International encyclopedia of the social &amp;amp;amp; behavioral sciences;">
+<meta name="citation_reference" content="citation_title=Association, aggregation, and paradoxes: On the positive correlation between fertility and women’s employment;,citation_author=Rense Nieuwenhuis;,citation_publication_date=2015-03;,citation_cover_date=2015-03;,citation_year=2015;,citation_fulltext_html_url=https://www.demographic-research.org/volumes/vol32/23/;,citation_volume=32;,citation_journal_title=Demographic Research;">
+<meta name="citation_reference" content="citation_title=Rich state, poor state, red state, blue state: What’s the matter with Connecticut?;,citation_abstract=For decades, the Democrats have been viewed as the party of the poor, with the Republicans representing the rich. Recent presidential elections, however, have shown a reverse pattern, with Democrats performing well in the richer blue states in the northeast and coasts, and Republicans dominating in the red states in the middle of the country and the south. Through multilevel modeling of individual-level survey data and county-and state-level demographic and electoral data, we reconcile these patterns. Furthermore, we find that income matters more in red America than in blue America. In poor states, rich people are much more likely than poor people to vote for the Republican presidential candidate, but in rich states (such as Connecticut), income has a very low correlation with vote preference.;,citation_author=Andrew Gelman;,citation_author=Boris Shor;,citation_author=Joseph Bafumi;,citation_author=David Park;,citation_publication_date=2007-11;,citation_cover_date=2007-11;,citation_year=2007;,citation_doi=10.2139/ssrn.1010426;,citation_volume=2;,citation_journal_title=Quarterly Journal of Political Science;">
+<meta name="citation_reference" content="citation_title=Potentialities and limitations of multilevel analysis in public health and epidemiology;,citation_author=Ana Diez Roux;,citation_editor=Daniel Courgeau;,citation_publication_date=2003;,citation_cover_date=2003;,citation_year=2003;,citation_inbook_title=Methodology and epistemology of multilevel analysis: Approaches from different social sciences;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -376,14 +380,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./multilevel-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation of <span class="math inline">\(\beta\)</span> Coefficients</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./multilevel-workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multilevel-workshop2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -478,7 +488,7 @@ Simulating The Data
 <p>An OLS analysis indicates that there is a statistically significant association of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <div class="cell" data-collectcode="true">
 <div class="cell-output cell-output-stdout">
-<pre><code>                          OLS  
+<pre><code>                         OLS1  
 -------------------------------
 x_individual           1.046 **
 Intercept              4.488   
@@ -493,7 +503,7 @@ Number of observations    25
 <p>In contrast, an MLM analysis (correctly) finds that there is no statistically significant association of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <div class="cell" data-collectcode="true">
 <div class="cell-output cell-output-stdout">
-<pre><code>                          MLM   
+<pre><code>                          MLM1  
 --------------------------------
 x_individual            0.039   
 Intercept              97.005 **
@@ -509,7 +519,7 @@ Number of observations     25
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="compare-ols-and-mlm"><span class="header-section-number">2.2.3</span> Compare OLS and MLM</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>                          OLS      MLM   
+<pre><code>                         OLS1      MLM1  
 -----------------------------------------
 x_individual           1.046 **  0.039   
 Intercept              4.488    97.005 **
@@ -950,8 +960,8 @@ Bland, J M, and D G Altman. 1994. <span>“Statistics Notes: Correlation, Regres
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./multilevel-workshop.html" class="pagination-link" aria-label="Two Level Cross Sectional; And Three Level Longitudinal Models">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./multilevel-structure.html" class="pagination-link" aria-label="Estimation of $\beta$ Coefficients">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation of <span class="math inline">\(\beta\)</span> Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

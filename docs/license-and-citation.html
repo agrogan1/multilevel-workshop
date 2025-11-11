@@ -111,6 +111,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="multilevel-workshop.css">
 <meta property="og:title" content="License and Citation – Multilevel Workshop">
@@ -130,6 +159,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Statistics notes: Correlation, regression, and repeated data;,citation_abstract=In clinical research we are often able to take several measurements on the same patient. The correct analysis of such data is more complex than if each patient were measured once. This is because the variability of measurements made on different subjects is usually much greater than the variability between measurements on the same subject, and we must take both kinds of variability into account. For example, we may want to investigate the relation between two variables and take several pairs of readings from each of a group of subjects. Such data violate the assumption of independence inherent in many analyses, such as t …;,citation_author=J M Bland;,citation_author=D G Altman;,citation_publication_date=1994-04;,citation_cover_date=1994-04;,citation_year=1994;,citation_fulltext_html_url=http://www.bmj.com/content/308/6933/896.abstract;,citation_doi=10.1136/bmj.308.6933.896;,citation_volume=308;,citation_journal_title=BMJ;">
 <meta name="citation_reference" content="citation_title=Mary Oliver: “I got saved by the beauty of the world.”;,citation_author=Mary Oliver;,citation_author=Krista Tippett;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_fulltext_html_url=https://onbeing.org/programs/mary-oliver-i-got-saved-by-the-beauty-of-the-world/;,citation_publisher=The On Being Project;">
+<meta name="citation_reference" content="citation_title=Ecological fallacy, statistics of;,citation_abstract=Researchers are said to commit the “ecological fallacy” when they make untested inferences about individual-level relationships from aggregate data. That practice is called a fallacy because it is based on the problematic assumption that relationships that hold at one level of aggregation also hold at another level of aggregation. Because individual-level data often are unavailable, researchers are subject to the ecological fallacy in virtually all the social and behavioral sciences, from history to political science to epidemiology. An expanding technical literature continues to seek solutions to the problem.;,citation_author=Glen Firebaugh;,citation_editor=Neil J. Smelser;,citation_editor=Paul B. Baltes;,citation_publication_date=2001;,citation_cover_date=2001;,citation_year=2001;,citation_doi=https://doi.org/10.1016/B0-08-043076-7/00765-8;,citation_isbn=978-0-08-043076-8;,citation_inbook_title=International encyclopedia of the social &amp;amp;amp; behavioral sciences;">
+<meta name="citation_reference" content="citation_title=Association, aggregation, and paradoxes: On the positive correlation between fertility and women’s employment;,citation_author=Rense Nieuwenhuis;,citation_publication_date=2015-03;,citation_cover_date=2015-03;,citation_year=2015;,citation_fulltext_html_url=https://www.demographic-research.org/volumes/vol32/23/;,citation_volume=32;,citation_journal_title=Demographic Research;">
+<meta name="citation_reference" content="citation_title=Rich state, poor state, red state, blue state: What’s the matter with Connecticut?;,citation_abstract=For decades, the Democrats have been viewed as the party of the poor, with the Republicans representing the rich. Recent presidential elections, however, have shown a reverse pattern, with Democrats performing well in the richer blue states in the northeast and coasts, and Republicans dominating in the red states in the middle of the country and the south. Through multilevel modeling of individual-level survey data and county-and state-level demographic and electoral data, we reconcile these patterns. Furthermore, we find that income matters more in red America than in blue America. In poor states, rich people are much more likely than poor people to vote for the Republican presidential candidate, but in rich states (such as Connecticut), income has a very low correlation with vote preference.;,citation_author=Andrew Gelman;,citation_author=Boris Shor;,citation_author=Joseph Bafumi;,citation_author=David Park;,citation_publication_date=2007-11;,citation_cover_date=2007-11;,citation_year=2007;,citation_doi=10.2139/ssrn.1010426;,citation_volume=2;,citation_journal_title=Quarterly Journal of Political Science;">
+<meta name="citation_reference" content="citation_title=Potentialities and limitations of multilevel analysis in public health and epidemiology;,citation_author=Ana Diez Roux;,citation_editor=Daniel Courgeau;,citation_publication_date=2003;,citation_cover_date=2003;,citation_year=2003;,citation_inbook_title=Methodology and epistemology of multilevel analysis: Approaches from different social sciences;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -361,14 +394,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./multilevel-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation of <span class="math inline">\(\beta\)</span> Coefficients</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./multilevel-workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Two Level Cross Sectional; And Three Level Longitudinal Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multilevel-workshop2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cross-Classified Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">

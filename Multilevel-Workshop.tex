@@ -289,7 +289,7 @@ countries.
 Multilevel models are also useful when you have longitudinal data where
 repeated measures are collected for study participants.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{The Importance of Multilevel Models}, opacityback=0, colback=white, coltitle=black, colframe=quarto-callout-tip-color-frame, leftrule=.75mm, toprule=.15mm, arc=.35mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, colback=white, leftrule=.75mm, coltitle=black, toptitle=1mm, bottomrule=.15mm, bottomtitle=1mm, opacitybacktitle=0.6, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{The Importance of Multilevel Models}, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, left=2mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm]
 
 Multilevel models may improve one's statistical inferences in two
 important substantive ways.
@@ -301,14 +301,15 @@ important substantive ways.
   calculate appropriate p values. Failure to use a model that accounts
   for the clustering in the data may lead to improperly calculated
   standard errors and p values, possibly leading to false attributions
-  of statistical significance (false positives). (See
+  of statistical significance (false positives) (see
   Chapter~\ref{sec-clustering}).
 \item
   Multilevel models adjust regression coefficients (\(\beta\)'s) for the
   presence of clustering. Failure to use a model that accounts for the
   clustering in the data may lead to improperly calculated regression
   coefficients (\(\beta\)'s) which may have the wrong magnitude, the
-  wrong statistical significance, and even the wrong sign.
+  wrong statistical significance, and even the wrong sign (see
+  Chapter~\ref{sec-multilevelstructure}).
 \end{itemize}
 
 \end{tcolorbox}
@@ -327,7 +328,7 @@ There are two versions of the data: a \emph{cross-sectional} data set
 from a single point in time; a \emph{longitudinal} version of the data
 spanning several time points.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, opacityback=0, colback=white, coltitle=black, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toprule=.15mm, arc=.35mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, colback=white, leftrule=.75mm, coltitle=black, toptitle=1mm, bottomrule=.15mm, bottomtitle=1mm, opacitybacktitle=0.6, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, breakable, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm]
 
 \begin{itemize}
 \tightlist
@@ -413,11 +414,11 @@ outcome
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-5 & 83 & 52 & 5.52 & 0 & 1 & 0 & 3 & 55.99 \\
-4 & 37 & 89 & 4.89 & 0 & 1 & 4 & 4 & 48.05 \\
-10 & 59 & 90 & 10.90 & 0 & 0 & 4 & 5 & 60.69 \\
-24 & 82 & 90 & 24.90 & 1 & 0 & 3 & 5 & 51.63 \\
-19 & 72 & 86 & 19.86 & 1 & 1 & 4 & 2 & 38.08 \\
+15 & 77 & 59 & 15.59 & 0 & 0 & 3 & 6 & 57.13 \\
+2 & 83 & 49 & 2.49 & 0 & 1 & 3 & 4 & 57.51 \\
+16 & 57 & 50 & 16.50 & 1 & 0 & 1 & 5 & 51 \\
+24 & 82 & 38 & 24.38 & 0 & 0 & 1 & 6 & 59.41 \\
+28 & 53 & 32 & 28.32 & 0 & 0 & 5 & 2 & 45.1 \\
 
 \end{longtable}
 
@@ -440,7 +441,7 @@ individual observation.'' (Bland and Altman 1994)
 
 So\ldots{} we follow their procedure.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Simulating The Data}, opacityback=0, colback=white, coltitle=black, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toprule=.15mm, arc=.35mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, colback=white, leftrule=.75mm, coltitle=black, toptitle=1mm, bottomrule=.15mm, bottomtitle=1mm, opacitybacktitle=0.6, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Simulating The Data}, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, breakable, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm]
 
 The graph below illustrates the process of simulating the data.
 
@@ -456,7 +457,7 @@ An OLS analysis indicates that there is a statistically significant
 association of \(x\) and \(y\).
 
 \begin{verbatim}
-                          OLS  
+                         OLS1  
 -------------------------------
 x_individual           1.046 **
 Intercept              4.488   
@@ -471,7 +472,7 @@ In contrast, an MLM analysis (correctly) finds that there is no
 statistically significant association of \(x\) and \(y\).
 
 \begin{verbatim}
-                          MLM   
+                          MLM1  
 --------------------------------
 x_individual            0.039   
 Intercept              97.005 **
@@ -485,7 +486,7 @@ Number of observations     25
 \subsection{Compare OLS and MLM}\label{compare-ols-and-mlm}
 
 \begin{verbatim}
-                          OLS      MLM   
+                         OLS1      MLM1  
 -----------------------------------------
 x_individual           1.046 **  0.039   
 Intercept              4.488    97.005 **
@@ -495,6 +496,117 @@ Number of observations    25        25
 -----------------------------------------
 ** p<.01, * p<.05
 \end{verbatim}
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{Estimation of \(\beta\)
+Coefficients}{Estimation of \textbackslash beta Coefficients}}\label{sec-multilevelstructure}
+
+\section{Introduction}\label{introduction-1}
+
+Associations between two variables can be \emph{very different} (or even
+\emph{reversed}) depending upon whether or not the analysis is ``aware''
+of the grouped, nested, or clustered nature of the data (Nieuwenhuis
+2015; Diez Roux 2003; Gelman et al. 2007). In multilevel analysis, the
+groups are often schools, neighborhoods, communities, or countries.
+
+A model that is ``aware'' of the clustered nature of the data may
+provide very different--likely better--substantive conclusions than a
+model that is not aware of the clustered nature of the data. This
+phenomena is closely related to the ``ecological fallacy'': the idea
+that group level and individual level relationships are not necessarily
+the same (Firebaugh 2001).
+
+\section{Graphs}\label{graphs}
+
+\subsection{A ``Naive'' Graph}\label{a-naive-graph}
+
+This ``naive'' graph is unaware of the grouped nature of the data.
+
+\pandocbounded{\includegraphics[keepaspectratio]{multilevel-structure_files/figure-pdf/unnamed-chunk-4-1.pdf}}
+
+\subsection{An ``Aware'' Graph}\label{an-aware-graph}
+
+This ``aware'' graph is aware of the grouped nature of the data.
+
+\pandocbounded{\includegraphics[keepaspectratio]{multilevel-structure_files/figure-pdf/unnamed-chunk-5-1.pdf}}
+
+\section{Regressions}\label{regressions}
+
+\subsection{A ``Naive'' OLS Analysis}\label{a-naive-ols-analysis}
+
+The OLS model with only \emph{x} as a covariate is not aware of the
+grouped structure of the data, and the coefficient for \emph{x} reflects
+this.
+
+\begin{verbatim}
+                          OLS2  
+--------------------------------
+x                      -0.761 **
+Intercept              57.057 **
+Number of observations     30   
+--------------------------------
+** p<.01, * p<.05
+\end{verbatim}
+
+\subsection{An ``Aware'' MLM Analysis}\label{an-aware-mlm-analysis}
+
+The multilevel model is aware of the grouped structure of the data, and
+the coefficient for \emph{x} reflects this.
+
+\begin{verbatim}
+                          MLM2   
+---------------------------------
+x                        1.166 **
+Intercept               27.192 **
+var(_cons)             312.623   
+var(e)                   0.806   
+Number of observations      30   
+---------------------------------
+** p<.01, * p<.05
+\end{verbatim}
+
+\subsection{Compare The Models}\label{compare-the-models}
+
+\begin{verbatim}
+                          OLS2      MLM2   
+-------------------------------------------
+x                      -0.761 **   1.166 **
+Intercept              57.057 **  27.192 **
+var(_cons)                       312.623   
+var(e)                             0.806   
+Number of observations     30         30   
+-------------------------------------------
+** p<.01, * p<.05
+\end{verbatim}
+
+\section{A Thought Experiment}\label{a-thought-experiment}
+
+When might a situation like this arise in practice? This is surprisingly
+difficult to think through.
+
+Imagine that \emph{x} is a protective factor, or an intervention or
+treatment. Imagine that \emph{y} is a desirable outcome, like improved
+mental health or psychological well being.
+
+Now imagine that people provide more of the protective factor or more of
+the intervention in communities where there are lower levels of the
+desirable outcome. If we think about it, this is a very plausible
+situation.
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, colback=white, leftrule=.75mm, coltitle=black, toptitle=1mm, bottomrule=.15mm, bottomtitle=1mm, opacitybacktitle=0.6, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{A Naive Analysis Would Misconstrue The Results}, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, left=2mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm]
+
+A naive analysis that was unaware of the grouped nature of the data
+would therefore misconstrue the results, suggesting that the
+intervention was harmful, when it was in fact helpful.
+
+\end{tcolorbox}
+
+\pandocbounded{\includegraphics[keepaspectratio]{multilevel-structure_files/figure-pdf/unnamed-chunk-9-1.pdf}}
+
+These data are constructed to provide this kind of extreme example, but
+it easy to see how multilevel analysis may provide better answers than
+we would get if we ignored the grouped nature of the data.
 
 \bookmarksetup{startatroot}
 
@@ -905,7 +1017,7 @@ Number of observations                    3000          9000
 
 \chapter{Cross-Classified Models}\label{cross-classified-models}
 
-\section{Introduction}\label{introduction-1}
+\section{Introduction}\label{introduction-2}
 
 A two level multilevel model imagines that \emph{Level 1} units are
 nested in \emph{Level 2} units. A three level multilevel model imagines
@@ -1169,6 +1281,32 @@ Number of observations               450        450
 Bland, J M, and D G Altman. 1994. {``Statistics Notes: Correlation,
 Regression, and Repeated Data.''} \emph{BMJ} 308 (April): 896.
 \url{https://doi.org/10.1136/bmj.308.6933.896}.
+
+\bibitem[\citeproctext]{ref-DiezRoux2003}
+Diez Roux, Ana. 2003. {``Potentialities and Limitations of Multilevel
+Analysis in Public Health and Epidemiology.''} In \emph{Methodology and
+Epistemology of Multilevel Analysis: Approaches from Different Social
+Sciences}, edited by Daniel Courgeau, 93--119. Kluwer Academic
+Publishers.
+
+\bibitem[\citeproctext]{ref-FIREBAUGH20014023}
+Firebaugh, Glen. 2001. {``Ecological Fallacy, Statistics Of.''} In
+\emph{International Encyclopedia of the Social \& Behavioral Sciences},
+edited by Neil J. Smelser and Paul B. Baltes, 4023--26. Oxford:
+Pergamon.
+https://doi.org/\url{https://doi.org/10.1016/B0-08-043076-7/00765-8}.
+
+\bibitem[\citeproctext]{ref-Gelman2007}
+Gelman, Andrew, Boris Shor, Joseph Bafumi, and David Park. 2007. {``Rich
+State, Poor State, Red State, Blue State: What's the Matter with
+{C}onnecticut?''} \emph{Quarterly Journal of Political Science} 2
+(November): 345--67. \url{https://doi.org/10.2139/ssrn.1010426}.
+
+\bibitem[\citeproctext]{ref-Nieuwenhuis2015}
+Nieuwenhuis, Rense. 2015. {``Association, Aggregation, and Paradoxes: On
+the Positive Correlation Between Fertility and Women's Employment.''}
+\emph{Demographic Research} 32 (March).
+\url{https://www.demographic-research.org/volumes/vol32/23/}.
 
 \bibitem[\citeproctext]{ref-Oliver2015}
 Oliver, Mary, and Krista Tippett. 2015. {``{M}ary {O}liver: {`{I} Got

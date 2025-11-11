@@ -15,8 +15,8 @@ Multilevel models are also useful when you have longitudinal data where repeated
 
 Multilevel models may improve one's statistical inferences in two important substantive ways.
 
-* Multilevel models adjust standard errors for clustering, and thus calculate appropriate p values. Failure to use a model that accounts for the clustering in the data may lead to improperly calculated standard errors and p values, possibly leading to false attributions of statistical significance (false positives). (See @sec-clustering).
-* Multilevel models adjust regression coefficients ($\beta$'s) for the presence of clustering. Failure to use a model that accounts for the clustering in the data may lead to improperly calculated regression coefficients ($\beta$'s) which may have the wrong magnitude, the wrong statistical significance, and even the wrong sign.
+* Multilevel models adjust standard errors for clustering, and thus calculate appropriate p values. Failure to use a model that accounts for the clustering in the data may lead to improperly calculated standard errors and p values, possibly leading to false attributions of statistical significance (false positives) (see @sec-clustering).
+* Multilevel models adjust regression coefficients ($\beta$'s) for the presence of clustering. Failure to use a model that accounts for the clustering in the data may lead to improperly calculated regression coefficients ($\beta$'s) which may have the wrong magnitude, the wrong statistical significance, and even the wrong sign (see @sec-multilevelstructure).
 
 :::
 

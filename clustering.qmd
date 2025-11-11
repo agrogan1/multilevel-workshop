@@ -126,9 +126,9 @@ use clustered_data.dta, clear
 
 quietly: regress y_individual x_individual
 
-est store OLS
+est store OLS1
 
-etable, estimates(OLS) cstat(_r_b) showstars showstarsnote column(estimate)
+etable, estimates(OLS1) cstat(_r_b) showstars showstarsnote column(estimate)
 
 ```
 
@@ -143,9 +143,9 @@ use clustered_data.dta, clear
 
 quietly: mixed y_individual x_individual || group_num:
 
-est store MLM
+est store MLM1
 
-etable, estimates(MLM) cstat(_r_b) showstars showstarsnote column(estimate)
+etable, estimates(MLM1) cstat(_r_b) showstars showstarsnote column(estimate)
 
 ```
 
@@ -154,7 +154,7 @@ etable, estimates(MLM) cstat(_r_b) showstars showstarsnote column(estimate)
 ```{stata}
 #| echo: false
 
-etable, estimates(OLS MLM) ///
+etable, estimates(OLS1 MLM1) ///
 cstat(_r_b) showstars showstarsnote column(estimate)
 
 ```

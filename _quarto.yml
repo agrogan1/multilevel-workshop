@@ -20,6 +20,7 @@ book:
   chapters:
     - index.qmd
     - clustering.qmd
+    - multilevel-structure.qmd
     - multilevel-workshop.qmd
     - multilevel-workshop2.qmd
     - references.qmd

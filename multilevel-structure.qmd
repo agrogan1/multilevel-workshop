@@ -1,0 +1,198 @@
+# Estimation of $\beta$ Coefficients {#sec-multilevelstructure}
+
+## Introduction
+
+Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data [@Nieuwenhuis2015; @DiezRoux2003; @Gelman2007]. In multilevel analysis, the groups are often schools, neighborhoods, communities, or countries.
+
+A model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data. This phenomena is closely related to the "ecological fallacy": the idea that group level and individual level relationships are not necessarily the same [@FIREBAUGH20014023].
+
+
+```{r}
+#| echo: false
+
+set.seed(1080) # random seed
+
+```
+
+```{r}
+#| message: false
+#| echo: false
+
+library(ggplot2) # beautiful graphs
+
+# library(lme4) # MLM
+
+# library(sjPlot) # nice tables for MLM
+
+# library(DT) # nice tables
+
+library(dplyr) # data wrangling
+
+library(Statamarkdown) # use Stata
+
+library(haven) # write to Stata
+
+```
+
+```{r}
+#| message: false
+#| echo: false
+
+e <- rnorm(10, 0, 1) # error
+
+# group 1
+
+group1 <- rep(1, 10)
+
+x1 <- seq(1, 10)
+
+y1 <- 50 + 1 * x1 + e
+
+# group 2
+
+group2 <- rep(2, 10)
+
+x2 <- seq(11, 20)
+
+y2 <- 30 + 1 * x2 + e
+
+# group 3
+
+group3 <- rep(3, 10)
+
+x3 <- seq(21, 30)
+
+y3 <- 10 + 1 * x3 + e
+
+# combine into a dataframe
+
+x <- c(x1, x2, x3)
+
+y <- c(y1, y2, y3)
+
+group <- factor(c(group1, group2, group3))
+
+multilevelstructure <- data.frame(x, y, group) 
+
+write_dta(multilevelstructure, "multilevel_structure.dta")
+
+```
+
+## Graphs
+
+### A "Naive" Graph 
+
+This "naive" graph is unaware of the grouped nature of the data.
+
+```{r}
+#| message: false
+#| echo: false
+
+library(ggplot2)
+
+p0 <- ggplot(multilevelstructure, 
+             aes(x = x,
+                 y = y)) +
+  geom_smooth(method = "lm") +
+  labs(title = "y as a function of x") +
+  theme_minimal()
+
+p0 + geom_point() # replay and add points
+
+```
+
+### An "Aware" Graph 
+
+This "aware" graph is aware of the grouped nature of the data.
+
+```{r}
+#| message: false
+#| echo: false
+
+p0 + 
+  geom_point(aes(color = group)) + # points with group color
+  geom_smooth(aes(color = group), # smoothers with group color
+              method = "lm") + 
+  scale_color_viridis_d()
+
+```
+
+## Regressions
+
+### A "Naive" OLS Analysis
+
+The OLS model with only *x* as a covariate is not aware of the grouped structure of the data, and the coefficient for *x* reflects this.
+
+```{stata, collectcode=TRUE}
+#| echo: false
+
+use multilevel_structure.dta, clear
+
+quietly: regress y x
+
+est store OLS2 
+
+etable, estimates(OLS2) cstat(_r_b) showstars showstarsnote column(estimate)
+
+```
+
+### An "Aware" MLM Analysis
+
+The multilevel model is aware of the grouped structure of the data, and the coefficient for *x* reflects this.
+
+```{stata, collectcode=TRUE}
+#| echo: false
+
+use multilevel_structure.dta, clear
+
+quietly: mixed y x || group:
+
+est store MLM2 
+
+etable, estimates(MLM2) cstat(_r_b) showstars showstarsnote column(estimate)
+
+```
+
+### Compare The Models
+
+```{stata}
+#| echo: false
+
+etable, estimates(OLS2 MLM2) ///
+cstat(_r_b) showstars showstarsnote column(estimate)
+
+```
+
+## A Thought Experiment
+
+When might a situation like this arise in practice? This is surprisingly difficult to think through. 
+
+Imagine that *x* is a protective factor, or an intervention or treatment. Imagine that *y* is a desirable outcome, like improved mental health or psychological well being.
+
+Now imagine that people provide more of the protective factor or more of the intervention in communities where there are lower levels of the desirable outcome. If we think about it, this is a very plausible situation. 
+
+::: {.callout-tip}
+### A Naive Analysis Would Misconstrue The Results
+
+A naive analysis that was unaware of the grouped nature of the data would therefore misconstrue the results, suggesting that the intervention was harmful, when it was in fact helpful.
+:::
+
+```{r}
+#| message: false
+#| echo: false
+
+p0 + 
+  geom_point(aes(color = group)) + # points with group color
+  geom_smooth(aes(color = group), # smoothers with group color
+              method = "lm") + 
+  labs(title = "psychological well-being as a function of intervention or treatment",
+       x = "intervention or treatment",
+       y = "psychological well-being") +
+  scale_color_viridis_d()
+
+```
+
+These data are constructed to provide this kind of extreme example, but it easy to see how multilevel analysis may provide better answers than we would get if we ignored the grouped nature of the data.
+
+
+
