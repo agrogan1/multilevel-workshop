@@ -172,7 +172,7 @@ est store longitudinal // store estimates
 
 ```
 
-## Nice Table of Results
+### Nice Table of Results
 
 ```{stata, collectcode=TRUE}
 

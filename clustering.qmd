@@ -1,4 +1,4 @@
-# The Importance of Accounting for Clustered Data {#sec-clustering}
+# Estimation of p Values {#sec-clustering}
 
 
 ```{r}
