@@ -256,7 +256,7 @@
 
 \title{Multilevel Workshop}
 \author{Andrew Grogan-Kaylor}
-\date{2025-11-15}
+\date{2026-01-12}
 \begin{document}
 \maketitle
 
@@ -289,7 +289,7 @@ countries.
 Multilevel models are also useful when you have longitudinal data where
 repeated measures are collected for study participants.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, rightrule=.15mm, leftrule=.75mm, breakable, titlerule=0mm, opacityback=0, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{The Importance of Multilevel Models}, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, toptitle=1mm, arc=.35mm, left=2mm, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, toprule=.15mm, colback=white, coltitle=black, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-tip-color-frame, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, rightrule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{The Importance of Multilevel Models}, titlerule=0mm, opacitybacktitle=0.6, left=2mm, arc=.35mm]
 
 Multilevel models may improve one's statistical inferences in two
 important substantive ways.
@@ -328,7 +328,7 @@ There are two versions of the data: a \emph{cross-sectional} data set
 from a single point in time; a \emph{longitudinal} version of the data
 spanning several time points.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, rightrule=.15mm, leftrule=.75mm, breakable, titlerule=0mm, opacityback=0, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, toptitle=1mm, arc=.35mm, left=2mm, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, toprule=.15mm, colback=white, coltitle=black, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, rightrule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{The Data Can Be Downloaded Here:}, titlerule=0mm, opacitybacktitle=0.6, left=2mm, arc=.35mm]
 
 \begin{itemize}
 \tightlist
@@ -441,7 +441,7 @@ individual observation.'' (Bland and Altman 1994)
 
 So\ldots{} we follow their procedure.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, rightrule=.15mm, leftrule=.75mm, breakable, titlerule=0mm, opacityback=0, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Simulating The Data}, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, toptitle=1mm, arc=.35mm, left=2mm, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, toprule=.15mm, colback=white, coltitle=black, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, rightrule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Simulating The Data}, titlerule=0mm, opacitybacktitle=0.6, left=2mm, arc=.35mm]
 
 The graph below illustrates the process of simulating the data.
 
@@ -594,7 +594,7 @@ the intervention in communities where there are lower levels of the
 desirable outcome. If we think about it, this is a very plausible
 situation.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, rightrule=.15mm, leftrule=.75mm, breakable, titlerule=0mm, opacityback=0, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{A Naive Analysis Would Misconstrue The Results}, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, toptitle=1mm, arc=.35mm, left=2mm, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, toprule=.15mm, colback=white, coltitle=black, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-tip-color-frame, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, rightrule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{A Naive Analysis Would Misconstrue The Results}, titlerule=0mm, opacitybacktitle=0.6, left=2mm, arc=.35mm]
 
 A naive analysis that was unaware of the grouped nature of the data
 would therefore misconstrue the results, suggesting that the
@@ -626,11 +626,7 @@ Models}\label{two-level-cross-sectional-and-three-level-longitudinal-models}
 
 \subsection{The Equation}\label{the-equation}
 
-\[\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + \]
-
-\[\beta_4 \text{identity}_2 + \beta_5 \text{intervention} + \beta_6 HDI +\]
-
-\[u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} \]
+\[\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \\ \beta_3 \text{identity}_2 + \beta_4 \text{intervention} + \beta_5 HDI + \\ u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} \]
 
 \subsection{Descriptive Statistics}\label{descriptive-statistics}
 
