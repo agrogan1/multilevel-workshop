@@ -44,11 +44,7 @@ use "simulated_multilevel_data.dta", clear
 
 ### The Equation
 
-$$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
-
-$$\beta_4 \text{identity}_2 + \beta_5 \text{intervention} + \beta_6 HDI +$$
-
-$$u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} $$
+$$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \\ \beta_3 \text{identity}_2 + \beta_4 \text{intervention} + \beta_5 HDI + \\ u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} $$
 
 ### Descriptive Statistics
 
