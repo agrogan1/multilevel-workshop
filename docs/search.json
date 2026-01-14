@@ -234,7 +234,7 @@
     "href": "license-and-citation.html#citation",
     "title": "License and Citation",
     "section": "Citation",
-    "text": "Citation\nFor attribution, please cite as:\nGrogan-Kaylor (2025). Multilevel Workshop. Retrieved from https://agrogan1.github.io/multilevel-workshop",
+    "text": "Citation\nFor attribution, please cite as:\nGrogan-Kaylor (2026). Multilevel Workshop. Retrieved from https://agrogan1.github.io/multilevel-workshop",
     "crumbs": [
       "License and Citation"
     ]
@@ -244,7 +244,7 @@
     "href": "license-and-citation.html#bibtex-citation",
     "title": "License and Citation",
     "section": "BibTeX Citation",
-    "text": "BibTeX Citation\n@book{,\n   author = {Andrew Grogan-Kaylor},\n   city = {Ann Arbor, MI},\n   title = {Multilevel Workshop},\n   url = {https://agrogan1.github.io/multilevel-workshop},\n   year = {2025},\n}",
+    "text": "BibTeX Citation\n@book{grogankaylor2026,\n   author = {Andrew Grogan-Kaylor},\n   city = {Ann Arbor, MI},\n   title = {Multilevel Workshop},\n   url = {https://agrogan1.github.io/multilevel-workshop},\n   year = {2025},\n}",
     "crumbs": [
       "License and Citation"
     ]

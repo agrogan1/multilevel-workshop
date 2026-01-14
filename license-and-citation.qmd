@@ -16,7 +16,7 @@ knitr::include_graphics("88x31.png")
 
 For attribution, please cite as:
 
-Grogan-Kaylor (2025). *Multilevel Workshop*. Retrieved from [https://agrogan1.github.io/multilevel-workshop](https://agrogan1.github.io/multilevel-workshop)
+Grogan-Kaylor (2026). *Multilevel Workshop*. Retrieved from [https://agrogan1.github.io/multilevel-workshop](https://agrogan1.github.io/multilevel-workshop)
 
 ## BibTeX Citation
 
@@ -24,7 +24,7 @@ Grogan-Kaylor (2025). *Multilevel Workshop*. Retrieved from [https://agrogan1.gi
 #| eval: FALSE
 #| echo: TRUE
 
-@book{,
+@book{grogankaylor2026,
    author = {Andrew Grogan-Kaylor},
    city = {Ann Arbor, MI},
    title = {Multilevel Workshop},
