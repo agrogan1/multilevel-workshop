@@ -46,7 +46,7 @@ use "simulated_multilevel_data.dta", clear
 
 $$\begin{aligned}
 \text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \\ \beta_3 \text{identity} + \beta_4 \text{intervention} + \beta_5 HDI + \\ u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij} 
-\end{aligned}$$
+\end{aligned}$$ {#eq-crosssectional}
 
 ### Descriptive Statistics
 
@@ -69,6 +69,11 @@ graph export spagplot1.png, width(1000) replace
 
 ![Spaghetti Plot of Outcome by Warmth by Country](spagplot1.png){width=50%}
 
+::: {.callout-tip}
+#### Random Slopes and Random Intercepts
+
+This spaghetti plot is illustrating the idea of *random intercepts* and *random slopes*. The multilevel model is estimating *group specific regression lines*, in this case *country specific regression lines*. Each *country specific regression line* has its own intercept and its own slope. The results presented in the multilevel model are the result of *averaging* these estimates into one *overall estimate*. 
+:::
 
 ### Unconditional Model
 
@@ -110,13 +115,13 @@ use "simulated_multilevel_longitudinal_data.dta", clear
 
 ### The Equation
 
-$$\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + $$ 
-
-$$\beta_4 \text{identity}_2 + \beta_5 \text{intervention} + \beta_5 HDI +$$
-
-$$u_{0j} + u_{1j} \times \text{parental warmth} + $$
-
-$$v_{0i} + v_{1i} \times t + e_{ij} $$
+$$
+\begin{aligned}
+\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + \\
+\beta_4 \text{identity}_2 + \beta_5 \text{intervention} + \beta_5 HDI + \\
+u_{0j} + u_{1j} \times \text{parental warmth} + \\
+v_{0i} + v_{1i} \times t + e_{ij} 
+\end{aligned}$$ {#eq-longitudinal}
 
 ### Descriptive Statistics
 

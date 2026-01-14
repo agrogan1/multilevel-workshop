@@ -450,9 +450,9 @@ window.Quarto = {
   <li><a href="#alternate-plot" id="toc-alternate-plot" class="nav-link" data-scroll-target="#alternate-plot"><span class="header-section-number">4.2.4</span> Alternate Plot</a></li>
   <li><a href="#unconditional-model-1" id="toc-unconditional-model-1" class="nav-link" data-scroll-target="#unconditional-model-1"><span class="header-section-number">4.2.5</span> Unconditional Model</a></li>
   <li><a href="#conditional-model-1" id="toc-conditional-model-1" class="nav-link" data-scroll-target="#conditional-model-1"><span class="header-section-number">4.2.6</span> Conditional Model</a></li>
+  <li><a href="#nice-table-of-results" id="toc-nice-table-of-results" class="nav-link" data-scroll-target="#nice-table-of-results"><span class="header-section-number">4.2.7</span> Nice Table of Results</a></li>
   </ul></li>
-  <li><a href="#nice-table-of-results" id="toc-nice-table-of-results" class="nav-link" data-scroll-target="#nice-table-of-results"><span class="header-section-number">4.3</span> Nice Table of Results</a></li>
-  <li><a href="#majorsection" id="toc-majorsection" class="nav-link" data-scroll-target="#majorsection"><span class="header-section-number">4.4</span> QUESTIONS???</a></li>
+  <li><a href="#majorsection" id="toc-majorsection" class="nav-link" data-scroll-target="#majorsection"><span class="header-section-number">4.3</span> QUESTIONS???</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/agrogan1/multilevel-workshop/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -490,9 +490,9 @@ window.Quarto = {
 </section>
 <section id="the-equation" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="the-equation"><span class="header-section-number">4.1.2</span> The Equation</h3>
-<p><span class="math display">\[\begin{aligned}
+<p><span id="eq-crosssectional"><span class="math display">\[\begin{aligned}
 \text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \\ \beta_3 \text{identity} + \beta_4 \text{intervention} + \beta_5 HDI + \\ u_{0j} + u_{1j} \times \text{parental warmth} + e_{ij}
-\end{aligned}\]</span></p>
+\end{aligned} \tag{4.1}\]</span></span></p>
 </section>
 <section id="descriptive-statistics" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">4.1.3</span> Descriptive Statistics</h3>
@@ -527,6 +527,19 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 <p><a href="spagplot1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Spaghetti Plot of Outcome by Warmth by Country"><img src="spagplot1.png" class="img-fluid figure-img" style="width:50.0%" alt="Spaghetti Plot of Outcome by Warmth by Country"></a></p>
 <figcaption>Spaghetti Plot of Outcome by Warmth by Country</figcaption>
 </figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Random Slopes and Random Intercepts
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This spaghetti plot is illustrating the idea of <em>random intercepts</em> and <em>random slopes</em>. The multilevel model is estimating <em>group specific regression lines</em>, in this case <em>country specific regression lines</em>. Each <em>country specific regression line</em> has its own intercept and its own slope. The results presented in the multilevel model are the result of <em>averaging</em> these estimates into one <em>overall estimate</em>.</p>
+</div>
 </div>
 </section>
 <section id="unconditional-model" class="level3" data-number="4.1.5">
@@ -653,10 +666,13 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 </section>
 <section id="the-equation-1" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="the-equation-1"><span class="header-section-number">4.2.2</span> The Equation</h3>
-<p><span class="math display">\[\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + \]</span></p>
-<p><span class="math display">\[\beta_4 \text{identity}_2 + \beta_5 \text{intervention} + \beta_5 HDI +\]</span></p>
-<p><span class="math display">\[u_{0j} + u_{1j} \times \text{parental warmth} + \]</span></p>
-<p><span class="math display">\[v_{0i} + v_{1i} \times t + e_{ij} \]</span></p>
+<p><span id="eq-longitudinal"><span class="math display">\[
+\begin{aligned}
+\text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + \\
+\beta_4 \text{identity}_2 + \beta_5 \text{intervention} + \beta_5 HDI + \\
+u_{0j} + u_{1j} \times \text{parental warmth} + \\
+v_{0i} + v_{1i} \times t + e_{ij}
+\end{aligned} \tag{4.2}\]</span></span></p>
 </section>
 <section id="descriptive-statistics-1" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="descriptive-statistics-1"><span class="header-section-number">4.2.3</span> Descriptive Statistics</h3>
@@ -788,9 +804,8 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="nice-table-of-results" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="nice-table-of-results"><span class="header-section-number">4.3</span> Nice Table of Results</h2>
+<section id="nice-table-of-results" class="level3" data-number="4.2.7">
+<h3 data-number="4.2.7" class="anchored" data-anchor-id="nice-table-of-results"><span class="header-section-number">4.2.7</span> Nice Table of Results</h3>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(crosssectional longitudinal) <span class="co">///</span></span>
@@ -833,8 +848,9 @@ Number of observations                    3000          9000
 </div>
 </div>
 </section>
-<section id="majorsection" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="majorsection"><span class="header-section-number">4.4</span> QUESTIONS???</h2>
+</section>
+<section id="majorsection" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="majorsection"><span class="header-section-number">4.3</span> QUESTIONS???</h2>
 
 
 </section>
