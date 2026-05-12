@@ -36,11 +36,18 @@ quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
 
 ### Get Data
 
+::: {.panel-tabset group="language"}
+
+#### Stata
+
 ```{stata, collectcode=TRUE}
 
 use "simulated_multilevel_data.dta", clear
 
 ```
+
+#### R
+:::
 
 ### The Equation
 
@@ -50,16 +57,27 @@ $$\begin{aligned}
 
 ### Descriptive Statistics
 
+::: {.panel-tabset group="language"}
+
+#### Stata
+
 ```{stata}
 
 summarize // descriptive statistics
 
 ```
 
+#### R
+:::
+
 ### Spaghetti Plot
 
+::: {.panel-tabset group="language"}
+
+#### Stata
+
 ```{stata}
-#| output: false
+*| output: false
 
 spagplot outcome warmth, id(country) scheme(stcolor)
 
@@ -68,6 +86,8 @@ graph export spagplot1.png, width(1000) replace
 ```
 
 ![Spaghetti Plot of Outcome by Warmth by Country](spagplot1.png){width=50%}
+#### R
+:::
 
 ::: {.callout-tip}
 #### Random Slopes and Random Intercepts
@@ -79,21 +99,41 @@ This spaghetti plot is illustrating the idea of *random intercepts* and *random 
 
 #### Model
 
+::: {.panel-tabset group="language"}
+
+##### Stata
+
 ```{stata, collectcode=TRUE}
 
 mixed outcome || country: // unconditional model
 
 ```
 
+##### R
+
+:::
+
 #### ICC
+
+::: {.panel-tabset group="language"}
+
+##### Stata
 
 ```{stata}
 
 estat icc
 
 ```
-	
+
+##### R
+
+:::	
+
 ### Conditional Model
+
+::: {.panel-tabset group="language"}
+
+#### Stata
 
 ```{stata, collectcode=TRUE}
 
@@ -103,9 +143,17 @@ est store crosssectional // store estimates
 
 ```
 
+#### R
+
+:::
+
 ## Longitudinal Model
 
 ### Get Data
+
+::: {.panel-tabset group="language"}
+
+#### Stata
 
 ```{stata, collectcode=TRUE}
 
@@ -113,10 +161,13 @@ use "simulated_multilevel_longitudinal_data.dta", clear
 
 ```
 
+#### R
+
+:::
+
 ### The Equation
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 \text{outcome}_{ij} = \beta_0 + \beta_1 \text{parental warmth} + \beta_2 \text{physical punishment} + \beta_3 \text{time} + \\
 \beta_4 \text{identity}_2 + \beta_5 \text{intervention} + \beta_5 HDI + \\
 u_{0j} + u_{1j} \times \text{parental warmth} + \\
@@ -125,16 +176,28 @@ v_{0i} + v_{1i} \times t + e_{ij}
 
 ### Descriptive Statistics
 
+::: {.panel-tabset group="language"}
+
+#### Stata
+
 ```{stata, collectcode=TRUE}
 
 summarize // descriptive statistics
 
 ```
 
+#### R
+
+:::
+
 ### Alternate Plot
 
+::: {.panel-tabset group="language"}
+
+#### Stata
+
 ```{stata, collectcode=FALSE}
-#| output: false
+*| output: false
 
 encode id, generate(idNUMERIC) // numeric version of id
 	
@@ -147,27 +210,49 @@ graph export spagplot2.png, width(1000) replace
 ```
 
 ![Alternate Plot of Outcome by Time by Individual; First 10 Observations](spagplot2.png){width=50%}
+#### R
+
+:::
 
 ### Unconditional Model
 
 #### Model
 
+::: {.panel-tabset group="language"}
+
+##### Stata
+
 ```{stata, collectcode=TRUE}
-#| eval: false
+*| eval: false
 
 mixed outcome || country: || id: // unconditional model
 
 ```
 
+##### R
+:::
+
 #### ICC
+
+::: {.panel-tabset group="language"}
+
+##### Stata
 
 ```{stata, collectcode=FALSE}
 
 estat icc
 
 ```
+
+##### R
+
+:::
 	
 ### Conditional Model	
+
+::: {.panel-tabset group="language"}
+
+#### Stata
 
 ```{stata, collectcode=TRUE}
 
@@ -177,7 +262,15 @@ est store longitudinal // store estimates
 
 ```
 
+#### R
+
+:::
+
 ### Nice Table of Results
+
+::: {.panel-tabset group="language"}
+
+#### Stata
 
 ```{stata, collectcode=TRUE}
 
@@ -186,6 +279,9 @@ showstars showstarsnote /// show stars and note
 column(estimate) // column is modelname
 
 ```
+####
+
+:::
 
 ## QUESTIONS??? {#majorsection}
 
