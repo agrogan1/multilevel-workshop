@@ -6,5 +6,7 @@ blockquote {
 img.quarto-cover-image {
   box-shadow: 9px 9px 7px lightgrey;
 }
-
+.quarto-cover-image {
+  max-width: 25%;
+}
 

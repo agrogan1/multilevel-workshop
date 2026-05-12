@@ -8,7 +8,11 @@ This site contains materials for a workshop on multilevel modeling.
 
 Multilevel models are useful when you have data that are nested or clustered inside social units such as schools, neighborhoods, states, or countries.
 
+![Studies where individuals are nested in classrooms, communities, or countries](banner.png){#fig-communities width=90%}
+
 Multilevel models are also useful when you have longitudinal data where repeated measures are collected for study participants.
+
+![Studies of growth or change](plants.png){#fig-growthchange width=33%}
 
 ::: {.callout-tip}
 ### The Importance of Multilevel Models

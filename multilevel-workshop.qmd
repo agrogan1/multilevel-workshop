@@ -42,6 +42,8 @@ quietly: cd "/Users/agrogan/Desktop/GitHub/multilevel-workshop/"
 
 ```{stata, collectcode=TRUE}
 
+set linesize 80 // set linesize for nice formatting
+
 use "simulated_multilevel_data.dta", clear
 
 ```
