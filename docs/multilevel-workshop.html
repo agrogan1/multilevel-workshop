@@ -58,7 +58,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -164,6 +183,8 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Association, aggregation, and paradoxes: On the positive correlation between fertility and women’s employment;,citation_author=Rense Nieuwenhuis;,citation_publication_date=2015-03;,citation_cover_date=2015-03;,citation_year=2015;,citation_fulltext_html_url=https://www.demographic-research.org/volumes/vol32/23/;,citation_volume=32;,citation_journal_title=Demographic Research;">
 <meta name="citation_reference" content="citation_title=Rich state, poor state, red state, blue state: What’s the matter with Connecticut?;,citation_abstract=For decades, the Democrats have been viewed as the party of the poor, with the Republicans representing the rich. Recent presidential elections, however, have shown a reverse pattern, with Democrats performing well in the richer blue states in the northeast and coasts, and Republicans dominating in the red states in the middle of the country and the south. Through multilevel modeling of individual-level survey data and county-and state-level demographic and electoral data, we reconcile these patterns. Furthermore, we find that income matters more in red America than in blue America. In poor states, rich people are much more likely than poor people to vote for the Republican presidential candidate, but in rich states (such as Connecticut), income has a very low correlation with vote preference.;,citation_author=Andrew Gelman;,citation_author=Boris Shor;,citation_author=Joseph Bafumi;,citation_author=David Park;,citation_publication_date=2007-11;,citation_cover_date=2007-11;,citation_year=2007;,citation_doi=10.2139/ssrn.1010426;,citation_volume=2;,citation_journal_title=Quarterly Journal of Political Science;">
 <meta name="citation_reference" content="citation_title=Potentialities and limitations of multilevel analysis in public health and epidemiology;,citation_author=Ana Diez Roux;,citation_editor=Daniel Courgeau;,citation_publication_date=2003;,citation_cover_date=2003;,citation_year=2003;,citation_inbook_title=Methodology and epistemology of multilevel analysis: Approaches from different social sciences;">
+<meta name="citation_reference" content="citation_title=Stata 18 mixed effects reference manual;,citation_author=StataCorp;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;">
+<meta name="citation_reference" content="citation_title=Fitting linear mixed-effects models using lme4;,citation_abstract=Maximum likelihood or restricted maximum likelihood (REML) estimates of the parameters in linear mixed-effects models can be determined using the lmer function in the lme4 package for R. As for most model-fitting functions in R, the model is described in an lmer call by a formula, in this case including both fixed- and random-effects terms. The formula and data together determine a numerical representation of the model from which the profiled deviance or the profiled REML criterion can be evaluated as a function of some of the model parameters. The appropriate criterion is optimized, using one of the constrained optimization functions in R, to provide the parameter estimates. We describe the structure of the model, the steps in evaluating the profiled deviance or REML criterion, and the structure of classes or types that represents such a model. Sufficient detail is included to allow specialization of these structures by users who wish to write functions to fit specialized linear mixed models, such as models incorporating pedigrees or smoothing splines, that are not easily expressible in the formula language used by lmer.;,citation_author=Douglas Bates;,citation_author=Martin Mächler;,citation_author=Ben Bolker;,citation_author=Steve Walker;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_fulltext_html_url=https://www.jstatsoft.org/index.php/jss/article/view/v067i01;,citation_issue=1;,citation_doi=10.18637/jss.v067.i01;,citation_volume=67;,citation_journal_title=Journal of Statistical Software;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -439,8 +460,9 @@ window.Quarto = {
   <li><a href="#the-equation" id="toc-the-equation" class="nav-link" data-scroll-target="#the-equation"><span class="header-section-number">4.1.2</span> The Equation</a></li>
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="header-section-number">4.1.3</span> Descriptive Statistics</a></li>
   <li><a href="#spaghetti-plot" id="toc-spaghetti-plot" class="nav-link" data-scroll-target="#spaghetti-plot"><span class="header-section-number">4.1.4</span> Spaghetti Plot</a></li>
-  <li><a href="#unconditional-model" id="toc-unconditional-model" class="nav-link" data-scroll-target="#unconditional-model"><span class="header-section-number">4.1.5</span> Unconditional Model</a></li>
-  <li><a href="#conditional-model" id="toc-conditional-model" class="nav-link" data-scroll-target="#conditional-model"><span class="header-section-number">4.1.6</span> Conditional Model</a></li>
+  <li><a href="#a-note-on-the-estimation-of-random-effects" id="toc-a-note-on-the-estimation-of-random-effects" class="nav-link" data-scroll-target="#a-note-on-the-estimation-of-random-effects"><span class="header-section-number">4.1.5</span> A Note On The Estimation of Random Effects</a></li>
+  <li><a href="#unconditional-model" id="toc-unconditional-model" class="nav-link" data-scroll-target="#unconditional-model"><span class="header-section-number">4.1.6</span> Unconditional Model</a></li>
+  <li><a href="#conditional-model" id="toc-conditional-model" class="nav-link" data-scroll-target="#conditional-model"><span class="header-section-number">4.1.7</span> Conditional Model</a></li>
   </ul></li>
   <li><a href="#longitudinal-model" id="toc-longitudinal-model" class="nav-link" data-scroll-target="#longitudinal-model"><span class="header-section-number">4.2</span> Longitudinal Model</a>
   <ul class="collapse">
@@ -495,7 +517,11 @@ window.Quarto = {
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>simulated_multilevel_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"simulated_multilevel_data.dta"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
@@ -513,8 +539,8 @@ window.Quarto = {
 <div class="tab-content" data-group="language">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="co">// descriptive statistics</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="co">// descriptive statistics</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -532,7 +558,185 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-
+<div class="cell" data-skimr_include_summary="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(simulated_multilevel_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">id</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3000</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 10%">
+<col style="width: 15%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">country</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15.50</td>
+<td style="text-align: right;">8.66</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">15.50</td>
+<td style="text-align: right;">23.00</td>
+<td style="text-align: right;">30.00</td>
+<td style="text-align: left;">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HDI</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">64.77</td>
+<td style="text-align: right;">17.25</td>
+<td style="text-align: right;">33.00</td>
+<td style="text-align: right;">53.00</td>
+<td style="text-align: right;">70.00</td>
+<td style="text-align: right;">81.00</td>
+<td style="text-align: right;">87.00</td>
+<td style="text-align: left;">▅▂▅▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">family</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50.50</td>
+<td style="text-align: right;">28.87</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">25.75</td>
+<td style="text-align: right;">50.50</td>
+<td style="text-align: right;">75.25</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: left;">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">identity</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▇▁▁▁▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">intervention</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▇▁▁▁▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">physical_punishment</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.48</td>
+<td style="text-align: right;">1.36</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▇▇▇▅▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">warmth</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.52</td>
+<td style="text-align: right;">1.89</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: left;">▃▃▇▃▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">outcome</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">52.43</td>
+<td style="text-align: right;">6.53</td>
+<td style="text-align: right;">29.61</td>
+<td style="text-align: right;">48.02</td>
+<td style="text-align: right;">52.45</td>
+<td style="text-align: right;">56.86</td>
+<td style="text-align: right;">74.84</td>
+<td style="text-align: left;">▁▃▇▃▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -544,9 +748,9 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 <div class="tab-content" data-group="language">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country) <span class="dv">scheme</span>(stcolor)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot1.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country) <span class="dv">scheme</span>(stcolor)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot1.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="spagplot1.png" class="img-fluid" style="width:50.0%" alt="Spaghetti Plot of Outcome by Warmth by Country"> #### R</p>
 </div>
@@ -566,17 +770,57 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 </div>
 </div>
 </section>
-<section id="unconditional-model" class="level3" data-number="4.1.5">
-<h3 data-number="4.1.5" class="anchored" data-anchor-id="unconditional-model"><span class="header-section-number">4.1.5</span> Unconditional Model</h3>
-<section id="model" class="level4" data-number="4.1.5.1">
-<h4 data-number="4.1.5.1" class="anchored" data-anchor-id="model"><span class="header-section-number">4.1.5.1</span> Model</h4>
+<section id="a-note-on-the-estimation-of-random-effects" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="a-note-on-the-estimation-of-random-effects"><span class="header-section-number">4.1.5</span> A Note On The Estimation of Random Effects</h3>
+<p>Procedures for estimating models with uncorrelated and correlated random effects are detailed below <span class="citation" data-cites="StataCorp2023 JSSv067i01">(<a href="references.html#ref-StataCorp2023" role="doc-biblioref">StataCorp 2023</a>; <a href="references.html#ref-JSSv067i01" role="doc-biblioref">Bates et al. 2015</a>)</span>.</p>
+<div id="tbl-REs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-REs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.1: Correlated and Uncorrelated Random Effects
+</figcaption>
+<div aria-describedby="tbl-REs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 30%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Uncorrelated Random Effects</th>
+<th style="text-align: left;">Correlated Random Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Stata</td>
+<td style="text-align: left;">default</td>
+<td style="text-align: left;">add option: <code>, cov(uns)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">separate random effects from grouping variable with <code>||</code></td>
+<td style="text-align: left;">separate random effects from grouping variable with <code>|</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>All models in the examples below are run with <em>uncorrelated</em> random effects, but could just as easily be run with <em>correlated</em> random effects.</p>
+</section>
+<section id="unconditional-model" class="level3" data-number="4.1.6">
+<h3 data-number="4.1.6" class="anchored" data-anchor-id="unconditional-model"><span class="header-section-number">4.1.6</span> Unconditional Model</h3>
+<section id="model" class="level4" data-number="4.1.6.1">
+<h4 data-number="4.1.6.1" class="anchored" data-anchor-id="model"><span class="header-section-number">4.1.6.1</span> Model</h4>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Stata</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">R</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell" data-collectcode="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mixed outcome || country: <span class="co">// unconditional model</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mixed outcome || country: <span class="co">// unconditional model</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Performing EM optimization ...
 
@@ -619,15 +863,15 @@ LR test vs. linear model: chibar2(01) = 166.31        Prob &gt;= chibar2 = 0.000
 </div>
 </div>
 </section>
-<section id="icc" class="level4" data-number="4.1.5.2">
-<h4 data-number="4.1.5.2" class="anchored" data-anchor-id="icc"><span class="header-section-number">4.1.5.2</span> ICC</h4>
+<section id="icc" class="level4" data-number="4.1.6.2">
+<h4 data-number="4.1.6.2" class="anchored" data-anchor-id="icc"><span class="header-section-number">4.1.6.2</span> ICC</h4>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Stata</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">R</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> icc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> icc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Intraclass correlation
 
@@ -646,17 +890,17 @@ LR test vs. linear model: chibar2(01) = 166.31        Prob &gt;= chibar2 = 0.000
 </div>
 </section>
 </section>
-<section id="conditional-model" class="level3" data-number="4.1.6">
-<h3 data-number="4.1.6" class="anchored" data-anchor-id="conditional-model"><span class="header-section-number">4.1.6</span> Conditional Model</h3>
+<section id="conditional-model" class="level3" data-number="4.1.7">
+<h3 data-number="4.1.7" class="anchored" data-anchor-id="conditional-model"><span class="header-section-number">4.1.7</span> Conditional Model</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Stata</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">R</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <div class="cell" data-collectcode="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment <span class="kw">identity</span> i.intervention HDI || country: warmth <span class="co">// multilevel model</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> crosssectional <span class="co">// store estimates</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment <span class="kw">identity</span> i.intervention HDI || country: warmth <span class="co">// multilevel model</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> crosssectional <span class="co">// store estimates</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Performing EM optimization ...
 
@@ -703,7 +947,52 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(outcome <span class="sc">~</span> warmth <span class="sc">+</span> physical_punishment <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>               identity  <span class="sc">+</span> intervention <span class="sc">+</span> HDI <span class="sc">+</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>               (<span class="dv">1</span> <span class="sc">+</span> warmth <span class="sc">||</span> country),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> simulated_multilevel_data)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: outcome ~ warmth + physical_punishment + identity + intervention +  
+    HDI + ((1 | country) + (0 + warmth | country))
+   Data: simulated_multilevel_data
 
+REML criterion at convergence: 19268.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.9774 -0.6563  0.0187  0.6645  3.6730 
+
+Random effects:
+ Groups    Name        Variance Std.Dev.
+ country   (Intercept)  3.19056 1.786   
+ country.1 warmth       0.02465 0.157   
+ Residual              35.01782 5.918   
+Number of obs: 3000, groups:  country, 30
+
+Fixed effects:
+                     Estimate Std. Error t value
+(Intercept)         52.011364   1.414872  36.760
+warmth               0.834562   0.064252  12.989
+physical_punishment -0.991892   0.079845 -12.423
+identity            -0.300350   0.217179  -1.383
+intervention         0.639059   0.217603   2.937
+HDI                 -0.003395   0.020596  -0.165
+
+Correlation of Fixed Effects:
+            (Intr) warmth physc_ idntty intrvn
+warmth      -0.124                            
+physcl_pnsh -0.149 -0.003                     
+identity    -0.072 -0.012 -0.003              
+interventin -0.082  0.034  0.022 -0.018       
+HDI         -0.943 -0.006  0.009 -0.001  0.000</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -718,8 +1007,8 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 <div class="tab-content" data-group="language">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="cell" data-collectcode="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"simulated_multilevel_longitudinal_data.dta"</span>, <span class="kw">clear</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"simulated_multilevel_longitudinal_data.dta"</span>, <span class="kw">clear</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
@@ -744,8 +1033,8 @@ v_{0i} + v_{1i} \times t + e_{ij}
 <div class="tab-content" data-group="language">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="cell" data-collectcode="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="co">// descriptive statistics</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="co">// descriptive statistics</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -776,13 +1065,13 @@ physical_p~t |      9,000    2.485333    1.373639          0          5
 <div class="tab-content" data-group="language">
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div class="cell" data-collectcode="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">encode</span> id, <span class="kw">generate</span>(idNUMERIC) <span class="co">// numeric version of id</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>* spagplot outcome t <span class="kw">if</span> idNUMERIC &lt;= 10, id(idNUMERIC) <span class="dv">scheme</span>(stcolor)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">lfit</span> outcome t) (<span class="kw">scatter</span> outcome t) <span class="kw">if</span> idNUMERIC &lt;= 10, <span class="kw">by</span>(idNUMERIC) <span class="dv">scheme</span>(stcolor)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot2.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">encode</span> id, <span class="kw">generate</span>(idNUMERIC) <span class="co">// numeric version of id</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>* spagplot outcome t <span class="kw">if</span> idNUMERIC &lt;= 10, id(idNUMERIC) <span class="dv">scheme</span>(stcolor)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">lfit</span> outcome t) (<span class="kw">scatter</span> outcome t) <span class="kw">if</span> idNUMERIC &lt;= 10, <span class="kw">by</span>(idNUMERIC) <span class="dv">scheme</span>(stcolor)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> spagplot2.png, <span class="kw">width</span>(1000) <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="spagplot2.png" class="img-fluid" style="width:50.0%" alt="Alternate Plot of Outcome by Time by Individual; First 10 Observations"> #### R</p>
 </div>
@@ -798,7 +1087,7 @@ physical_p~t |      9,000    2.485333    1.373639          0          5
 <div class="tab-content" data-group="language">
 <div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <div class="cell" data-collectcode="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mixed outcome || country: || id: <span class="co">// unconditional model</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mixed outcome || country: || id: <span class="co">// unconditional model</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
@@ -814,8 +1103,8 @@ physical_p~t |      9,000    2.485333    1.373639          0          5
 <div class="tab-content" data-group="language">
 <div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <div class="cell" data-collectcode="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> icc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> icc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Intraclass correlation
 
@@ -842,10 +1131,10 @@ physical_p~t |      9,000    2.485333    1.373639          0          5
 <div class="tab-content" data-group="language">
 <div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <div class="cell" data-collectcode="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mixed outcome t warmth physical_punishment i.<span class="kw">identity</span> i.intervention HDI || country: warmth || id: t <span class="co">// multilevel model</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> longitudinal <span class="co">// store estimates</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>mixed outcome t warmth physical_punishment i.<span class="kw">identity</span> i.intervention HDI || country: warmth || id: t <span class="co">// multilevel model</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> longitudinal <span class="co">// store estimates</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Performing EM optimization ...
 
@@ -916,10 +1205,10 @@ Note: LR test is conservative and provided only for reference.</code></pre>
 <div class="tab-content" data-group="language">
 <div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
 <div class="cell" data-collectcode="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(crosssectional longitudinal) <span class="co">///</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>showstars showstarsnote <span class="co">/// show stars and note</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>column(estimate) <span class="co">// column is modelname</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(crosssectional longitudinal) <span class="co">///</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>showstars showstarsnote <span class="co">/// show stars and note</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>column(estimate) <span class="co">// column is modelname</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                     crosssectional longitudinal
 ----------------------------------------------------------------
@@ -968,6 +1257,14 @@ Number of observations                    3000          9000
 <h2 data-number="4.3" class="anchored" data-anchor-id="majorsection"><span class="header-section-number">4.3</span> QUESTIONS???</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-JSSv067i01" class="csl-entry" role="listitem">
+Bates, Douglas, Martin Mächler, Ben Bolker, and Steve Walker. 2015. <span>“Fitting Linear Mixed-Effects Models Using Lme4.”</span> <em>Journal of Statistical Software</em> 67 (1): 1–48. <a href="https://doi.org/10.18637/jss.v067.i01">https://doi.org/10.18637/jss.v067.i01</a>.
+</div>
+<div id="ref-StataCorp2023" class="csl-entry" role="listitem">
+StataCorp. 2023. <em>Stata 18 Mixed Effects Reference Manual</em>. Stata Press.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

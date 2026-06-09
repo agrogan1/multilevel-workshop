@@ -257,7 +257,7 @@
 
 \title{Multilevel Workshop}
 \author{Andrew Grogan-Kaylor}
-\date{2026-05-15}
+\date{2026-06-09}
 \begin{document}
 \maketitle
 
@@ -662,6 +662,14 @@ Models}\label{two-level-cross-sectional-and-three-level-longitudinal-models}
 
 \subsubsection{R}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(haven)}
+
+\NormalTok{simulated\_multilevel\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_dta}\NormalTok{(}\StringTok{"simulated\_multilevel\_data.dta"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \subsection{The Equation}\label{the-equation}
 
 \begin{equation}\protect\phantomsection\label{eq-crosssectional}{\begin{aligned}
@@ -696,6 +704,112 @@ physical_p~t |      3,000    2.478667    1.360942          0          5
 
 \subsubsection{R}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{skimr}\SpecialCharTok{::}\FunctionTok{skim}\NormalTok{(simulated\_multilevel\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Variable type: character}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1944}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1389}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1944}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0556}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0556}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0833}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1528}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+empty
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_unique
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+whitespace
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+id & 0 & 1 & 3 & 6 & 0 & 3000 & 0 \\
+\end{longtable}
+}
+
+\textbf{Variable type: numeric}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.2151}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.1075}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.1505}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0645}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0645}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0645}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0645}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0645}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0645}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0753}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0645}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sd
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p75
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hist
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+country & 0 & 1 & 15.50 & 8.66 & 1.00 & 8.00 & 15.50 & 23.00 & 30.00 &
+▇▇▇▇▇ \\
+HDI & 0 & 1 & 64.77 & 17.25 & 33.00 & 53.00 & 70.00 & 81.00 & 87.00 &
+▅▂▅▇▇ \\
+family & 0 & 1 & 50.50 & 28.87 & 1.00 & 25.75 & 50.50 & 75.25 & 100.00 &
+▇▇▇▇▇ \\
+identity & 0 & 1 & 0.50 & 0.50 & 0.00 & 0.00 & 0.00 & 1.00 & 1.00 &
+▇▁▁▁▇ \\
+intervention & 0 & 1 & 0.48 & 0.50 & 0.00 & 0.00 & 0.00 & 1.00 & 1.00 &
+▇▁▁▁▇ \\
+physical\_punishment & 0 & 1 & 2.48 & 1.36 & 0.00 & 2.00 & 2.00 & 3.00 &
+5.00 & ▇▇▇▅▂ \\
+warmth & 0 & 1 & 3.52 & 1.89 & 0.00 & 2.00 & 4.00 & 5.00 & 7.00 &
+▃▃▇▃▃ \\
+outcome & 0 & 1 & 52.43 & 6.53 & 29.61 & 48.02 & 52.45 & 56.86 & 74.84 &
+▁▃▇▃▁ \\
+\end{longtable}
+}
+
 \subsection{Spaghetti Plot}\label{spaghetti-plot}
 
 \subsubsection{Stata}
@@ -722,6 +836,50 @@ model are the result of \emph{averaging} these estimates into one
 \emph{overall estimate}.
 
 \end{tcolorbox}
+
+\subsection{A Note On The Estimation of Random
+Effects}\label{a-note-on-the-estimation-of-random-effects}
+
+Procedures for estimating models with uncorrelated and correlated random
+effects are detailed below (StataCorp 2023; Bates et al. 2015).
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3056}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3889}}@{}}
+\caption{Correlated and Uncorrelated Random
+Effects}\label{tbl-REs}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Software
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Uncorrelated Random Effects
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Correlated Random Effects
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Software
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Uncorrelated Random Effects
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Correlated Random Effects
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Stata & default & add option: \texttt{,\ cov(uns)} \\
+R & separate random effects from grouping variable with
+\texttt{\textbar{}\textbar{}} & separate random effects from grouping
+variable with \texttt{\textbar{}} \\
+\end{longtable}
+
+All models in the examples below are run with \emph{uncorrelated} random
+effects, but could just as easily be run with \emph{correlated} random
+effects.
 
 \subsection{Unconditional Model}\label{unconditional-model}
 
@@ -854,6 +1012,56 @@ Note: LR test is conservative and provided only for reference.
 \end{verbatim}
 
 \subsubsection{R}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lme4)}
+
+\NormalTok{fit1 }\OtherTok{\textless{}{-}} \FunctionTok{lmer}\NormalTok{(outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ warmth }\SpecialCharTok{+}\NormalTok{ physical\_punishment }\SpecialCharTok{+} 
+\NormalTok{               identity  }\SpecialCharTok{+}\NormalTok{ intervention }\SpecialCharTok{+}\NormalTok{ HDI }\SpecialCharTok{+} 
+\NormalTok{               (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ warmth }\SpecialCharTok{||}\NormalTok{ country),}
+             \AttributeTok{data =}\NormalTok{ simulated\_multilevel\_data)}
+
+\FunctionTok{summary}\NormalTok{(fit1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Linear mixed model fit by REML ['lmerMod']
+Formula: outcome ~ warmth + physical_punishment + identity + intervention +  
+    HDI + ((1 | country) + (0 + warmth | country))
+   Data: simulated_multilevel_data
+
+REML criterion at convergence: 19268.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.9774 -0.6563  0.0187  0.6645  3.6730 
+
+Random effects:
+ Groups    Name        Variance Std.Dev.
+ country   (Intercept)  3.19056 1.786   
+ country.1 warmth       0.02465 0.157   
+ Residual              35.01782 5.918   
+Number of obs: 3000, groups:  country, 30
+
+Fixed effects:
+                     Estimate Std. Error t value
+(Intercept)         52.011364   1.414872  36.760
+warmth               0.834562   0.064252  12.989
+physical_punishment -0.991892   0.079845 -12.423
+identity            -0.300350   0.217179  -1.383
+intervention         0.639059   0.217603   2.937
+HDI                 -0.003395   0.020596  -0.165
+
+Correlation of Fixed Effects:
+            (Intr) warmth physc_ idntty intrvn
+warmth      -0.124                            
+physcl_pnsh -0.149 -0.003                     
+identity    -0.072 -0.012 -0.003              
+interventin -0.082  0.034  0.022 -0.018       
+HDI         -0.943 -0.006  0.009 -0.001  0.000
+\end{verbatim}
 
 \section{Longitudinal Model}\label{longitudinal-model}
 
@@ -1353,6 +1561,12 @@ Number of observations               450        450
 
 \protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-JSSv067i01}
+Bates, Douglas, Martin Mächler, Ben Bolker, and Steve Walker. 2015.
+{``Fitting Linear Mixed-Effects Models Using Lme4.''} \emph{Journal of
+Statistical Software} 67 (1): 1--48.
+\url{https://doi.org/10.18637/jss.v067.i01}.
+
 \bibitem[\citeproctext]{ref-BlandAltman1994}
 Bland, J M, and D G Altman. 1994. {``Statistics Notes: Correlation,
 Regression, and Repeated Data.''} \emph{BMJ} 308 (April): 896.
@@ -1386,6 +1600,10 @@ the Positive Correlation Between Fertility and Women's Employment.''}
 Oliver, Mary, and Krista Tippett. 2015. \emph{{M}ary {O}liver: {``{I}
 Got Saved by the Beauty of the World.''}} The On Being Project.
 \url{https://onbeing.org/programs/mary-oliver-i-got-saved-by-the-beauty-of-the-world/}.
+
+\bibitem[\citeproctext]{ref-StataCorp2023}
+StataCorp. 2023. \emph{Stata 18 Mixed Effects Reference Manual}. Stata
+Press.
 
 \end{CSLReferences}
 

@@ -49,6 +49,15 @@ use "simulated_multilevel_data.dta", clear
 ```
 
 #### R
+
+```{r}
+
+library(haven)
+
+simulated_multilevel_data <- read_dta("simulated_multilevel_data.dta")
+
+```
+
 :::
 
 ### The Equation
@@ -70,6 +79,14 @@ summarize // descriptive statistics
 ```
 
 #### R
+
+```{r}
+#| skimr_include_summary = FALSE
+
+skimr::skim(simulated_multilevel_data)
+
+```
+
 :::
 
 ### Spaghetti Plot
@@ -89,6 +106,7 @@ graph export spagplot1.png, width(1000) replace
 
 ![Spaghetti Plot of Outcome by Warmth by Country](spagplot1.png){width=50%}
 #### R
+
 :::
 
 ::: {.callout-tip}
@@ -96,6 +114,28 @@ graph export spagplot1.png, width(1000) replace
 
 This spaghetti plot is illustrating the idea of *random intercepts* and *random slopes*. The multilevel model is estimating *group specific regression lines*, in this case *country specific regression lines*. Each *country specific regression line* has its own intercept and its own slope. The results presented in the multilevel model are the result of *averaging* these estimates into one *overall estimate*. 
 :::
+
+### A Note On The Estimation of Random Effects
+
+Procedures for estimating models with uncorrelated and correlated random effects are detailed below [@StataCorp2023; @JSSv067i01].
+
+-------------------------------------------------------------
+Software    Uncorrelated          Correlated
+            Random                Random
+            Effects               Effects
+----------- --------------------- ---------------------------
+Stata       default               add option: `, cov(uns)`
+
+R           separate random       separate random 
+            effects from          effects from
+            grouping variable     grouping variable
+            with `||`             with `|`
+            
+-------------------------------------------------------------
+
+: Correlated and Uncorrelated Random Effects {#tbl-REs}
+
+All models in the examples below are run with *uncorrelated* random effects, but could just as easily be run with *correlated* random effects. 
 
 ### Unconditional Model
 
@@ -146,6 +186,20 @@ est store crosssectional // store estimates
 ```
 
 #### R
+
+```{r}
+
+library(lme4)
+
+fit1 <- lmer(outcome ~ warmth + physical_punishment + 
+               identity  + intervention + HDI + 
+               (1 + warmth || country),
+             data = simulated_multilevel_data)
+
+summary(fit1)
+
+```
+
 
 :::
 
