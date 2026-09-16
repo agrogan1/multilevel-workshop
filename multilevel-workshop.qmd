@@ -153,6 +153,17 @@ mixed outcome || country: // unconditional model
 
 ##### R
 
+```{r}
+
+library(lme4)
+
+fit0 <- lmer(outcome ~  (1 | country),
+             data = simulated_multilevel_data)
+
+summary(fit0)
+
+```
+
 :::
 
 #### ICC
@@ -168,6 +179,14 @@ estat icc
 ```
 
 ##### R
+
+```{r}
+
+library(performance) 
+
+performance::icc(fit0) # ICC
+
+```
 
 :::	
 

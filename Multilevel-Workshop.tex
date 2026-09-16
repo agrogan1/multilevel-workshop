@@ -257,7 +257,7 @@
 
 \title{Multilevel Workshop}
 \author{Andrew Grogan-Kaylor}
-\date{2026-06-09}
+\date{2026-09-16}
 \begin{document}
 \maketitle
 
@@ -931,6 +931,39 @@ LR test vs. linear model: chibar2(01) = 166.31        Prob >= chibar2 = 0.0000
 
 \subsubsection{R}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lme4)}
+
+\NormalTok{fit0 }\OtherTok{\textless{}{-}} \FunctionTok{lmer}\NormalTok{(outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{  (}\DecValTok{1} \SpecialCharTok{|}\NormalTok{ country),}
+             \AttributeTok{data =}\NormalTok{ simulated\_multilevel\_data)}
+
+\FunctionTok{summary}\NormalTok{(fit0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Linear mixed model fit by REML ['lmerMod']
+Formula: outcome ~ (1 | country)
+   Data: simulated_multilevel_data
+
+REML criterion at convergence: 19605.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.3844 -0.6655 -0.0086  0.6725  3.6626 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ country  (Intercept)  3.302   1.817   
+ Residual             39.461   6.282   
+Number of obs: 3000, groups:  country, 30
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)   52.433      0.351   149.4
+\end{verbatim}
+
 \subsubsection{ICC}\label{icc}
 
 \subsubsection{Stata}
@@ -953,6 +986,21 @@ Intraclass correlation
 \end{verbatim}
 
 \subsubsection{R}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(performance) }
+
+\NormalTok{performance}\SpecialCharTok{::}\FunctionTok{icc}\NormalTok{(fit0) }\CommentTok{\# ICC}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# Intraclass Correlation Coefficient
+
+    Adjusted ICC: 0.077
+  Unadjusted ICC: 0.077
+\end{verbatim}
 
 \subsection{Conditional Model}\label{conditional-model}
 
